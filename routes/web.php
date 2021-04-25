@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+   return view('welcome');
 });
 
 Auth::routes();
@@ -24,3 +24,25 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+//=========== phần Private có yêu cầu đăng nhập ===============================
+
+Route::middleware(['auth'])->group(function () {
+
+
+        Route::get('/home1', function () {
+
+           // $id = Auth::id();
+        //   $id = . Auth::user()->id;
+         //   dd( $id);
+          //  echo '<br>ID tai khoan = ' . Auth::id();
+          return view('testquyen');
+
+         });//->middleware('can:User.Add');
+
+
+});
+
