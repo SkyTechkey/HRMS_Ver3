@@ -8,10 +8,10 @@
 </p>
 
 ## About Laravel
-Check quyền bằng Role & permission.
-link tham khảo:
-https://saophaixoan.net/community/threads/thuc-hanh-laravel-framework-13-lam-chuc-nang-phan-quyen-dong-quan-ly-bang-database.79/
-https://viblo.asia/p/bai-17-phan-quyen-trong-laravel-RnB5p0pD5PG
+<p>Check quyền bằng Role & permission.</p>
+<p>link tham khảo:</p>
+<p>https://saophaixoan.net/community/threads/thuc-hanh-laravel-framework-13-lam-chuc-nang-phan-quyen-dong-quan-ly-bang-database.79/</p>
+<p>https://viblo.asia/p/bai-17-phan-quyen-trong-laravel-RnB5p0pD5PG</p>
 
 ## Learning Laravel
 
