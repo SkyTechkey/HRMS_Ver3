@@ -45,4 +45,18 @@ Route::middleware(['auth'])->group(function () {
 
 
 });
+Route::get('vaitro','PhanQuyen\RoleController@index');
+Route::post('vaitro/them','PhanQuyen\RoleController@create');
+Route::get('vaitro/xoa/{id}','PhanQuyen\RoleController@destroy');
+Route::post('phanquyenvaitro/sua/{id}','PhanQuyen\RoleController@edit');
 
+// Permission
+
+Route::get('chucnang','PhanQuyen\PermissionController@index');
+Route::post('chucnang/them','PhanQuyen\PermissionController@create');
+Route::get('chucnang/xoa/{id}','PhanQuyen\PermissionController@destroy');
+Route::post('chucnang/sua/{id}','PhanQuyen\PermissionController@edit');
+
+// Set Permission On Roles
+Route::get('phanquyen','PhanQuyen\SetPermissionOnRoleController@index');
+Route::post('phanquyen/sua/{id}','PhanQuyen\SetPermissionOnRoleController@update');
