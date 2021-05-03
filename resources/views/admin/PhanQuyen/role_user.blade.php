@@ -44,7 +44,7 @@
                         
                         <div class="demo-switch">
                             <div class="row clearfix">
-                                @foreach($role as $value)
+                                @foreach($tbl_role as $value)
                                 <div class="col-sm-3">
                                     <div class="demo-switch-title">{{$value->name}}</div>
                                     <div class="switch">

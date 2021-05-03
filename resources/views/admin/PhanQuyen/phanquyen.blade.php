@@ -51,7 +51,7 @@ Quản lý phân quyền
             
         </div>
         <!-- Input -->
-        @foreach($role as $value)
+        @foreach($tbl_role as $value)
         <form method="post" action="{{url('phanquyen/sua/'.$value->id)}}">
         @csrf
             <div class="row clearfix">
@@ -64,7 +64,7 @@ Quản lý phân quyền
                             
                             <div class="demo-switch">
                                 <div class="row clearfix">
-                                    @foreach($permission as $value)
+                                    @foreach($tbl_permission as $value)
                                     <div class="col-sm-3">
                                         <div class="demo-switch-title">{{$value->name}}</div>
                                         <div class="switch">

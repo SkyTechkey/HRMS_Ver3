@@ -14,8 +14,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permission = Permission::all();
-        return view('admin.PhanQuyen.permission',compact('permission'));
+        $tbl_permission = Permission::all();
+        return view('admin.PhanQuyen.permission',compact('tbl_permission'));
     }
 
     /**
@@ -25,9 +25,9 @@ class PermissionController extends Controller
      */
     public function create(Request $request)
     {
-        $permission = new Permission;
-        $permission->name = $request->name;
-        if($permission->save()){
+        $tbl_permission = new Permission;
+        $tbl_permission->name = $request->name;
+        if($tbl_permission->save()){
             return redirect()->back()->with('success',__('Bạn đã thêm chức năng mới thành công'));
         }
         else{
@@ -65,10 +65,10 @@ class PermissionController extends Controller
      */
     public function edit(Request $request,$id)
     {
-        $permission = Permission::find($id);
-        if(!empty($permission)){
-            $permission->name = $request->name;
-            if($permission->save()){
+        $tbl_permission = Permission::find($id);
+        if(!empty($tbl_permission)){
+            $tbl_permission->name = $request->name;
+            if($tbl_permission->save()){
                 return redirect()->back()->with('success',__('Bạn đã sửa vai trò thành công'));
             }
             else{
@@ -100,9 +100,9 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        $permission = Permission::find($id);
-        if(!empty($permission)){
-            if($permission->delete()){
+        $tbl_permission = Permission::find($id);
+        if(!empty($tbl_permission)){
+            if($tbl_permission->delete()){
                 return redirect()->back()->with('success',__('Bạn đã xóa chức năng thành công'));
             }
         }

@@ -14,8 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $role = Role::all();
-        return view('admin.PhanQuyen.role',compact('role'));
+        $tbl_role = Role::all();
+        return view('admin.PhanQuyen.role',compact('tbl_role'));
     }
 
     /**
@@ -25,9 +25,9 @@ class RoleController extends Controller
      */
     public function create(Request $request)
     {
-        $role = new Role;
-        $role->name = $request->name;
-        if($role->save()){
+        $tbl_role = new Role;
+        $tbl_role->name = $request->name;
+        if($tbl_role->save()){
             return redirect()->back()->with('success',__('Bạn đã thêm vai trò mới thành công'));
         }
     }
@@ -40,9 +40,9 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        $role = Role::find($id);
-        if(!empty($role)){
-            if($role->delete()){
+        $tbl_role = Role::find($id);
+        if(!empty($tbl_role)){
+            if($tbl_role->delete()){
                 return redirect()->back()->with('success',__('Bạn đã xóa vai trò thành công'));
             }
         }
@@ -59,10 +59,10 @@ class RoleController extends Controller
      */
     public function edit(Request $request,$id)
     {
-        $role = Role::find($id);
-        if(!empty($role)){
-            $role->name = $request->name;
-            if($role->save()){
+        $tbl_role = Role::find($id);
+        if(!empty($tbl_role)){
+            $tbl_role->name = $request->name;
+            if($tbl_role->save()){
                 return redirect()->back()->with('success',__('Bạn đã sửa vai trò thành công'));
             }
         }
@@ -92,3 +92,4 @@ class RoleController extends Controller
     
     
 }
+    

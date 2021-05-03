@@ -16,9 +16,9 @@ class SetPermissionOnRoleController extends Controller
      */
     public function index()
     {
-        $role = Role::all();
-        $permission = Permission::all();
-        return view('admin.PhanQuyen.phanquyen',compact('role','permission'));
+        $tbl_role = Role::all();
+        $tbl_permission = Permission::all();
+        return view('admin.PhanQuyen.phanquyen',compact('tbl_role','tbl_permission'));
     }
 
     /**
@@ -28,13 +28,22 @@ class SetPermissionOnRoleController extends Controller
      */
     public function update(Request $request,$id)
     {
-        // $rolePermission = new RolePermission;
-        // $rolePermission->id_role = 1;
-        // $rolePermission->id_pms = 1;
-        // $rolePermission->save();
-        // $rolePermission = RolePermission::where('id_role',$id)->first();
-        // $idPermission = $request->permission;
+        // 
+       
         
+        
+        
+        //dd($request->permission);
+        
+
+        
+        
+
+        
+        
+        
+        
+       
         
         
                 

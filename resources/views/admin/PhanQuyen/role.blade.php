@@ -74,7 +74,7 @@
                                 </thead>
                                 
                                 <tbody>
-                                    @foreach($role as $value)
+                                    @foreach($tbl_role as $value)
                                     <tr>
 
                                         <td>{{$value->id}}</td>

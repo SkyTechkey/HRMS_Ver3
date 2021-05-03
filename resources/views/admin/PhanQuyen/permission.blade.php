@@ -73,7 +73,7 @@
                                 </thead>
                                 
                                 <tbody>
-                                    @foreach($permission as $value)
+                                    @foreach($tbl_permission as $value)
                                     <tr>
 
                                         <td>{{$value->id}}</td>
