@@ -27,7 +27,7 @@ class UserTableSeeder extends Seeder
        $employee->CMND = '212618080';
        $employee->NgayCapCMND = '2000/07/05';
        $employee->NoiCapCMND = 'Quang Nam';
-       $employee->ID_DanToc = 1;
+       $employee->ID_Dantoc = 1;
        $employee->ID_TonGiao = 1;
        $employee->ID_QuocTich = 1;
        $employee->TTHonNhan = 'Mot Vo Mot Con';

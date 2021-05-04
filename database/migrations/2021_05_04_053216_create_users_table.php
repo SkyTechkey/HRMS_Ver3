@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->date('NgayCapCMND');
             $table->string('NoiCapCMND');
             $table->integer('ID_DanToc')->unsigned();
+            $table->foreign('ID_DanToc')->references('id')->on('tbl_dan_toc');
             $table->integer('ID_TonGiao')->unsigned();
             $table->integer('ID_QuocTich')->unsigned();
             $table->string('TTHonNhan');

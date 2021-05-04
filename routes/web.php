@@ -46,3 +46,10 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
+Route::get('danhsachdantoc', 'Dantoc\DantocController@index')->name('danhsach');
+Route::post('them', 'Dantoc\DantocController@store')->name('them');
+Route::post('sua/{id}', 'Dantoc\DantocController@update')->name('sua');
+Route::get('xoa/{id}', 'Dantoc\DantocController@destroy')->name('xoa');
+
+Route::get('xuat', 'Dantoc\DantocController@export')->name('xuat');
+Route::post('nhap', 'Dantoc\DantocController@import')->name('nhap');
