@@ -94,7 +94,7 @@ class DantocController extends Controller implements FromCollection, WithHeading
      */
     public function destroy($id)
     {
-        $dantoc = Dantoc::find($id)->delete();
+        $id = Dantoc::find($id)->delete();
         return redirect('danhsachdantoc');
     }
 
