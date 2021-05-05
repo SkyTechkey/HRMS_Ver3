@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use App\User;
+use App\Tongiao;
 use Spatie\Permission\Models\Role;
 
 class QuanlyNhansuController extends Controller
@@ -16,8 +17,9 @@ class QuanlyNhansuController extends Controller
         $getData = DB::table('users')->select('*')->get();
 				$users = User::all();
     		$roles = Role::all();
+				$tongiaos = Tongiao::all();
 
-	    return view('admin.Nhansu.nhansu', compact('users', 'roles'))->with('listnhansu',$getData);
+	    return view('admin.Nhansu.nhansu', compact('users', 'roles', 'tongiaos'))->with('listnhansu',$getData);
     }
     public function create(){
         return view('admin.Nhansu.create');
@@ -72,15 +74,17 @@ class QuanlyNhansuController extends Controller
 			$getData = DB::table('users')->select('id', 'name','email','phone', 'role', 'salary')->where('id','=',$id)->get();
 			$users = User::all();
     	$roles = Role::all();
-			return view('admin.Nhansu.edit', compact('users', 'roles'))->with('getData', $getData);
+			$tongiaos = Tongiao::all();
+			return view('admin.Nhansu.edit', compact('users', 'roles', 'tongiaos'))->with('getData', $getData);
 			
 		}
 
 		public function update(Request $request, $id)
 		{
-			$getData = DB::table('users')->select('id', 'name','email','phone', 'role', 'salary')->where('id','=',$id)->get();
+			$getData = DB::table('users')->select('id', 'name','email','phone', 'role', 'salary', 'tongiao')->where('id','=',$id)->get();
 			$users = User::all();
     	$roles = Role::all();
+			$tongiaos = Tongiao::all();
 			$updateData = DB::table('users')->where('id', $request->id)->update([
 				'id' => $request->id,
 				'name' => $request->name,
@@ -88,6 +92,7 @@ class QuanlyNhansuController extends Controller
 				'phone' => $request->phone,
 				'role' => $request->role,
 				'salary' => $request->salary,
+				'tongiao' => $request->tongiao,
 			]);
 			
 			//Kiểm tra lệnh update để trả về một thông báo
@@ -100,7 +105,7 @@ class QuanlyNhansuController extends Controller
 			
 			//Thực hiện chuyển trang
 		 	//return redirect('nhansu')->with('update', $updateData);
-			 return view('admin.Nhansu.edit', compact('users', 'roles'))->with('getData', $getData);
+			 return view('admin.Nhansu.edit', compact('users', 'roles', 'tongiaos'))->with('getData', $getData);
 			//dd($updateData);
 		}
 }

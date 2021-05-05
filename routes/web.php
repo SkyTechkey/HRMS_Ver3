@@ -64,6 +64,14 @@ Route::post('role/them','PhanQuyen\PhanQuyenController@createRole');
 Route::get('role/xoa/{id}','PhanQuyen\PhanQuyenController@deleteRole');
 Route::post('role/sua/{id}','PhanQuyen\PhanQuyenController@editRole');
 
+Route::get('tongiao','Quanly\QuanlyTongiaoController@index')->name('tongiao');
+Route::post('tongiao/them','Quanly\QuanlyTongiaoController@create');
+Route::get('tongiao/xoa/{id}','Quanly\QuanlyTongiaoController@destroy');
+Route::get('tongiao/xoaAll','Quanly\QuanlyTongiaoController@destroyAll');
+Route::post('tongiao/sua/{id}','Quanly\QuanlyTongiaoController@edit');
+Route::get('tongiao/export', 'Quanly\QuanlyTongiaoController@export')->name('TongiaoExport');
+Route::post('tongiao/import', 'Quanly\QuanlyTongiaoController@import')->name('TongiaoImport');
+
 Route::get('chucnang','PhanQuyen\PhanQuyenController@getChucNang');
 Route::post('chucnang/them','PhanQuyen\PhanQuyenController@createChucNang');
 Route::get('chucnang/xoa/{id}','PhanQuyen\PhanQuyenController@deleteChucNang');

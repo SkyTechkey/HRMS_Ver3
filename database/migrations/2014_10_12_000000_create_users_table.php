@@ -21,11 +21,13 @@ class CreateUsersTable extends Migration
 	        $table->string('phone');
             $table->string('role')->nullable();
             $table->string('salary')->nullable();
+            $table->unsignedBigInteger('tongiao')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken()->nullable();
             $table->timestamps();
 
+            $table->foreign('tongiao')->references('id')->on('tbl_tongiao');
         });
     }
 

@@ -48,6 +48,14 @@
 			<label for="salary">Lương</label>
 			<input type="text" class="form-control" id="salary" name="salary" placeholder="Lương" maxlength="15" value="{{ $getData[0]->salary }}" required />
 		</div>
+		<div>
+			<label for="tongiao">Tôn giáo</label>
+			<select id="tongiao" name="tongiao" form="formsua">
+					@foreach($tongiaos as $tongiao)
+							<option value="{{ $tongiao->tongiao_id }}"> {{ $tongiao->TenTG_Tongiao }}</option>
+					@endforeach
+			</select>
+	</div>
 		<center><button type="submit" class="btn btn-primary">Lưu lại</button></center>
 	</form>
 </div>

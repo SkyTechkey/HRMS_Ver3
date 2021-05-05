@@ -832,6 +832,9 @@ Manage Role
                                 <div style='float: right; padding-right: 10px;'>
                                     <a class='btn btn-primary' href="{{route('suaQuyen')}}">Sửa quyền</a>
                                 </div>
+                                <div style='float: right; padding-right: 10px;'>
+                                    <a class='btn btn-primary' href="{{route('tongiao')}}">Tôn giáo</a>
+                                </div>
                           </h2>
                           
                       </div>
@@ -844,6 +847,7 @@ Manage Role
                                           <th>Chức vụ</th>
                                           <th>Mail</th>
                                           <th>Điện thoại</th>
+                                          <th>Tôn giáo</th>
                                           <th>Chức năng</th>
                                       </tr>
                                   </thead>
@@ -856,6 +860,7 @@ Manage Role
                                           <td>{{ $nhansu->role }} </td>
                                           <td>{{ $nhansu->email }}</td>
                                           <td>{{ $nhansu->phone }}</td>
+                                          <td>{{ $nhansu->tongiao }}</td>
                                           <td>
                                               @can('sua')
                                               <a data-toggle="modal" data-target="#sua{{$nhansu->id}}" style='cursor: pointer'><i class="fa fa-edit"></i></a>
@@ -872,7 +877,7 @@ Manage Role
                                                     <h2 class="modal-title" id='defaultModalLabel' style='text-align: center'>Sửa nhân sự</h2>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ url('nhansu/update/'.$nhansu->id) }}" method="post">
+                                                    <form action="{{ url('nhansu/update/'.$nhansu->id) }}" method="post" id="formsua">
                                                         @csrf
                                                         <div class="form-group">
                                                             <label for="name">Tên nhân sự</label>
@@ -886,10 +891,17 @@ Manage Role
                                                             <label for="phone">Số điện thoại</label>
                                                             <input type="text" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" maxlength="15" value="{{ $nhansu->phone }}" required />
                                                         </div>
+                                                    <div>
+                                                            <label for="tongiao">Tôn giáo</label>
+                                                            <select id="tongiao" name="tongiao" form="formsua">
+                                                                @foreach($tongiaos as $tongiao)
+                                                                    <option value="{{ $tongiao->tongiao_id }}"> {{ $tongiao->TenTG_Tongiao }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     <div class="form-group">
                                                         @foreach($roles as $role)
                                                         <div class="col-sm-3">
-                                                            
                                                             <div class="switch">
                                                                 <label><input name ="role[]" value ="{{$role->name}}" type="checkbox" @if($role->users->contains($nhansu->id)) checked=checked @endif><span class="lever switch-col-red"></span>{{$role->name}}</label>
                                                             </div>
