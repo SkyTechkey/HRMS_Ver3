@@ -60,3 +60,15 @@ Route::post('chucnang/sua/{id}','PhanQuyen\PermissionController@edit');
 // Set Permission On Roles
 Route::get('phanquyen','PhanQuyen\SetPermissionOnRoleController@index');
 Route::post('phanquyen/sua/{id}','PhanQuyen\SetPermissionOnRoleController@update');
+
+Route::get('nhanvien/dantoc','DanToc\DanTocController@index');
+Route::post('nhanvien/dantoc/them','DanToc\DanTocController@create');
+// Fix
+Route::post('nhanvien/dantoc/sua/{id}','DanToc\DanTocController@edit');
+// Delete
+Route::get('nhanvien/dantoc/xoa/{id}','DanToc\DanTocController@destroy');
+Route::get('nhanvien/dantoc/xoa','DanToc\DanTocController@destroyAll');
+
+Route::get('nhanvien/dantoc/export', 'DanToc\DanTocController@export')->name('export');
+
+Route::post('nhanvien/dantoc/import', 'DanToc\DanTocController@import')->name('import');
