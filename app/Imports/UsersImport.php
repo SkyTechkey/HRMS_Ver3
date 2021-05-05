@@ -16,5 +16,7 @@ class UsersImport implements ToModel, WithHeadingRow
             'password' => \Hash::make($row['password']),
         ]);
     }
+
+    
 }
 

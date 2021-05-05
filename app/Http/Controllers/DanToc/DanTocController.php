@@ -89,9 +89,18 @@ class DanTocController extends Controller
      */
     public function import() 
     {
-        Excel::import(new DanTocImport,request()->file('file'));
+        if(!empty(request()->file('file')))
+        {
+            Excel::import(new DanTocImport,request()->file('file'));
            
-        return redirect()->back();
+            return redirect('nhanvien/dantoc')->with('success',__('Bạn đã thêm tên dân tộc mới thành công'));
+        }
+        else{
+            return redirect('nhanvien/dantoc')->with('success',__('Vui lòng chọn tệp'));
+        }
+        
+           
+        
     }
     public function export() 
     {
