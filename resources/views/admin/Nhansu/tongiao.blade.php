@@ -27,10 +27,11 @@
 <section class="content">
     <div class="container-fluid">
         @if(session('success'))
-            <div class ="alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss ="alert" aria-hidden="true"></button>
-                
-                {{session('success')}}
+            <div id='alert' data-notify="container" class="bootstrap-notify-container alert alert-dismissible alert-success p-r-35 animated fadeInDown" role="alert" data-notify-position="bottom-center" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1031; top: 77px; left: 0px; right: 0px;">
+                <button type="button" aria-hidden="true" class="close" data-notify="dismiss" style="position: absolute; right: 10px; top: 5px; z-index: 1033;">×</button>
+                <span data-notify="icon"></span> 
+                <span data-notify="title"></span> <span data-notify="message">{{session('success')}}</span>
+                <a href="#" target="_blank" data-notify="url"></a>
             </div>
         @endif
         @if ($errors->any())
@@ -265,6 +266,10 @@
         });
     });
 </script>
-
+<script type="text/javascript">
+	$("#alert").delay(4000).slideUp(200, function() {
+			$(this).alert('close');
+	});
+</script>
 @endsection
 @endsection
