@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Dân Tộc
+    Tin Hoc
 @endsection
 @section('css')
 <!-- Bootstrap Core Css -->
@@ -54,13 +54,13 @@
                     <div class="header">
                         
                         <h2>
-                            Danh Sách Dân Tộc 
+                            Danh Sách Tin Học
                             <div style="float:right" >
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#importModal">Nhập từ dữ liệu excel</button>
-                            <a href="{{url('nhanvien/dantoc/export')}}" class="btn btn-info btn-lg">Xuất Danh Sách</a>
-                            <a href="{{url('nhanvien/dantoc/xoa')}}"  class="btn btn-info btn-lg button delete-all">Xóa Tất Cả</a>
+                            <a href="{{url('nhanvien/tinhoc/export')}}" class="btn btn-info btn-lg">Xuất Danh Sách</a>
+                            <a href="{{url('nhanvien/tinhoc/xoa')}}"  class="btn btn-info btn-lg button delete-all">Xóa Tất Cả</a>
                             
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Thêm Dân Tộc</button>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Thêm Trình Độ Tin Học</button>
                                
                             </div>
                         </h2>
@@ -73,23 +73,23 @@
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Mã Dân Tộc</th>
-                                        <th>Tên Dân Tộc</th>
+                                        <th>Mã Trình Độ Tin Học</th>
+                                        <th>Tên Trình Độ Tin Học</th>
                                         <th width="10%" >Chức Năng</th>
                                         
                                     </tr>
                                 </thead>
                                 
                                 <tbody>
-                                    @foreach($list_danToc as $value)
+                                    @foreach($tinHoc as $value)
                                     <tr>
 
                                         <td>{{$value->id}}</td>
-                                        <td>{{$value->Tendantoc_Dantoc}}</td>
+                                        <td>{{$value->Ten_Trinhdotinhoc}}</td>
                                         <td>
                                         
                                         
-                                        <a href="{{url('nhanvien/dantoc/xoa/'.$value->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
+                                        <a href="{{url('nhanvien/tinhoc/xoa/'.$value->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
                                         <a href =""  type="button" data-toggle="modal" data-target="#fix{{$value->id}}"><i style="font-size:22px" class="material-icons">edit_calendar</i><a>
                                         </td>
                                         
@@ -103,14 +103,14 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 style='color:#00b0e4' class="modal-title">Sửa Dân Tộc </h4>
+                                                <h4 style='color:#00b0e4' class="modal-title">Sửa Trình Độ Tin Học </h4>
                                             </div>
                                             <div  class="body">
-                                                <form action = "{{url('nhanvien/dantoc/sua/'.$value->id)}}" id="form_validation" method="POST">
+                                                <form action = "{{url('nhanvien/tinhoc/sua/'.$value->id)}}" id="form_validation" method="POST">
                                                 @csrf
                                                     <div class="form-group form-float">
                                                         <div class="form-line">
-                                                            <input  type="text" class="form-control" name="name" value ="{{$value->Tendantoc_Dantoc}}"  required>     
+                                                            <input  type="text" class="form-control" name="name" value ="{{$value->Ten_Trinhdotinhoc}}"  required>     
                                                         </div>
                                                         
                                                         
@@ -143,10 +143,10 @@
                         <div class="modal-content">
                             <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 style='color:#00b0e4' class="modal-title">Tạo Dân Tộc</h4>
+                            <h4 style='color:#00b0e4' class="modal-title">Tạo Trình Độ Tin Học</h4>
                             </div>
                             <div  class="body">
-                                <form action = "{{url('nhanvien/dantoc/them')}}" id="form_validation" method="POST">
+                                <form action = "{{url('nhanvien/tinhoc/them')}}" id="form_validation" method="POST">
                                 @csrf
                                     <div class="form-group form-float">
                                         <div class="form-line">
@@ -181,7 +181,7 @@
                             </div>
                             <div class="card bg-light mt-3">
                                 <div class="card-body">
-                                    <form action="{{ url('nhanvien/dantoc/import') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ url('nhanvien/tinhoc/import') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="file" name="file" class="form-control">
                                         <br>
@@ -234,14 +234,17 @@
 <!-- Demo Js -->
 <script src="{{ asset('project_asset/js/demo.js')}}"></script>
 <script src="{{ asset('project_asset/plugins/bootstrap-select/js/bootstrap-select.js')}}"></script>
+<script src="{{ asset('project_asset/js/pages/ui/notifications.js')}}"></script>
+
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script type="text/javascript">
     $('.delete-confirm').on('click', function (event) {
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
             title: 'Xóa dân tộc',
-            text: 'Bạn có thực sự muốn tên dân tộc này?',
+            text: 'Bạn có thực sự muốn xóa tin học này?',
             icon: 'warning',
             buttons: ["Hủy", "Đồng ý!"],
         }).then(function(value) {
@@ -274,5 +277,6 @@
         });
     });
 </script>
+
 @endsection
 @endsection
