@@ -22,12 +22,16 @@ class CreateUsersTable extends Migration
             $table->string('role')->nullable();
             $table->string('salary')->nullable();
             $table->unsignedBigInteger('tongiao')->nullable();
+            $table->unsignedBigInteger('quoctich')->nullable();
+            $table->unsignedBigInteger('ngoaingu')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken()->nullable();
             $table->timestamps();
 
             $table->foreign('tongiao')->references('id')->on('tbl_tongiao');
+            $table->foreign('quoctich')->references('id')->on('tbl_quoctich');
+            $table->foreign('ngoaingu')->references('id')->on('tbl_ngoaingu');
         });
     }
 

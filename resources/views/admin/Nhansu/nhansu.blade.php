@@ -835,6 +835,12 @@ Manage Role
                                 <div style='float: right; padding-right: 10px;'>
                                     <a class='btn btn-primary' href="{{route('tongiao')}}">Tôn giáo</a>
                                 </div>
+                                <div style='float: right; padding-right: 10px;'>
+                                    <a class='btn btn-primary' href="{{route('quoctich')}}">Quốc tịch</a>
+                                </div>
+                                <div style='float: right; padding-right: 10px;'>
+                                    <a class='btn btn-primary' href="{{route('ngoaingu')}}">Ngoại ngữ</a>
+                                </div>
                           </h2>
                           
                       </div>
@@ -848,6 +854,8 @@ Manage Role
                                           <th>Mail</th>
                                           <th>Điện thoại</th>
                                           <th>Tôn giáo</th>
+                                          <th>Quốc tịch</th>
+                                          <th>Ngoại ngữ</th>
                                           <th>Chức năng</th>
                                       </tr>
                                   </thead>
@@ -861,6 +869,8 @@ Manage Role
                                           <td>{{ $nhansu->email }}</td>
                                           <td>{{ $nhansu->phone }}</td>
                                           <td>{{ $nhansu->tongiao }}</td>
+                                          <td>{{ $nhansu->quoctich }}</td>
+                                          <td>{{ $nhansu->ngoaingu }}</td>
                                           <td>
                                               @can('sua')
                                               <a data-toggle="modal" data-target="#sua{{$nhansu->id}}" style='cursor: pointer'><i class="fa fa-edit"></i></a>
@@ -895,7 +905,23 @@ Manage Role
                                                             <label for="tongiao">Tôn giáo</label>
                                                             <select id="tongiao" name="tongiao" form="formsua">
                                                                 @foreach($tongiaos as $tongiao)
-                                                                    <option value="{{ $tongiao->tongiao_id }}"> {{ $tongiao->TenTG_Tongiao }}</option>
+                                                                    <option value="{{ $tongiao->id }}"> {{ $tongiao->TenTG_Tongiao }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div>
+                                                            <label for="quoctich">Quốc tịch</label>
+                                                            <select id="quoctich" name="quoctich" form="formsua">
+                                                                @foreach($quoctichs as $quoctich)
+                                                                    <option value="{{ $quoctich->id }}"> {{ $quoctich->TenQT_Quoctich }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div>
+                                                            <label for="ngoaingu">Ngoại ngữ</label>
+                                                            <select id="ngoaingu" name="ngoaingu" form="formsua">
+                                                                @foreach($ngoaingus as $ngoaingu)
+                                                                    <option value="{{ $ngoaingu->id }}"> {{ $ngoaingu->TenNN_Ngoaingu }}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>

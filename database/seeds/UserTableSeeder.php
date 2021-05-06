@@ -24,6 +24,26 @@ class UserTableSeeder extends Seeder
             'TenTG_Tongiao' => 'thien chua giao',
         ]);
 
+        DB::table('tbl_quoctich')->insert([
+            'TenQT_Quoctich' => 'Vietnam',
+        ]);
+        DB::table('tbl_quoctich')->insert([
+            'TenQT_Quoctich' => 'America',
+        ]);
+        DB::table('tbl_quoctich')->insert([
+            'TenQT_Quoctich' => 'Singapore',
+        ]);
+
+        DB::table('tbl_ngoaingu')->insert([
+            'TenNN_Ngoaingu' => 'tieng Anh',
+        ]);
+        DB::table('tbl_ngoaingu')->insert([
+            'TenNN_Ngoaingu' => 'tieng Phap',
+        ]);
+        DB::table('tbl_ngoaingu')->insert([
+            'TenNN_Ngoaingu' => 'tieng Lao',
+        ]);
+
 
         DB::table('users')->insert([
             'name' => 'admin',
