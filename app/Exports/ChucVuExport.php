@@ -2,16 +2,16 @@
 
 namespace App\Exports;
 
-use App\TrinhDoHocVan;
+use App\Models\ChucVu;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class TrinhDoHocVanExport implements FromCollection
+class ChucVuExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return TrinhDoHocVan::all();
+        return ChucVu::all();
     }
 }

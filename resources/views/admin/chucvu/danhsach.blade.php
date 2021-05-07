@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Dân Tộc
+    Quản Lí Chức Vụ
 @endsection
 @section('css')
 <!-- Bootstrap Core Css -->
@@ -54,13 +54,13 @@
                     <div class="header">
                         
                         <h2>
-                            Danh Sách Dân Tộc 
+                            Danh Sách Chức Vụ 
                             <div style="float:right" >
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#importModal">Nhập từ dữ liệu excel</button>
-                            <a href="{{url('nhanvien/dantoc/export')}}" class="btn btn-info btn-lg">Xuất Danh Sách</a>
-                            <a href="{{url('nhanvien/dantoc/xoa')}}"  class="btn btn-info btn-lg button delete-all">Xóa Tất Cả</a>
+                            <a href="{{url('nhanvien/chucvu/export')}}" class="btn btn-info btn-lg">Xuất Danh Sách</a>
+                            <a href="{{url('nhanvien/chucvu/xoa')}}"  class="btn btn-info btn-lg button delete-all">Xóa Tất Cả</a>
                             
-                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Thêm Dân Tộc</button>
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Thêm Chức Vụ</button>
                                
                             </div>
                         </h2>
@@ -73,23 +73,25 @@
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>
-                                        <th>Mã Dân Tộc</th>
-                                        <th>Tên Dân Tộc</th>
+                                        <th>Mã Chức Vụ</th>
+                                        <th>Tên Chức Vụ</th>
+                                        <th>Tên Hệ Số Công Việc</th>
                                         <th width="10%" >Chức Năng</th>
                                         
                                     </tr>
                                 </thead>
                                 
                                 <tbody>
-                                    @foreach($list_danToc as $value)
+                                    @foreach($list_chucVu as $value)
                                     <tr>
 
                                         <td>{{$value->id}}</td>
-                                        <td>{{$value->Tendantoc_Dantoc}}</td>
+                                        <td>{{$value->Tenchucvu_Chucvu}}</td>
+                                        <td>{{$value->HesoCV}}</td>
                                         <td>
                                         
                                         
-                                        <a href="{{url('nhanvien/dantoc/xoa/'.$value->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
+                                        <a href="{{url('nhanvien/chucvu/xoa/'.$value->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
                                         <a href =""  type="button" data-toggle="modal" data-target="#fix{{$value->id}}"><i style="font-size:22px" class="material-icons">edit_calendar</i><a>
                                         </td>
                                         
@@ -103,14 +105,17 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                <h4 style='color:#00b0e4' class="modal-title">Sửa Dân Tộc </h4>
+                                                <h4 style='color:#00b0e4' class="modal-title">Sửa Chức Vụ </h4>
                                             </div>
                                             <div  class="body">
-                                                <form action = "{{url('nhanvien/dantoc/sua/'.$value->id)}}" id="form_validation" method="POST">
+                                                <form action = "{{url('nhanvien/chucvu/sua/'.$value->id)}}" id="form_validation" method="POST">
                                                 @csrf
                                                     <div class="form-group form-float">
                                                         <div class="form-line">
-                                                            <input  type="text" class="form-control" name="name" value ="{{$value->Tendantoc_Dantoc}}"  required>     
+                                                            <input  type="text" class="form-control" name="name" value ="{{$value->Tenchucvu_Chucvu}}"  required>     
+                                                        </div>
+                                                        <div class="form-line">
+                                                            <input  type="text" class="form-control" name="hesoCV" value ="{{$value->HesoCV}}"  required>     
                                                         </div>
                                                         
                                                         
@@ -143,14 +148,19 @@
                         <div class="modal-content">
                             <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 style='color:#00b0e4' class="modal-title">Tạo Dân Tộc</h4>
+                            <h4 style='color:#00b0e4' class="modal-title">Tạo Chức VỤ</h4>
                             </div>
                             <div  class="body">
-                                <form action = "{{url('nhanvien/dantoc/them')}}" id="form_validation" method="POST">
+                                <form action = "{{url('nhanvien/chucvu/them')}}" id="form_validation" method="POST">
                                 @csrf
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <input  type="text" class="form-control" name="name" placeholder="Tên dân tộc"  required>
+                                            <input  type="text" class="form-control" name="name" placeholder="Tên chức vụ"  required>
+                                            
+                                            
+                                        </div>
+                                        <div class="form-line">
+                                            <input  type="text" class="form-control" name="hesoCV" placeholder="Hệ số công việc"  required>
                                             
                                             
                                         </div>
@@ -181,7 +191,7 @@
                             </div>
                             <div class="card bg-light mt-3">
                                 <div class="card-body">
-                                    <form action="{{ url('nhanvien/dantoc/import') }}" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ url('nhanvien/chucvu/import') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="file" name="file" class="form-control">
                                         <br>
@@ -240,8 +250,8 @@
         event.preventDefault();
         const url = $(this).attr('href');
         swal({
-            title: 'Xóa dân tộc',
-            text: 'Bạn có thực sự muốn tên dân tộc này?',
+            title: 'Xóa chức vụ',
+            text: 'Bạn có thực sự muốn tên chức vụ này?',
             icon: 'warning',
             buttons: ["Hủy", "Đồng ý!"],
         }).then(function(value) {

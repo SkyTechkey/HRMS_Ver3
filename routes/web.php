@@ -61,42 +61,42 @@ Route::post('chucnang/sua/{id}','PhanQuyen\PermissionController@edit');
 Route::get('phanquyen','PhanQuyen\SetPermissionOnRoleController@index');
 Route::post('phanquyen/sua/{id}','PhanQuyen\SetPermissionOnRoleController@update');
 
-Route::get('nhanvien/dantoc','DanToc\DanTocController@index');
-Route::post('nhanvien/dantoc/them','DanToc\DanTocController@create');
+Route::get('nhanvien/chucvu','ChucVu\ChucVuController@index');
+Route::post('nhanvien/chucvu/them','ChucVu\ChucVuController@create');
 // Fix
-Route::post('nhanvien/dantoc/sua/{id}','DanToc\DanTocController@edit');
+Route::post('nhanvien/chucvu/sua/{id}','ChucVu\ChucVuController@edit');
 // Delete
-Route::get('nhanvien/dantoc/xoa/{id}','DanToc\DanTocController@destroy');
-Route::get('nhanvien/dantoc/xoa','DanToc\DanTocController@destroyAll');
+Route::get('nhanvien/chucvu/xoa/{id}','ChucVu\ChucVuController@destroy');
+Route::get('nhanvien/chucvu/xoa','ChucVu\ChucVuController@destroyAll');
 
-Route::get('nhanvien/dantoc/export', 'DanToc\DanTocController@export')->name('export');
+Route::get('nhanvien/chucvu/export', 'ChucVu\ChucVuController@export')->name('export');
 
-Route::post('nhanvien/dantoc/import', 'DanToc\DanTocController@import')->name('import');
+Route::post('nhanvien/chucvu/import', 'ChucVu\ChucVuController@import')->name('import');
 
 
-Route::get('nhanvien/hocvan','TrinhDoHocVan\TrinhDoHocVanController@index');
-Route::post('nhanvien/hocvan/them','TrinhDoHocVan\TrinhDoHocVanController@create');
+Route::get('nhanvien/vitri-tuyendung','ViTriTuyenDung\ViTriTuyenDungController@index');
+Route::post('nhanvien/vitri-tuyendung/them','ViTriTuyenDung\ViTriTuyenDungController@create');
 // Fix
-Route::post('nhanvien/hocvan/sua/{id}','TrinhDoHocVan\TrinhDoHocVanController@edit');
+Route::post('nhanvien/vitri-tuyendung/sua/{id}','ViTriTuyenDung\ViTriTuyenDungController@edit');
 // Delete
-Route::get('nhanvien/hocvan/xoa/{id}','TrinhDoHocVan\TrinhDoHocVanController@destroy');
-Route::get('nhanvien/hocvan/xoa','TrinhDoHocVan\TrinhDoHocVanController@destroyAll');
+Route::get('nhanvien/vitri-tuyendung/xoa/{id}','ViTriTuyenDung\ViTriTuyenDungController@destroy');
+Route::get('nhanvien/vitri-tuyendung/xoa','ViTriTuyenDung\ViTriTuyenDungController@destroyAll');
 
-Route::get('nhanvien/hocvan/export', 'TrinhDoHocVan\TrinhDoHocVanController@export')->name('export');
-Route::post('nhanvien/hocvan/import', 'TrinhDoHocVan\TrinhDoHocVanController@import')->name('import');
+Route::get('nhanvien/vitri-tuyendung/export', 'ViTriTuyenDung\ViTriTuyenDungController@export')->name('export');
+Route::post('nhanvien/vitri-tuyendung/import', 'ViTriTuyenDung\ViTriTuyenDungController@import')->name('import');
 
 
 
-Route::get('nhanvien/tinhoc','TrinhDoTinHoc\TrinhDoTinHocController@index');
-Route::post('nhanvien/tinhoc/them','TrinhDoTinHoc\TrinhDoTinHocController@create');
+Route::get('nhanvien/trinhdo-ngoaingu','TrinhDoNgoaiNgu\TrinhDoNgoaiNguController@index');
+Route::post('nhanvien/trinhdo-ngoaingu/them','TrinhDoNgoaiNgu\TrinhDoNgoaiNguController@create');
 // Fix
-Route::post('nhanvien/tinhoc/sua/{id}','TrinhDoTinHoc\TrinhDoTinHocController@edit');
+Route::post('nhanvien/trinhdo-ngoaingu/sua/{id}','TrinhDoNgoaiNgu\TrinhDoNgoaiNguController@edit');
 // Delete
-Route::get('nhanvien/tinhoc/xoa/{id}','TrinhDoTinHoc\TrinhDoTinHocController@destroy');
-Route::get('nhanvien/tinhoc/xoa','TrinhDoTinHoc\TrinhDoTinHocController@destroyAll');
+Route::get('nhanvien/trinhdo-ngoaingu/xoa/{id}','TrinhDoNgoaiNgu\TrinhDoNgoaiNguController@destroy');
+Route::get('nhanvien/trinhdo-ngoaingu/xoa','TrinhDoNgoaiNgu\TrinhDoNgoaiNguController@destroyAll');
 
-Route::get('nhanvien/tinhoc/export', 'TrinhDoTinHoc\TrinhDoTinHocController@export')->name('export');
-Route::post('nhanvien/tinhoc/import', 'TrinhDoTinHoc\TrinhDoTinHocController@import')->name('import');
+Route::get('nhanvien/trinhdo-ngoaingu/export', 'TrinhDoNgoaiNgu\TrinhDoNgoaiNguController@export')->name('export');
+Route::post('nhanvien/trinhdo-ngoaingu/import', 'TrinhDoNgoaiNgu\TrinhDoNgoaiNguController@import')->name('import');
 
 
 

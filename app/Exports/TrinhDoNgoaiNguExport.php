@@ -2,16 +2,16 @@
 
 namespace App\Exports;
 
-use App\DanToc;
+use App\Models\TrinhDoNgoaiNgu;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
-class DanTocExport implements FromCollection
+class TrinhDoNgoaiNguExport implements FromCollection
 {
     /**
     * @return \Illuminate\Support\Collection
     */
     public function collection()
     {
-        return DanToc::all();
+        return TrinhDoNgoaiNgu::all();
     }
 }

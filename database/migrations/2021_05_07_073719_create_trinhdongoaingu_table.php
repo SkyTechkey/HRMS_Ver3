@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrinhdohcvanTable extends Migration
+class CreateTrinhdongoainguTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateTrinhdohcvanTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_trinhdohocvan', function (Blueprint $table) {
+        Schema::create('tbl_trinhdongoaingu', function (Blueprint $table) {
             $table->id();
-            $table->string('Ten_Trinhdohocvan');
+            $table->string('Tentrinhdongoaingu_Trinhdongoaingu');
             $table->string('status');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateTrinhdohcvanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_trinhdohocvan');
+        Schema::dropIfExists('tbl_trinhdongoaingu');
     }
 }

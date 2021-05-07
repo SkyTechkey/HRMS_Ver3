@@ -2,11 +2,11 @@
 
 namespace App\Imports;
 
-use App\DanToc;
-
+use App\Models\TrinhDoNgoaiNgu;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-class DanTocImport implements ToModel,WithHeadingRow
+
+class TrinhDoNgoaiNguImport implements ToModel,WithHeadingRow
 {
     /**
     * @param array $row
@@ -14,14 +14,12 @@ class DanTocImport implements ToModel,WithHeadingRow
     * @return \Illuminate\Database\Eloquent\Model|null
     */
     public function model(array $row)
-    {
-        return new DanToc([
-            'Tendantoc_Dantoc'     => $row['tendt'],
-            'status'    => $row['status'],
+    {   
+        return new TrinhDoNgoaiNgu([
             
+            'Tentrinhdongoaingu_Trinhdongoaingu'     => $row['trinh_do_ngoai_ngu'],
+            
+            'status'    => $row['trang_thai'],
         ]);
-        
-        
     }
-    
 }

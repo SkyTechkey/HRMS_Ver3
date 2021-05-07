@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrinhdotinhocTable extends Migration
+class CreateChucvuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTrinhdotinhocTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_trinhdotinhoc', function (Blueprint $table) {
+        Schema::create('tbl_chucvu', function (Blueprint $table) {
             $table->id();
-            $table->string('Ten_Trinhdotinhoc');
+            $table->string('Tenchucvu_Chucvu');
+            $table->float('HesoCV');
             $table->string('status');
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ class CreateTrinhdotinhocTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_trinhdohtinhoc');
+        Schema::dropIfExists('tbl_chucvu');
     }
 }

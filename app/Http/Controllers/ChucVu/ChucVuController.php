@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\TrinhDoHocVan;
+namespace App\Http\Controllers\ChucVu;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\TrinhDoHocVan;
+use App\Models\ChucVu;
 
-use App\Exports\TrinhDoHocVanExport;
-use App\Imports\TrinhDoHocVanImport;
+use App\Exports\ChucVuExport;
+use App\Imports\ChucVuImport;
 use Maatwebsite\Excel\Facades\Excel;
-class TrinhDoHocVanController extends Controller
+class ChucVuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class TrinhDoHocVanController extends Controller
      */
     public function index()
     {   
-        $hocVan = TrinhDoHocVan::all();
-        return view('admin.hocvan.danhsach',compact('hocVan'));
+        $list_chucVu = ChucVu::all();
+        return view('admin.chucvu.danhsach',compact('list_chucVu'));
     }
 
     /**
@@ -29,11 +29,12 @@ class TrinhDoHocVanController extends Controller
      */
     public function create(Request $request)
     {
-        $list_trinhdohocvan = new TrinhDoHocVan;
-        $list_trinhdohocvan->Ten_Trinhdohocvan = $request->name;
-        $list_trinhdohocvan->status = $request->status;
-        if($list_trinhdohocvan->save()){
-            return redirect('nhanvien/hocvan')->with('success',__('Bạn đã thêm trình độ học vấn mới thành công'));
+        $list_chucVu = new ChucVu;
+        $list_chucVu->Tenchucvu_Chucvu = $request->name;
+        $list_chucVu->status = $request->status;
+        $list_chucVu->HesoCV = $request->hesoCV;
+        if($list_chucVu->save()){
+            return redirect('nhanvien/chucvu')->with('success',__('Bạn đã thêm chức vụ mới thành công'));
         }
     }
 
@@ -67,11 +68,12 @@ class TrinhDoHocVanController extends Controller
      */
     public function edit(Request $request,$id)
     {
-        $edit_hocVan = TrinhDoHocVan::find($id);
-        if(!empty($edit_hocVan)){
-            $edit_hocVan->Ten_Trinhdohocvan = $request->name;
-            if($edit_hocVan->save()){
-                return redirect('nhanvien/hocvan')->with('success',__('Bạn đã chỉnh sửa tên học vấn mới thành công'));
+        $edit_chucVu = ChucVu::find($id);
+        if(!empty($edit_chucVu)){
+            $edit_chucVu->Tenchucvu_Chucvu = $request->name;
+            $edit_chucVu->HesoCV = $request->hesoCV;
+            if($edit_chucVu->save()){
+                return redirect('nhanvien/chucvu')->with('success',__('Bạn đã chỉnh sửa tên chức vụ thành công'));
             }
 
         }
@@ -91,12 +93,12 @@ class TrinhDoHocVanController extends Controller
     {
         if(!empty(request()->file('file')))
         {
-            Excel::import(new TrinhDoHocVanImport,request()->file('file'));
+            Excel::import(new ChucVuImport,request()->file('file'));
            
-            return redirect('nhanvien/hocvan')->with('success',__('Bạn đã thêm học vấn mới thành công'));
+            return redirect('nhanvien/chucvu')->with('success',__('Bạn đã thêm chức vụ mới thành công'));
         }
         else{
-            return redirect('nhanvien/hocvan')->with('success',__('Vui lòng chọn tệp'));
+            return redirect('nhanvien/chucvu')->with('success',__('Vui lòng chọn tệp'));
         }
         
            
@@ -104,7 +106,7 @@ class TrinhDoHocVanController extends Controller
     }
     public function export() 
     {
-        return Excel::download(new TrinhDoHocVanExport, 'hocvan.xlsx');
+        return Excel::download(new ChucVuExport, 'chucvu.xlsx');
     }
 
     /**
@@ -115,20 +117,20 @@ class TrinhDoHocVanController extends Controller
      */
     public function destroy($id)
     {
-        $destroy_hocVan = TrinhDoHocVan::find($id);
-        if(!empty($destroy_hocVan)){
-            $destroy_hocVan->delete();
-            return redirect('nhanvien/hocvan')->with('success',__('Bạn đã xóa học vấn thành công'));
+        $destroy_chucVu = ChucVu::find($id);
+        if(!empty($destroy_chucVu)){
+            $destroy_chucVu->delete();
+            return redirect('nhanvien/chucvu')->with('success',__('Bạn đã xóa tên chức vụ thành công'));
         }
         else{
             return view(401);
         }
     }
     public function destroyAll(){
-        $tbl_trinhdohocvan = TrinhDoHocVan::all();
-        if($tbl_trinhdohocvan){
-            TrinhDoHocVan::whereNotNull('id')->delete();
-            return redirect('nhanvien/hocvan')->with('success',__('Bạn đã xóa tất cả dân tộc mới thành công'));
+        $tbl_chucVu = ChucVu::all();
+        if($tbl_chucVu){
+            ChucVu::whereNotNull('id')->delete();
+            return redirect('nhanvien/chucvu')->with('success',__('Bạn đã xóa tất cả chức vụ thành công'));
         }
     }
 }
