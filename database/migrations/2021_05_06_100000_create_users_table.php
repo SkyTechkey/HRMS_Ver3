@@ -33,6 +33,12 @@ class CreateUsersTable extends Migration
             $table->integer('ID_DanToc')->unsigned();
             $table->integer('ID_TonGiao')->unsigned();
             $table->integer('ID_QuocTich')->unsigned();
+            $table->integer('ID_NgoaiNgu')->unsigned();
+            $table->foreign('ID_NgoaiNgu')->references('id')->on('tbl_ngoai_ngu');
+            $table->integer('ID_HocVan')->unsigned();
+            $table->foreign('ID_HocVan')->references('id')->on('tbl_trinh_do_hoc_van');
+            $table->integer('ID_TinHoc')->unsigned();
+            $table->foreign('ID_TinHoc')->references('id')->on('tbl_tin_hoc');
             $table->string('TTHonNhan');
             $table->string('QueQuan');
             $table->string('Dc_TTru');

@@ -72,3 +72,34 @@ Route::get('nhanvien/dantoc/xoa','DanToc\DanTocController@destroyAll');
 Route::get('nhanvien/dantoc/export', 'DanToc\DanTocController@export')->name('export');
 
 Route::post('nhanvien/dantoc/import', 'DanToc\DanTocController@import')->name('import');
+
+//Ngoại ngữ
+Route::get('ngoaingu', 'NgoaiNgu\NgoaiNguController@index')->name('ngoaingu');
+Route::post('themngoaingu', 'NgoaiNgu\NgoaiNguController@store')->name('them');
+Route::post('suangoaingu/{id}', 'NgoaiNgu\NgoaiNguController@update')->name('them');
+Route::get('xoangoaingu/{id}', 'NgoaiNgu\NgoaiNguController@destroy')->name('xoa');
+Route::get('xoahet', 'NgoaiNgu\NgoaiNguController@destroyAll')->name('xoahet');
+Route::get('xuat', 'NgoaiNgu\NgoaiNguController@export')->name('xuat');
+Route::post('nhap', 'NgoaiNgu\NgoaiNguController@import')->name('nhap');
+
+//Học Vấn
+Route::get('hocvan', 'HocVan\TrinhDoHocVanController@index')->name('hocvan');
+Route::post('themhocvan', 'HocVan\TrinhDoHocVanController@store')->name('them');
+Route::post('suahocvan/{id}', 'HocVan\TrinhDoHocVanController@update')->name('sua');
+Route::get('xoahocvan/{id}', 'HocVan\TrinhDoHocVanController@destroy')->name('xoa');
+Route::get('xuat', 'HocVan\TrinhDoHocVanController@export')->name('xuat');
+Route::post('nhap', 'HocVan\TrinhDoHocVanController@import')->name('nhap');
+
+//Tin học
+Route::get('tinhoc', 'HocVan\TinHocController@index')->name('tinhoc');
+Route::post('themtinhoc', 'HocVan\TinHocController@store')->name('them');
+Route::get('xoahet', 'HocVan\TinHocController@destroyAll')->name('xoahet');
+Route::get('xoatinhoc/{id}', 'HocVan\TinHocController@destroy')->name('xoa');
+Route::post('suatinhoc/{id}', 'HocVan\TinHocController@update')->name('sua');
+Route::get('xuattinhoc', 'HocVan\TinHocController@export')->name('xuattinhoc');
+Route::post('nhaptinhoc', 'HocVan\TinHocController@import')->name('nhaptinhoc');
+
+
+
+
+

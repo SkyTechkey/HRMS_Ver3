@@ -55,7 +55,10 @@ class UserTableSeeder extends Seeder
        $employee->NVNgayGiaoDuc = '2021/11/03';
        $employee->ID_PhongBan = 1;
        $employee->ID_ChucVu = 1;
-       $employee->ViTriTuyenDung = 'Intern';
+        $employee->ID_NgoaiNgu = 1;
+        $employee->ID_HocVan = 1;
+        $employee->ID_TinHoc = 1;
+        $employee->ViTriTuyenDung = 'Intern';
        $employee->NgayVaoDang = '2021/01/09';
        $employee->NgayVaoDoan = '2018/12/14';
        $employee->ChucVu = 'Thanh Nien';

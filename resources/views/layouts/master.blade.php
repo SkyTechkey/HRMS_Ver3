@@ -8,31 +8,31 @@
     <title>@yield('title')</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-    
+
     @yield('css')
 </head>
 
 <body class="theme-red">
     <!-- Page Loader -->
-    <div class="page-loader-wrapper">
-        <div class="loader">
-            <div class="preloader">
-                <div class="spinner-layer pl-red">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
-            <p>Please wait...</p>
-        </div>
-    </div>
+{{--    <div class="page-loader-wrapper">--}}
+{{--        <div class="loader">--}}
+{{--            <div class="preloader">--}}
+{{--                <div class="spinner-layer pl-red">--}}
+{{--                    <div class="circle-clipper left">--}}
+{{--                        <div class="circle"></div>--}}
+{{--                    </div>--}}
+{{--                    <div class="circle-clipper right">--}}
+{{--                        <div class="circle"></div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <p>Please wait...</p>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
@@ -54,7 +54,7 @@
     @include('layouts.menu')
 
     @yield('js')
-    
+
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Dantoc;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +9,7 @@ class DanToc extends Model
     protected $table = 'tbl_dantoc';
 
     protected $fillable = [
-        'Tendantoc_Dantoc', 'status', 
+        'Tendantoc_Dantoc', 'status',
     ];
 
 }

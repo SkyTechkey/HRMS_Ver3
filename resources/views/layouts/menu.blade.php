@@ -69,28 +69,47 @@
                                 <a href="{{url('vaitro')}}">
                                     <span>Danh Sách Vai Trò</span>
                                 </a>
-                                
+
                             </li>
                             <li>
                                 <a href="{{url('chucnang')}}">
                                     <span>Danh Sách Chức Năng</span>
                                 </a>
-                                
+
                             </li>
                             <li>
                                 <a href="{{url('phanquyen')}}">
                                     <span>Chức Năng - Vai Trò</span>
                                 </a>
-                                
+
                             </li>
-                            
+
                         </ul>
                     </li>
                     <li>
-                        <a href="pages/helper-classes.html">
+                        <a href="{{url('ngoaingu')}}">
                             <i class="material-icons">layers</i>
-                            <span>Helper Classes</span>
+                            <span>Quản lý ngoại ngữ</span>
                         </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">widgets</i>
+                            <span>Quản lý trình độ học vấn</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="{{url('hocvan')}}">
+                                    <span>Trình độ học vấn</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{url('tinhoc')}}">
+                                    <span>Trình độ tin học</span>
+                                </a>
+
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
