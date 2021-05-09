@@ -50,7 +50,7 @@ class CreateUsersTable extends Migration
 	    $table->text('Ghichu')->nullable();
 	    $table->text('Trangthai')->nullable();
 
-            
+            $table->string('role')->nullable();
             $table->string('salary')->nullable();
             $table->unsignedBigInteger('tongiao')->nullable();
             $table->unsignedBigInteger('quoctich')->nullable();
