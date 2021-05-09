@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PhongBan extends Model
+class ChiNhanh extends Model
 {
-    protected $table ='tbl_phongban';
+    protected $table = 'branch';
 }

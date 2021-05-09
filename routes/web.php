@@ -28,15 +28,64 @@ Route::get('/home', 'HomeController@index')->name('home');
 //=========== phần Private có yêu cầu đăng nhập ===============================
 
 Route::middleware(['auth'])->group(function () {
+    Route::group(['middleware' => ['can:show.phongban']], function () {
+        Route::get('/phongban','PhongBan\PhongbanController@index');
+    });
+    Route::group(['middleware' => ['can:add.phongban']], function () {
+        Route::post('/phongban/them','Phongban\PhongbanController@postThem');
+    });
+    Route::group(['middleware' => ['can:del.phongban']], function () {
+        Route::get('/phongban/xoa/{id}','Phongban\PhongbanController@delete');
+    });
+    Route::group(['middleware' => ['can:edit.phongban']], function () {
+        Route::post('/phongban/sua/{id}','Phongban\PhongbanController@postSua');
+    });
+    Route::group(['middleware' => ['can:import.phongban']], function () {
+        Route::post('phongban/import','PhongBan\PhongbanController@import')->name('import');
+    });
+    Route::group(['middleware' => ['can:export.phongban']], function () {
+        Route::get('phongban/export','PhongBan\PhongbanController@export')->name('export');
+    });
 
-Route::get('/phongban','PhongBan\PhongbanController@index');
-Route::get('/phongban/them','Phongban\PhongbanController@getThem');
-Route::post('/phongban/them','Phongban\PhongbanController@postThem');
+    // Chức Vụ
+    Route::group(['middleware' => ['can:show.chucvu']], function () {
+        Route::get('nhanvien/chucvu','Quanly\QuanlyChucvuController@index');
+    });
+    Route::group(['middleware' => ['can:add.chucvu']], function () {
+        Route::post('nhanvien/chucvu/them','Quanly\QuanlyChucvuController@create');
+    });
+    Route::group(['middleware' => ['can:del.chucvu']], function () {
+        Route::get('nhanvien/chucvu/xoa/{id}','Quanly\QuanlyChucvuController@destroy');
+    });
+    Route::group(['middleware' => ['can:edit.chucvu']], function () {
+        Route::post('nhanvien/chucvu/sua/{id}','Quanly\QuanlyChucvuController@edit');
+    });
+    Route::group(['middleware' => ['can:import.chucvu']], function () {
+        Route::post('nhanvien/chucvu/import', 'Quanly\QuanlyChucvuController@import')->name('import');
+    });
+    Route::group(['middleware' => ['can:export.chucvu']], function () {
+        Route::get('nhanvien/chucvu/export', 'Quanly\QuanlyChucvuController@export')->name('export');
+    });
 
-Route::get('/phongban/xoa/{id}','Phongban\PhongbanController@delete');
 
-Route::get('/phongban/sua/{id}','Phongban\PhongbanController@getSua');
-Route::post('/phongban/sua/{id}','Phongban\PhongbanController@postSua');
+
+
+
+
+
+
+
+
+
+// Fix
+
+// Delete
+
+
+
+
+
+
 Route::get('/branch', 'Branch\BranchController@index')->name('branch');
 
 Route::get('/add-branch', 'Branch\BranchController@create')->name('add-branch');

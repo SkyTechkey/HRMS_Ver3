@@ -5,9 +5,10 @@ namespace App\Http\Controllers\PhongBan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\PhongBan;
-use App\Models\Branch;
-use App\Http\Requests\PhongBanRequest;
-
+use App\ChiNhanh;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PhongbanExport;
+use App\Imports\PhongBanImport;
 class PhongBanController extends Controller
 {
     public function __construct()
@@ -22,7 +23,7 @@ class PhongBanController extends Controller
     public function index()
     {
         $phongban = PhongBan::all();
-        $branch = Branch::all();
+        $branch = ChiNhanh::all();
         return view('admin.Department.danhsach',compact('phongban','branch'));
     }
 
@@ -31,11 +32,7 @@ class PhongBanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getThem()
-    {
-        
-        return view('admin.Department.them');
-    }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -43,19 +40,19 @@ class PhongBanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postThem(PhongBanRequest $request )
+    public function postThem(Request $request )
     {
         
         $phongban = new PhongBan;
         
-        $phongban->name = $request->name;
-        $phongban->chinhanh = $request->get('chiNhanh');
+        $phongban->Tenphongban = $request->name;
+        $phongban->Tenchinhanh = $request->get('chiNhanh');
         $checkActiveOrClose = $request->get('group1');
         if( $checkActiveOrClose == 'active' ){
-            $phongban->tinhtrang = "Hoạt động";
+            $phongban->Tinhtrang = "Hoạt động";
         }
         else if($checkActiveOrClose == 'close'){
-            $phongban->tinhtrang = "Tạm ngừng";
+            $phongban->Tinhtrang = "Tạm ngừng";
         }
         
         if($phongban->save()){
@@ -95,23 +92,29 @@ class PhongBanController extends Controller
        
         
         $phongban = PhongBan::find($id);
-        
-        $phongban->name = $request->name;
-        $phongban->chinhanh = $request->get('newBranch',"");
-        $checkActiveOrClose = $request->get('group1');
-        if( $checkActiveOrClose == 'active' ){
-            $phongban->tinhtrang = "Hoạt động";
+        if(empty($phongban)){
+            return view('errors.401');
         }
-        else if($checkActiveOrClose == 'close'){
-            $phongban->tinhtrang = "Tạm ngừng";
-        }
-        
-        if($phongban->save()){
+        else{
+            $phongban->Tenphongban = $request->name;
+            $phongban->Tenchinhanh = $request->get('newBranch',"");
+            $checkActiveOrClose = $request->get('group1');
+            if( $checkActiveOrClose == 'active' ){
+                $phongban->Tinhtrang = "Hoạt động";
+            }
+            else if($checkActiveOrClose == 'close'){
+                $phongban->Tinhtrang = "Tạm ngừng";
+            }
             
-            
+            if($phongban->save()){
+                
+                
 
-            return redirect('phongban')->with('success',__('Bạn đã thêm phòng ban mới thành công'));
+                return redirect('phongban')->with('success',__('Bạn đã sửa phòng ban thành công'));
+            }
         }
+        
+        
        
 
 
@@ -149,5 +152,19 @@ class PhongBanController extends Controller
         }
         
         
+    }
+    public function export() 
+    {
+        return Excel::download(new PhongbanExport, 'phongban.xlsx');
+    }
+    public function import() 
+    {
+        if (!empty(request()->file('file'))){
+            Excel::import(new PhongBanImport,request()->file('file'));
+            return redirect('phongban')->with('success',__('Thành công'));
+        }
+        else{
+            return redirect('phongban')->with('success',__('Vui lòng chọn tệp'));
+        }
     }
 }

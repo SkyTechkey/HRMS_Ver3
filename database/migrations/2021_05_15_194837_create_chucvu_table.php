@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePhongbanTable extends Migration
+class CreateChucvuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreatePhongbanTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_phongban', function (Blueprint $table) {
+        Schema::create('tbl_chucvu', function (Blueprint $table) {
             $table->id();
-            $table->string('Tenphongban');
-            $table->string('Tinhtrang');
-            $table->string('Tenchinhanh');
+            $table->string('Tenchucvu');
+            $table->string('status');
+            $table->float('Luong');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreatePhongbanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_phongban');
+        Schema::dropIfExists('tbl_chucvu');
     }
 }

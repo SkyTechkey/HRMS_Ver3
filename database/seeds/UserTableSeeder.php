@@ -75,10 +75,11 @@ class UserTableSeeder extends Seeder
             'Hinhanh' => 'vinh.jpg',
             'Ghichu' => 'Dep choai',
             'Trangthai' => 'Đang làm việc',
+            
             'username' => 'admin',
             'password' => bcrypt('123456')
-            ]);
-
+        ]);
+        
     /*    DB::table('users')->insert([
             'Hovaten' => 'Nguyễn văn A',
             'username' => 'Anv',
@@ -98,7 +99,7 @@ class UserTableSeeder extends Seeder
             'Sodienthoai' => '0781499969'
 
       ]);
-*/
+*/      
       $role = Role::create(['name' => 'admin']);
       $permission = Permission::create(['name' => 'xem']);
       $permission->assignRole($role);
