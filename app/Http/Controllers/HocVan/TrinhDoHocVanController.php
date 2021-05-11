@@ -87,13 +87,19 @@ class TrinhDoHocVanController extends Controller implements FromCollection, With
     {
         $hoc_van = HocVan::find($id);
 
-        $hoc_van->pho_thong = $request->pho_thong;
-        $hoc_van->cao_dang = $request->cao_dang;
-        $hoc_van->dai_hoc = $request->dai_hoc;
-        $hoc_van->cao_hoc = $request->cao_hoc;
-        $hoc_van->save();
+        if ($id)
+        {
+            $hoc_van->pho_thong = $request->pho_thong;
+            $hoc_van->cao_dang = $request->cao_dang;
+            $hoc_van->dai_hoc = $request->dai_hoc;
+            $hoc_van->cao_hoc = $request->cao_hoc;
+            $hoc_van->save();
 
-        return back()->with('success', ('Sửa trình độ thành công'));
+            return back()->with('success', ('Sửa trình độ thành công'));
+        }else
+        {
+            return back();
+        }
 
 
     }

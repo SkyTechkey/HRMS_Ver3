@@ -25,7 +25,7 @@
 @endsection
 @section('content')
     @if(session('success'))
-        <div data-notify="container" class="bootstrap-notify-container alert alert-dismissible bg-black p-r-35 animated fadeInDown" role="alert" data-notify-position="top-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1031; top: 20px; right: 20px;">
+        <div data-notify="container" id="slice-alert" class="bootstrap-notify-container alert alert-dismissible bg-black p-r-35 animated fadeInDown" role="alert" data-notify-position="top-right" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1031; top: 20px; right: 20px;">
             <button type="submit" aria-hidden="true" class="close" data-notify="dismiss" style="position: absolute; right: 10px; top: 5px; z-index: 1033;">×</button>
             <span data-notify="message">{{session('success')}}</span>
         </div>
@@ -104,13 +104,13 @@
                                             @csrf
                                             <div class="form-group form-float">
                                                 <div class="form-line">
-                                                    <input  type="text" class="form-control" name="word" placeholder="Kỹ Năng Word"  required>
+                                                    <input  type="text" class="form-control" name="word" id="word" placeholder="Kỹ Năng Word"  required>
                                                 </div>
                                                 <div class="form-line">
-                                                    <input  type="text" class="form-control" name="excel" placeholder="Kỹ Năng Excel"  required>
+                                                    <input  type="text" class="form-control" name="excel" id="excel" placeholder="Kỹ Năng Excel"  required>
                                                 </div>
                                                 <div class="form-line">
-                                                    <input  type="text" class="form-control" name="power_point" placeholder="Kỹ Năng Power_Point"  required>
+                                                    <input  type="text" class="form-control" name="power_point" id="power_point" placeholder="Kỹ Năng Power_Point"  required>
                                                 </div>
                                             </div>
                                             <button type="submit" class="btn btn-primary btn-block waves-effect" data-placement-from="top" data-placement-align="right"
@@ -158,7 +158,7 @@
                             </div>
                     @endforeach
 
-                    <!-- Import Excel -->
+                        <!-- Import Excel -->
                         <div class="modal fade" id="importModal" role="dialog">
                             <div class="modal-dialog">
                                 <!-- Modal content-->
@@ -178,14 +178,11 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 @section('js')
@@ -236,7 +233,7 @@
             const url = $(this).attr('href');
             swal({
                 title: 'Xóa dân tộc',
-                text: 'Bạn có thực sự muốn tên dân tộc này?',
+                text: 'Bạn có thực sự muốn xóa?',
                 icon: 'warning',
                 buttons: ["Hủy", "Đồng ý!"],
             }).then(function(value) {
@@ -259,8 +256,14 @@
                 }
             });
         });
-
     </script>
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#slice-alert").hide();
+            $("#slice-alert").fadeTo(3000, 700).slideUp(700, function() {
+                $("#slice-alert").slideUp(700);
+            });
+        });
+    </script>
 @endsection
 @endsection
