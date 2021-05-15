@@ -49,16 +49,14 @@ class UserTableSeeder extends Seeder
             'name' => 'admin',
             'username' => 'admin',
             'email' => 'admin@gmail.com',
-            'salary' => '10000$',
-            'phone' => '0781499969',
+            'Sodienthoai' => '0781499969',
             'password' => bcrypt('123456'),
       ]);
       DB::table('users')->insert([
             'name' => 'staff',
             'username' => 'staff',
             'email' => 'staff@gmail.com',
-            'salary' => '10000$',
-            'phone' => '0781499969',
+            'Sodienthoai' => '0781499969',
             'password' => bcrypt('123456'),
       ]);
 
