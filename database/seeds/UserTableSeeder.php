@@ -14,9 +14,40 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('tbl_tongiao')->insert([
+            'TenTG_Tongiao' => 'cao dai',
+        ]);
+        DB::table('tbl_tongiao')->insert([
+            'TenTG_Tongiao' => 'phat giao',
+        ]);
+        DB::table('tbl_tongiao')->insert([
+            'TenTG_Tongiao' => 'thien chua giao',
+        ]);
+
+        DB::table('tbl_quoctich')->insert([
+            'TenQT_Quoctich' => 'Vietnam',
+        ]);
+        DB::table('tbl_quoctich')->insert([
+            'TenQT_Quoctich' => 'America',
+        ]);
+        DB::table('tbl_quoctich')->insert([
+            'TenQT_Quoctich' => 'Singapore',
+        ]);
+
+        DB::table('tbl_ngoaingu')->insert([
+            'TenNN_Ngoaingu' => 'tieng Anh',
+        ]);
+        DB::table('tbl_ngoaingu')->insert([
+            'TenNN_Ngoaingu' => 'tieng Phap',
+        ]);
+        DB::table('tbl_ngoaingu')->insert([
+            'TenNN_Ngoaingu' => 'tieng Lao',
+        ]);
+
+
         DB::table('users')->insert([
-            'name' => 'nhandz',
-            'username' => 'nhandz',
+            'name' => 'admin',
+            'username' => 'admin',
             'email' => 'admin@gmail.com',
             'salary' => '10000$',
             'phone' => '0781499969',

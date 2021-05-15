@@ -1,0 +1,12 @@
+- Thông tin Code: Trương Công Hiền Nhân
+- Thời gian Code: 06/05/2021
+NỘI DUNG PHÁT TRIỂN:
+- Tạo nhánh tên: tongiao_quoctich_ngoaingu_Nhan
+- Phân hệ tên: QL Tôn giáo, QL Quốc tịch, QL Ngoại ngữ.
+- Chức năng hoàn thành:
++ phân quyền,
++ thêm
++ sửa
++ xóa
++ import
++ export

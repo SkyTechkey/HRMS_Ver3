@@ -40,14 +40,14 @@ Manage Role
   <!-- Overlay For Sidebars -->
   <div class="overlay"></div>
   <!-- #END# Overlay For Sidebars -->
-  <!-- Search Bar -->@if ( Session::has('success') )
-	<div class="alert alert-success alert-dismissible" role="alert">
-		<strong>{{ Session::get('success') }}</strong>
-		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-			<span class="sr-only">Close</span>
-		</button>
-	</div>
+  <!-- Search Bar -->
+  @if ( Session::has('success') )
+    <div id='alert' data-notify="container" class="bootstrap-notify-container alert alert-dismissible alert-success p-r-35 animated fadeInDown" role="alert" data-notify-position="bottom-center" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1031; top: 77px; left: 0px; right: 0px;">
+        <button type="button" aria-hidden="true" class="close" data-notify="dismiss" style="position: absolute; right: 10px; top: 5px; z-index: 1033;">×</button>
+        <span data-notify="icon"></span> 
+        <span data-notify="title"></span> <span data-notify="message">{{ Session::get('success') }}</span>
+        <a href="#" target="_blank" data-notify="url"></a>
+    </div>
 @endif
 
 <?php //Hiển thị thông báo lỗi?>
@@ -832,6 +832,15 @@ Manage Role
                                 <div style='float: right; padding-right: 10px;'>
                                     <a class='btn btn-primary' href="{{route('suaQuyen')}}">Sửa quyền</a>
                                 </div>
+                                <div style='float: right; padding-right: 10px;'>
+                                    <a class='btn btn-primary' href="{{route('tongiao')}}">Tôn giáo</a>
+                                </div>
+                                <div style='float: right; padding-right: 10px;'>
+                                    <a class='btn btn-primary' href="{{route('quoctich')}}">Quốc tịch</a>
+                                </div>
+                                <div style='float: right; padding-right: 10px;'>
+                                    <a class='btn btn-primary' href="{{route('ngoaingu')}}">Ngoại ngữ</a>
+                                </div>
                           </h2>
                           
                       </div>
@@ -844,6 +853,9 @@ Manage Role
                                           <th>Chức vụ</th>
                                           <th>Mail</th>
                                           <th>Điện thoại</th>
+                                          <th>Tôn giáo</th>
+                                          <th>Quốc tịch</th>
+                                          <th>Ngoại ngữ</th>
                                           <th>Chức năng</th>
                                       </tr>
                                   </thead>
@@ -856,6 +868,9 @@ Manage Role
                                           <td>{{ $nhansu->role }} </td>
                                           <td>{{ $nhansu->email }}</td>
                                           <td>{{ $nhansu->phone }}</td>
+                                          <td>{{ $nhansu->tongiao }}</td>
+                                          <td>{{ $nhansu->quoctich }}</td>
+                                          <td>{{ $nhansu->ngoaingu }}</td>
                                           <td>
                                               @can('sua')
                                               <a data-toggle="modal" data-target="#sua{{$nhansu->id}}" style='cursor: pointer'><i class="fa fa-edit"></i></a>
@@ -872,7 +887,7 @@ Manage Role
                                                     <h2 class="modal-title" id='defaultModalLabel' style='text-align: center'>Sửa nhân sự</h2>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="{{ url('nhansu/update/'.$nhansu->id) }}" method="post">
+                                                    <form action="{{ url('nhansu/update/'.$nhansu->id) }}" method="post" id="formsua">
                                                         @csrf
                                                         <div class="form-group">
                                                             <label for="name">Tên nhân sự</label>
@@ -886,10 +901,33 @@ Manage Role
                                                             <label for="phone">Số điện thoại</label>
                                                             <input type="text" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" maxlength="15" value="{{ $nhansu->phone }}" required />
                                                         </div>
+                                                    <div>
+                                                            <label for="tongiao">Tôn giáo</label>
+                                                            <select id="tongiao" name="tongiao" form="formsua">
+                                                                @foreach($tongiaos as $tongiao)
+                                                                    <option value="{{ $tongiao->id }}"> {{ $tongiao->TenTG_Tongiao }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div>
+                                                            <label for="quoctich">Quốc tịch</label>
+                                                            <select id="quoctich" name="quoctich" form="formsua">
+                                                                @foreach($quoctichs as $quoctich)
+                                                                    <option value="{{ $quoctich->id }}"> {{ $quoctich->TenQT_Quoctich }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div>
+                                                            <label for="ngoaingu">Ngoại ngữ</label>
+                                                            <select id="ngoaingu" name="ngoaingu" form="formsua">
+                                                                @foreach($ngoaingus as $ngoaingu)
+                                                                    <option value="{{ $ngoaingu->id }}"> {{ $ngoaingu->TenNN_Ngoaingu }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
                                                     <div class="form-group">
                                                         @foreach($roles as $role)
                                                         <div class="col-sm-3">
-                                                            
                                                             <div class="switch">
                                                                 <label><input name ="role[]" value ="{{$role->name}}" type="checkbox" @if($role->users->contains($nhansu->id)) checked=checked @endif><span class="lever switch-col-red"></span>{{$role->name}}</label>
                                                             </div>
@@ -1534,6 +1572,11 @@ Manage Role
                     window.location.href = url;
                 }
             });
+        });
+    </script>
+    <script type="text/javascript">
+        $("#alert").delay(4000).slideUp(200, function() {
+                $(this).alert('close');
         });
     </script>
 @endsection
