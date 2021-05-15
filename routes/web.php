@@ -25,6 +25,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//=========== phần Private có yêu cầu đăng nhập ===============================
+
+Route::middleware(['auth'])->group(function () {
+
 Route::get('/phongban','PhongBan\PhongbanController@index');
 Route::get('/phongban/them','Phongban\PhongbanController@getThem');
 Route::post('/phongban/them','Phongban\PhongbanController@postThem');
@@ -49,7 +53,7 @@ Route::group(['middleware' => ['can:sua']], function () {
     Route::post('nhansu/update/{id}', 'Quanly\QuanlyNhansuController@update')->name('nhansuUpdate');
 });
 Route::group(['middleware' => ['can:xoa']], function () {
-    Route::get('nhansu/{id}/delete', 'Quanly\QuanlyNhansuController@destroy')->name('nhansuDelete'); 
+    Route::get('nhansu/{id}/delete', 'Quanly\QuanlyNhansuController@destroy')->name('nhansuDelete');
 });
 Route::group(['middleware' => ['can:them']], function () {
     Route::get('nhansu/create', 'Quanly\QuanlyNhansuController@create')->name('nhansuCreate');
@@ -102,3 +106,4 @@ Route::post('phanquyen/sua/{id}','PhanQuyen\PhanQuyenController@editRolePermissi
 
 
 
+});
