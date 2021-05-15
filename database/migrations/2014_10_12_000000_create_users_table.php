@@ -14,18 +14,35 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();
-            $table->string('username')->unique()->nullable();
-            $table->string('email')->unique();
-	        $table->string('phone');
+            $table->bigIncrements('id');
+            $table->string('Hovaten')->nullable();
+            $table->string('Tenthuonggoi')->nullable();
+            $table->string('username')->unique();
+            $table->string('password')->nullable();
+            $table->string('Gioitinh')->nullable();
+            $table->date('Ngayvaolam')->nullable();
+            $table->string('Sodienthoai')->nullable();
+            $table->string('Email')->nullable();
+            $table->date('Socmnd')->nullable();
+            $table->date('ngaycapCMND')->nullable();
+            $table->string('NoicapCMND')->nullable();
+            $table->date('Ngaysinh')->nullable();
+            $table->text('Noisinh')->nullable();
+            $table->unsignedBigInteger('ID_Phongban')->nullable();
+            $table->unsignedBigInteger('ID_Chucvu')->nullable();
+            $table->unsignedBigInteger('ID_Noilamviec')->nullable();
+            $table->text('Diachithuongtru')->nullable();
+            $table->text('Diachitamtru')->nullable();
+//Nhiều bổ sung tiếp nhé. anh chỉ mới làm cái này chứ mấy. xem trong design rồi bố sung giúp anh nhé.
+
+
             $table->string('role')->nullable();
             $table->string('salary')->nullable();
             $table->unsignedBigInteger('tongiao')->nullable();
             $table->unsignedBigInteger('quoctich')->nullable();
             $table->unsignedBigInteger('ngoaingu')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
+
             $table->rememberToken()->nullable();
             $table->timestamps();
 
