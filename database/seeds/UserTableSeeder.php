@@ -46,14 +46,14 @@ class UserTableSeeder extends Seeder
 
 
         DB::table('users')->insert([
-            'name' => 'admin',
+            'Hovaten' => 'admin',
             'username' => 'admin',
             'email' => 'admin@gmail.com',
             'Sodienthoai' => '0781499969',
             'password' => bcrypt('123456'),
       ]);
       DB::table('users')->insert([
-            'name' => 'staff',
+            'Hovaten' => 'staff',
             'username' => 'staff',
             'email' => 'staff@gmail.com',
             'Sodienthoai' => '0781499969',

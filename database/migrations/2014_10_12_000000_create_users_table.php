@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name')->nullable();
+            $table->string('Hovaten')->nullable();
             $table->string('Tenthuonggoi')->nullable();
             $table->string('username')->unique();
             $table->string('password')->nullable();
@@ -33,6 +33,7 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('ID_Noilamviec')->nullable();
             $table->text('Diachithuongtru')->nullable();
             $table->text('Diachitamtru')->nullable();
+            $table->text('Trangthai')->nullable();
 //Nhiều bổ sung tiếp nhé. anh chỉ mới làm cái này chứ mấy. xem trong design rồi bố sung giúp anh nhé.
 
 

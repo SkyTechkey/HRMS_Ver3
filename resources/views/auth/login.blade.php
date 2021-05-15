@@ -1,99 +1,201 @@
-@extends('layouts.auth')
-@section('css')
-<link href="{{asset('project_asset/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+@extends('layouts.loginAuth')
 
-<!-- Waves Effect Css -->
-<link href="{{asset('project_asset/plugins/node-waves/waves.css')}}" rel="stylesheet" />
-
-<!-- Animation Css -->
-<link href="{{asset('project_asset/plugins/animate-css/animate.css')}}" rel="stylesheet" />
-
-<!-- Custom Css -->
-<link href="{{asset('project_asset/css/style.css')}}" rel="stylesheet">
-@endsection
 @section('content')
-<div class="login-box">
-    <div class="logo">
-        <a href="javascript:void(0);">Admin<b>HRMS</b></a>
-        <small>Human Resource Management Systems - SkyTech</small>
-    </div>
-    <div class="card">
-        <div class="body">
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-                <div class="msg">Sign in to start your session</div>
-                @if (session('warning'))
-                    <span class="alert alert-warning help-block">
-                        <strong>{{ session('warning') }}</strong>
-                    </span>
-                @endif
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="material-icons">person</i>
-                    </span>
-                    <div class="form-line">
-                        <input id="username" type="username" class="form-control form-control-user @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username"  placeholder="Username" required autofocus>
-                        @error('username')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+
+    <div class="login-box">
+
+
+        <div class="card">
+            <div class="body">
+
+                <div class="logo">
+
+                    <a href="javascript:void(0);"><img src="{{asset('bap/logo/multicrm_logo_2.png')}}"/></a>
+
+                </div>
+                <div class="col-lg-6 col-sm-12">
+
+
+                    <form id="sign_up" method="POST" action="{{ route('login') }}">
+
+                        @if (isset($errorMessage))
+                            <span class="help-block">
+                                <strong>{{ $errorMessage }}</strong>
+                        </span>
+                        @endif
+
+                        {{ csrf_field() }}
+
+                        <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                            <div class="form-line {{ $errors->has('username') ? ' error' : '' }}">
+                                <input id="name" type="text" placeholder="@lang('Tên đăng nhập')"
+                                       value="" class="form-control" name="username" autofocus>
+                            </div>
+
+                            @if ($errors->has('username'))
+                                <span class="help-block">
+                                <strong>{{ $errors->first('username') }}</strong>
+                             </span>
+                            @endif
+
+                        </div>
+
+                        <div class="input-group {{ $errors->has('password') ? ' error' : '' }}">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                            <div class="form-line">
+                                <input id="password" placeholder="@lang('Mật khẩu')" value=""
+                                       type="password" class="form-control" name="password">
+                            </div>
+                            @if ($errors->has('password'))
+                                <span class="help-block">
+                                <strong>{{ $errors->first('password') }}</strong>
+                             </span>
+                            @endif
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-6">
+
+                                <input type="checkbox" id="rememberme" name="remember"
+                                       {{ old('remember') ? 'checked' : '' }} class="filled-in chk-col-pink">
+                                <label for="rememberme">@lang('Remember Me')</label>
+
+
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <button class="btn bg-pink" type="submit">@lang('SIGN IN')</button>
+                            </div>
+
+
+                        </div>
+
+                            @if(config('bap.GOOGLE_RECAPTCHA_KEY'))
+                                <div class="row">
+                                    <div class="col-sm-12 text-center" >
+
+                                        @if($errors->has('g-recaptcha-response'))
+                                            <span class="help-block error-block">
+                                             <strong class="col-red">@lang('auth.invalid_captacha')</strong>
+                                            </span>
+                                        @endif
+
+                                        <div class="g-recaptcha" style="display: inline-block"  data-sitekey="{{ config('bap.GOOGLE_RECAPTCHA_KEY') }}"></div>
+                                    </div>
+                                </div>
+                            @endif
+
+                        <div class="row m-t-15 m-b--20">
+                            @if(config('bap.allow_registration'))
+
+                                <div class="col-xs-12 text-right">
+                                    <a class="font-bold"
+                                       href="{{ route('password.request') }}">@lang('auth.forget_password')</a>
+                                </div>
+                            @else
+                                @if(config('bap.demo'))
+                                    <div class="col-xs-6">
+                                        <div class="dropdown">
+                                            <button class="btn btn-default dropdown-toggle" type="button"
+                                                    id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="true">
+                                                Choose User
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li><a id="userAdmin" href="#">Admin</a></li>
+                                                <li><a id="userCompany1" href="#">OSCORP 1 Manager</a></li>
+                                                <li><a id="userCompany2" href="#">Umbrella 2 Manager</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 align-right font-bold">
+                                        <a class="font-b"
+                                           href="{{ route('password.request') }}">@lang('auth.forget_password')</a>
+                                    </div>
+                                @else
+                                    <div class="col-xs-12 align-right font-bold">
+                                        <a class="font-bold" href="{{ route('password.request') }}">@lang('Forget Password')</a>
+                                    </div>
+                                @endif
+
+
+
+
+
+                            @endif
+
+                        </div>
+
+
+
+
+
+                    </form>
+
+                    @if(config('services.github.client_id') || config('services.twitter.client_id') || config('services.facebook.client_id')  || config('services.google.client_id'))
+                        <br/>.
+                        <div class="text-center">
+                            @if(config('services.github.client_id'))
+                                <a href="{{ url('/auth/github') }}" class="btn btn-sm btn-github"><i
+                                            class="fa fa-github"></i> Github</a>
+                            @endif
+                            @if(config('services.twitter.client_id'))
+                                <a href="{{ url('/auth/twitter') }}" class="btn btn-sm btn-twitter"><i
+                                            class="fa fa-twitter"></i> Twitter</a>
+                            @endif
+                            @if(config('services.facebook.client_id'))
+                                <a href="{{ url('/auth/facebook') }}" class="btn btn-sm btn-facebook"><i
+                                            class="fa fa-facebook"></i> Facebook</a>
+                            @endif
+
+                                @if(config('services.google.client_id'))
+                                    <a href="{{ url('/auth/google') }}" class="btn btn-sm btn-google"><i
+                                                class="fa fa-google"></i> Google</a>
+                                @endif
+                        </div>
+                    @endif
+
+
+                    @if(config('bap.allow_registration'))
+                        <div class="col-lg-12 login-sentence">
+
+                            <h4 class="text-center">@lang('auth.dont_have_account')  @lang('auth.create_account_its_free')</h4>
+                            <br/>
+                            <br/>
+                            <div class="text-center">
+                                <a class="font-bold btn bg-pink btn-md " href="{{ route('register') }}">
+                            <span class="font-25">
+                                @lang('auth.register')
                             </span>
-                        @enderror
-                    </div>
+
+                                </a>
+                            </div>
+
+                        </div>
+                    @endif
+
                 </div>
-                <div class="input-group">
-                    <span class="input-group-addon">
-                        <i class="material-icons">lock</i>
-                    </span>
-                    <div class="form-line">
-                        <input id="password" type="password" class="form-control  form-control-user @error('password') is-invalid @enderror" name="password"  autocomplete="current-password"  placeholder="Password" required>
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
+
+                <div class="col-lg-6 col-sm-12 text-center">
+
+                    <img class="img-responsive margin-0" src="{{ asset('bg/login/register.png') }}"/>
+
                 </div>
-                <div class="row">
-                    <div class="col-xs-8 p-t-5">
-                        <input class="form-check-input custom-control-user" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                        <label for="rememberme">Remember Me</label>
-                    </div>
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                            {{ __('Login') }}
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="row m-t-15 m-b--20">
-                    <div class="col-xs-6">
-                        <a href="{{url('register')}}">Register Now!</a>
-                    </div>
-                    <div class="col-xs-6 align-right">
-                        <a href="{{ route('password.request') }}">Forgot Password?</a>
-                    </div>
-                </div>
-                
-            </form>
+
+            </div>
         </div>
+
+        @if(config('bap.vectors'))
+            <div class="text-center">
+                <a class="vectors"  target="_blank" href="https://www.freepik.com">Vectors by Freepik</a>
+            </div>
+        @endif
     </div>
-</div>
 
 @endsection
-@section('js')
-<!-- Jquery Core Js -->
-<script src="{{asset('project_asset/plugins/jquery/jquery.min.js')}}"></script>
 
-<!-- Bootstrap Core Js -->
-<script src="{{asset('project_asset/plugins/bootstrap/js/bootstrap.js')}}"></script>
-
-<!-- Waves Effect Plugin Js -->
-<script src="{{asset('project_asset/plugins/node-waves/waves.js')}}"></script>
-
-<!-- Validation Plugin Js -->
-<script src="{{asset('project_asset/plugins/jquery-validation/jquery.validate.js')}}"></script>
-
-<!-- Custom Js -->
-<script src="{{asset('project_asset/js/admin.js')}}"></script>
-<script src="{{asset('project_asset/js/pages/examples/sign-up.js')}}"></script>
-@endsection
