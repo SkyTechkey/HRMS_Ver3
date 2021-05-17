@@ -14,5 +14,8 @@
 <p>https://viblo.asia/p/bai-17-phan-quyen-trong-laravel-RnB5p0pD5PG</p>
 <p>https://blog.tomosia.com/phan-quyen-voi-package-Laravel-permission/</p>
 
+<p>Quản lý ngân hàng.</p>
+<p>Quản lý nơi làm việc.<p>
+
 ## Help
 -Ho Van Vinh - 0905 063 126

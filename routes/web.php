@@ -49,7 +49,7 @@ Route::group(['middleware' => ['can:sua']], function () {
     Route::post('nhansu/update/{id}', 'Quanly\QuanlyNhansuController@update')->name('nhansuUpdate');
 });
 Route::group(['middleware' => ['can:xoa']], function () {
-    Route::get('nhansu/{id}/delete', 'Quanly\QuanlyNhansuController@destroy')->name('nhansuDelete'); 
+    Route::get('nhansu/{id}/delete', 'Quanly\QuanlyNhansuController@destroy')->name('nhansuDelete');
 });
 Route::group(['middleware' => ['can:them']], function () {
     Route::get('nhansu/create', 'Quanly\QuanlyNhansuController@create')->name('nhansuCreate');
@@ -100,5 +100,20 @@ Route::post('nhanvien/vaitro/sua/{id}','PhanQuyen\PhanQuyenController@postEditRo
 Route::get('phanquyen','PhanQuyen\PhanQuyenController@getPhanQuyen')->name('suaQuyen');
 Route::post('phanquyen/sua/{id}','PhanQuyen\PhanQuyenController@editRolePermission');
 
+//Nganhang
+Route::get('nganhang', 'Nganhang\NganhangController@index')->name('index');
+Route::post('nganhang/them', 'Nganhang\NganhangController@store')->name('store');
+Route::post('nganhang/sua/{id}', 'Nganhang\NganhangController@update')->name('update');
+Route::get('nganhang/xoa/{id}', 'Nganhang\NganhangController@destroy')->name('destroy');
+Route::get('xuat', 'Nganhang\NganhangController@export')->name('export');
+Route::post('nhap', 'Nganhang\NganhangController@import')->name('import');
+
+//Noilamviec
+Route::get('noilamviec', 'Noilamviec\NoilamviecController@index')->name('index');
+Route::post('noilamviec/them', 'Noilamviec\NoilamviecController@store')->name('store');
+Route::post('noilamviec/sua/{id}', 'Noilamviec\NoilamviecController@update')->name('update');
+Route::get('noilamviec/xoa/{id}', 'Noilamviec\NoilamviecController@destroy')->name('destroy');
+Route::get('xuat', 'Noilamviec\NoilamviecController@export')->name('export');
+Route::post('nhap', 'Noilamviec\NoilamviecController@import')->name('import');
 
 

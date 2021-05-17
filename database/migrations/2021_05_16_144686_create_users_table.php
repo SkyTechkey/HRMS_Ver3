@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Seeder;
+use App\User;
 
 class CreateUsersTable extends Migration
 {
@@ -17,13 +19,11 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('Hovaten')->nullable();
             $table->string('Tenthuonggoi')->nullable();
-            $table->string('username')->unique();
-            $table->string('password')->nullable();
             $table->string('Gioitinh')->nullable();
             $table->date('Ngayvaolam')->nullable();
             $table->string('Sodienthoai')->nullable();
             $table->string('Email')->nullable();
-            $table->date('Socmnd')->nullable();
+            $table->string('Socmnd')->nullable();
             $table->date('ngaycapCMND')->nullable();
             $table->string('NoicapCMND')->nullable();
             $table->date('Ngaysinh')->nullable();
@@ -33,8 +33,23 @@ class CreateUsersTable extends Migration
             $table->unsignedBigInteger('ID_Noilamviec')->nullable();
             $table->text('Diachithuongtru')->nullable();
             $table->text('Diachitamtru')->nullable();
-//Nhiều bổ sung tiếp nhé. anh chỉ mới làm cái này chứ mấy. xem trong design rồi bố sung giúp anh nhé.
-
+            $table->string('Masothue')->nulltablle();
+            $table->string('Sotaikhoan')->nulltablle();
+            $table->unsignedBigInteger('ID_Nganhang')->nulltablle();
+            $table->date('Ngayvaocongdoan')->nulltablle();
+            $table->date('Ngayvaodoan')->nulltablle();
+            $table->date('Ngayvaodang')->nulltablle();
+            $table->unsignedBigInteger('ID_Quoctich')->nulltablle();
+            $table->unsignedBigInteger('ID_Tongiao')->nulltablle();
+            $table->unsignedBigInteger('ID_Dantoc')->nulltablle();
+            $table->unsignedBigInteger('ID_Nguoigioithieu')->nulltablle();
+            $table->string('Tinhtranghonnhan')->nulltablle();
+            $table->unsignedBigInteger('ID_HinhthucNV')->nulltablle();
+            $table->string('Hinhanh')->nulltablle();
+            $table->text('Ghichu')->nulltablle();
+            $table->text('Trangthai')->nulltablle();
+            $table->string('username')->nulltablle();
+            $table->string('password')->nulltablle();
 
             $table->string('role')->nullable();
             $table->string('salary')->nullable();
@@ -49,6 +64,9 @@ class CreateUsersTable extends Migration
             $table->foreign('tongiao')->references('id')->on('tbl_tongiao');
             $table->foreign('quoctich')->references('id')->on('tbl_quoctich');
             $table->foreign('ngoaingu')->references('id')->on('tbl_ngoaingu');
+            //nhieu
+            $table->foreign('ID_Noilamviec')->references('id')->on('tbl_noilamviec');
+            $table->foreign('ID_Nganhang')->references('id')->on('tbl_nganhang');
         });
     }
 

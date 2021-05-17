@@ -69,36 +69,43 @@
                                 <a href="{{url('phanquyen')}}">
                                     <span>Bảng Phân Quyền</span>
                                 </a>
-                                
+
                             </li>
                             <li>
                                 <a href="{{url('role')}}">
                                     <span>Vai Trò</span>
                                 </a>
-                                
+
                             </li>
                             <li>
                                 <a href="{{url('chucnang')}}">
                                     <span>Chức Năng</span>
                                 </a>
-                                
+
                             </li>
-                            
+
                             <li>
                                 <a href="{{url('nhanvien/vaitro/danhsach')}}">
                                     <span>Danh Sách Vai Trò Nhân Viên</span>
                                 </a>
-                                
+
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="pages/helper-classes.html">
+                        <a href="{{url('nganhang')}}">
                             <i class="material-icons">layers</i>
-                            <span>Helper Classes</span>
+                            <span>Ngân hàng</span>
                         </a>
                     </li>
-                    
+
+                    <li>
+                        <a href="{{url('noilamviec')}}">
+                            <i class="material-icons">layers</i>
+                            <span>Nơi làm việc</span>
+                        </a>
+                    </li>
+
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">widgets</i>
