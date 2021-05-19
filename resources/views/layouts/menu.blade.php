@@ -32,7 +32,7 @@
             </div>
             <!-- #User Info -->
             <!-- Menu -->
-            <div class="menu">
+            <div class="menu" id="pjax-container">
                 <ul class="list">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">

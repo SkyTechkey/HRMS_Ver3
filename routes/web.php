@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -100,5 +101,5 @@ Route::post('nhanvien/vaitro/sua/{id}','PhanQuyen\PhanQuyenController@postEditRo
 Route::get('phanquyen','PhanQuyen\PhanQuyenController@getPhanQuyen')->name('suaQuyen');
 Route::post('phanquyen/sua/{id}','PhanQuyen\PhanQuyenController@editRolePermission');
 
-
+Route::get('send-mail', 'MailController@send');
 

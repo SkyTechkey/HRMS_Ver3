@@ -12,8 +12,18 @@ return [
     | and used as needed; however, this mailer will be used by default.
     |
     */
+    
 
-    'default' => env('MAIL_MAILER', 'smtp'),
+    # 'default' => env('MAIL_MAILER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'port' => env('MAIL_PORT', 587),
+    'encryption' => 'tls',
+    'username' => 'nhandzblog@gmail.com',
+    'password' => 'nhandzok1',
+    'sendmail' => '/usr/sbin/sendmail -bs',
+    'pretend' => false,
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -39,8 +49,8 @@ return [
             'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
             'port' => env('MAIL_PORT', 587),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
+            'username' => env('nhandzblog@gmail.com'),
+            'password' => env('nhandzok1'),
             'timeout' => null,
             'auth_mode' => null,
         ],
@@ -84,9 +94,12 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'nhandzblog@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'Nhan'),
     ],
+
+    'sendmail' => '/usr/sbin/sendmail -bs',
+    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
 
     /*
     |--------------------------------------------------------------------------
@@ -106,5 +119,12 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ],
+    ]
 
 ];

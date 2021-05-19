@@ -12,13 +12,24 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="{{asset('project_asset/js/jquery.pjax.js')}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(document).pjax('a', '#pjax-container')
+      // does current browser support PJAX
+        if ($.support.pjax) {
+            $.pjax.defaults.timeout = 2000; // time in milliseconds
+        }
     
+        });
+      </script>
     @yield('css')
 </head>
 
 <body class="theme-red">
     <!-- Page Loader -->
-    <div class="page-loader-wrapper">
+    {{-- <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
                 <div class="spinner-layer pl-red">
@@ -32,7 +43,7 @@
             </div>
             <p>Please wait...</p>
         </div>
-    </div>
+    </div> --}}
     <!-- #END# Page Loader -->
     <!-- Overlay For Sidebars -->
     <div class="overlay"></div>

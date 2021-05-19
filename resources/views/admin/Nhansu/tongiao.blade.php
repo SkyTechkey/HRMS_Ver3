@@ -14,6 +14,7 @@
 
 <link href="{{ asset('project_asset/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
 
+
 <!-- JQuery DataTable Css -->
 <link href="{{ asset('project_asset/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
 
@@ -22,6 +23,8 @@
 
 <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
 <link href="{{ asset('project_asset/css/themes/all-themes.css')}}" rel="stylesheet" />
+
+
 @endsection
 @section('content')
 <section class="content">
@@ -106,7 +109,7 @@
                                     </tr>
                                 </thead>
                                 
-                                <tbody>
+                                <tbody id="bodyyy">
                                     
                                     @foreach($tongiaos as $value)
                                     <tr>
@@ -117,7 +120,7 @@
                                         <td>
                                         
                                         
-                                        <a href="{{url('/tongiao/xoa/'.$value->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
+                                        <a href="{{url('/tongiao/xoa/'.$value->id)}}"  ><i style="font-size:22px" class="material-icons">delete_forever</i></a>
                                         <a type="button" data-toggle="modal" data-target="#fix{{$value->id}}"><i style="font-size:22px" class="material-icons">edit_calendar</i><a>
                                         </td>
                                         
@@ -271,5 +274,6 @@
 			$(this).alert('close');
 	});
 </script>
+
 @endsection
 @endsection
