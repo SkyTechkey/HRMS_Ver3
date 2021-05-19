@@ -114,6 +114,14 @@ Route::post('noilamviec/them', 'Noilamviec\NoilamviecController@store')->name('s
 Route::post('noilamviec/sua/{id}', 'Noilamviec\NoilamviecController@update')->name('update');
 Route::get('noilamviec/xoa/{id}', 'Noilamviec\NoilamviecController@destroy')->name('destroy');
 Route::get('xuat', 'Noilamviec\NoilamviecController@export')->name('export');
-Route::post('nhap', 'Noilamviec\NoilamviecController@import')->name('import');
+Route::post('nhapnoilamviec', 'Noilamviec\NoilamviecController@import')->name('import');
+
+//Nhanvien
+Route::get('nhanvien', 'Nhanvien\NhanvienController@index')->name('index');
+Route::post('nhanvien/sua/{id}', 'Nhanvien\NhanvienController@update')->name('update');
+Route::post('nhanvien/them', 'Nhanvien\NhanvienController@store')->name('store');
+Route::get('nhanvien/xoa/{id}', 'Nhanvien\NhanvienController@destroy')->name('destroy');
+Route::get('xuat', 'Nhanvien\NhanvienController@export')->name('export');
+Route::post('nhap', 'Nhanvien\NhanvienController@import')->name('import');
 
 

@@ -16,6 +16,7 @@
 
 <p>Quản lý ngân hàng.</p>
 <p>Quản lý nơi làm việc.<p>
+<p>Quản lý người dùng.<p>
 
 ## Help
 -Ho Van Vinh - 0905 063 126

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Danh sách nơi làm việc
+    Danh sách nhân viên công ty
 @endsection
 @section('css')
     <!-- Bootstrap Core Css -->
@@ -49,9 +49,9 @@
 
                         <div class="header">
                             <h2>
-                                Danh Sách Nơi làm việc của công ty
+                                Danh Sách Ngân Hàng Công Ty SkyTech
                                 <div style="float:right" >
-                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Thêm Ngân Hàng</button>
+                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#largeModal">Thêm Nhân Viên</button>
                                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Import">Import</button>
                                     <a href="{{url('xuat')}}" class="btn btn-info btn-lg">Export</a>
                                 </div>
@@ -64,51 +64,81 @@
                                     <thead>
                                     <tr>
                                         <th>STT</th>
-                                        <th>Tên Chi Nhánh</th>
-                                        <th>Địa chỉ</th>
-                                        <th width="10%" >Chức Năng</th>
+                                        <th>Hình ảnh</th>
+                                        <th>ID NV</th>
+                                        <th>Tên đăng nhập</th>
+                                        <th>Họ và tên</th>
+                                        <th>Ngày sinh</th>
+                                        <th>Ngày vào làm</th>
+                                        <th>Nơi làm việc</th>
+                                        <th>Trạng thái</th>
+                                        <th>Chức năng</th>
                                     </tr>
                                     </thead>
                                     <?php $i = 1; ?>
                                     <tbody>
-                                    @foreach($noilamviec as $item)
+                                    @foreach($nhanvien as $item)
                                         <tr>
                                             <td><?php echo $i++; ?></td>
-                                            <td>{{$item->Tenchinhanh}}</td>
-                                            <td>{{$item->Diachi}}</td>
+                                            <td><img src="project_asset/images/image_data/{{$item->Hinhanh}}" width="100px"></td>
+                                            <td>{{$item->id}}</td>
+                                            <td>{{$item->username}}</td>
+                                            <td>{{$item->Hovaten}}</td>
+                                            <td>{{$item->Ngaysinh}}</td>
+                                            <td>{{$item->Ngayvaolam}}</td>
+                                            <td>{{$item->noilamviec->Tenchinhanh}}</td>
+                                            <td>{{$item->Trangthai}}</td>
                                             <td>
-                                                <a href="{{url('noilamviec/xoa/'.$item->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
+                                                <a href="{{url('nhanvien/xoa/'.$item->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
                                                 <a href =""  type="button" data-toggle="modal" data-target="#fix{{$item->id}}"><i style="font-size:22px" class="material-icons">edit_calendar</i><a>
                                             </td>
                                         </tr>
 
-                                        <!-- Sửa -->
+                                    <!-- Sửa -->
                                         <div class="modal fade" id="fix{{$item->id}}" role="dialog">
                                             <div class="modal-dialog">
                                                 <!-- Modal content-->
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        <h4 style='color:#00b0e4' class="modal-title">Sửa Phòng Ban {{$item->Tenchinhanh}}</h4>
+                                                        <h4 style='color:#00b0e4' class="modal-title">Sửa Thông tin nhân viên {{$item->Hovaten}}</h4>
                                                     </div>
                                                     <div  class="body">
-                                                        <form action = "{{url('noilamviec/sua/'.$item->id)}}" id="form_validation" method="POST">
+                                                        <form action = "{{url('nhanvien/sua/'.$item->id)}}" id="form_validation" method="POST">
                                                             @csrf
                                                             <div class="form-group form-float">
                                                                 <div class="form-line">
-                                                                    <input  type="text" class="form-control" name="tenchinhanh" value ="{{$item->Tenchinhanh}}"  required>
+                                                                    <input  type="text" class="form-control" name="username" value ="{{$item->username}}"  required>
                                                                 </div>
                                                                 <div class="form-line">
-                                                                    <input  type="text" class="form-control" name="diachi" value ="{{$item->Diachi}}"  required>
+                                                                    <input  type="text" class="form-control" name="hovaten" value ="{{$item->Hovaten}}"  required>
+                                                                </div>
+                                                                <div class="form-line">
+                                                                    <input  type="text" class="form-control" name="ngaysinh" value ="{{$item->Ngaysinh}}"  required>
+                                                                </div>
+                                                                <div class="form-line">
+                                                                    <input  type="text" class="form-control" name="ngayvaolam" value ="{{$item->Ngayvaolam}}"  required>
+                                                                </div>
+                                                                    <div class="demo-single-button-dropdowns">
+                                                                        <div class="form-group">
+                                                                            <select class="selective form-control" name="id_noilamviec">
+                                                                                    <option value="{{$item->noilamviec->id}}">{{$item->noilamviec->Tenchinhanh}}</option>
+                                                                                @foreach($noilamviec as $value)
+                                                                                    <option value="{{$value->id}}">{{$value->Tenchinhanh}}</option>
+                                                                                @endforeach
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+{{--                                                                <div class="form-line">--}}
+{{--                                                                    <input  type="text" class="form-control" name="trangthai" value ="{{$item->Trangthai}}"  required>--}}
+{{--                                                                </div>--}}
+                                                                <div class="demo-radio-button">
+                                                                    <input value = "active" name="group1" type="radio" id="radio_1" checked />
+                                                                    <label name for="radio_1">Đang làm việc</label>
+                                                                    <input value = "close" name="group1" type="radio" id="radio_2" />
+                                                                    <label name for="radio_2">Tạm ngừng việc</label>
                                                                 </div>
                                                             </div>
-                                                            <!-- Default radio -->
-                                                            {{--                                                            <div class="demo-radio-button">--}}
-                                                            {{--                                                                <input value = "active" name="group1" type="radio" id="radio_3" checked />--}}
-                                                            {{--                                                                <label name for="radio_3">Hoạt động</label>--}}
-                                                            {{--                                                                <input value = "close" name="group1" type="radio" id="radio_4" />--}}
-                                                            {{--                                                                <label name for="radio_4">Tạm ngừng</label>--}}
-                                                            {{--                                                            </div>--}}
                                                             <button class="btn btn-primary waves-effect" type="submit">Chấp nhận</button>
                                                         </form>
                                                     </div>
@@ -116,7 +146,6 @@
                                             </div>
                                         </div>
                                     @endforeach
-
                                     </tbody>
                                 </table>
                             </div>
@@ -124,38 +153,7 @@
 
 
                         <!-- Thêm  -->
-                        <div class="modal fade" id="myModal" role="dialog">
-                            <div class="modal-dialog">
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 style='color:#00b0e4' class="modal-title">Thêm ngân hàng</h4>
-                                    </div>
-                                    <div  class="body">
-                                        <form action = "{{url('noilamviec/them')}}" id="form_validation" method="POST">
-                                            @csrf
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input  type="text" class="form-control" name="tenchinhanh" placeholder="Tên chi nhánh"  required>
-                                                </div>
-                                                <div class="form-line">
-                                                    <input  type="text" class="form-control" name="diachi" placeholder="Tên chi nhánh"  required>
-                                                </div>
-                                            </div>
-                                            <!-- Default radio -->
-                                            {{--                                            <div class="demo-radio-button">--}}
-                                            {{--                                                <input value = "active" name="group1" type="radio" id="radio_1" checked />--}}
-                                            {{--                                                <label name for="radio_1">Hoạt động</label>--}}
-                                            {{--                                                <input value = "close" name="group1" type="radio" id="radio_2" />--}}
-                                            {{--                                                <label name for="radio_2">Tạm ngừng</label>--}}
-                                            {{--                                            </div>--}}
-                                            <button class="btn btn-primary waves-effect" type="submit">Chấp nhận</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include('admin.Nhanvien.themnhanvien');
 
                         {{--Import--}}
                         <div class="modal fade" id="Import" role="dialog">
@@ -167,20 +165,13 @@
                                         <h4 style='color:#00b0e4' class="modal-title">Thêm ngân hàng</h4>
                                     </div>
                                     <div  class="body">
-                                        <form action = "{{url('nhapnoilamviec')}}" id="form_validation" method="POST" enctype="multipart/form-data">
+                                        <form action = "{{url('nhap')}}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group form-float">
                                                 <div class="form-line">
                                                     <input type="file" class="form-control" name="file" required>
                                                 </div>
                                             </div>
-                                            <!-- Default radio -->
-                                            {{--<div class="demo-radio-button">--}}
-                                            {{--<input value = "active" name="group1" type="radio" id="radio_1" checked />--}}
-                                            {{--<label name for="radio_1">Hoạt động</label>--}}
-                                            {{--<input value = "close" name="group1" type="radio" id="radio_2" />--}}
-                                            {{--<label name for="radio_2">Tạm ngừng</label>--}}
-                                            {{--</div>--}}
                                             <button class="btn btn-primary waves-effect" type="submit">Chấp nhận</button>
                                         </form>
                                     </div>
@@ -219,6 +210,8 @@
     <script src="{{ asset('project_asset/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
     <script src="{{ asset('project_asset/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
     <script src="{{ asset('project_asset/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+    <script src="{{ asset('project_asset/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
+
 
     <!-- Custom Js -->
     <script src="{{ asset('project_asset/js/admin.js')}}"></script>

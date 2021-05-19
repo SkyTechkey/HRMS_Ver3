@@ -102,6 +102,13 @@
                     <li>
                         <a href="{{url('noilamviec')}}">
                             <i class="material-icons">layers</i>
+                            <span>Nhân viên</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('nhanvien')}}">
+                            <i class="material-icons">layers</i>
                             <span>Nơi làm việc</span>
                         </a>
                     </li>

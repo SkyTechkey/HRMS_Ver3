@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Noilamviec;
+use App\Models\Noilamviec;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class NoilamviecImport implements ToModel

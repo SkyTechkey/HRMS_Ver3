@@ -11,4 +11,8 @@ class Noilamviec extends Model
     protected $fillable = [
         'Tenchinhanh', 'Diachi'
     ];
+
+    public function nguoidung() {
+        return $this->hasMany('App\User', 'ID_Noilamviec', 'id');
+    }
 }
