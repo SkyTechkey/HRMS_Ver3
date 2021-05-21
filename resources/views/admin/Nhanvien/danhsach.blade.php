@@ -77,75 +77,28 @@
                                     </thead>
                                     <?php $i = 1; ?>
                                     <tbody>
-                                    @foreach($nhanvien as $item)
-                                        <tr>
-                                            <td><?php echo $i++; ?></td>
-                                            <td><img src="project_asset/images/image_data/{{$item->Hinhanh}}" width="100px"></td>
-                                            <td>{{$item->id}}</td>
-                                            <td>{{$item->username}}</td>
-                                            <td>{{$item->Hovaten}}</td>
-                                            <td>{{$item->Ngaysinh}}</td>
-                                            <td>{{$item->Ngayvaolam}}</td>
-                                            <td>{{$item->noilamviec->Tenchinhanh}}</td>
-                                            <td>{{$item->Trangthai}}</td>
-                                            <td>
-                                                <a href="{{url('nhanvien/xoa/'.$item->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
-                                                <a href =""  type="button" data-toggle="modal" data-target="#fix{{$item->id}}"><i style="font-size:22px" class="material-icons">edit_calendar</i><a>
-                                            </td>
-                                        </tr>
+                                        @foreach($join as $item)
+                                                <tr>
+                                                    <td><?php echo $i++; ?></td>
+                                                    <td><img src="project_asset/images/image_data/{{$item->Hinhanh}}" width="100px"></td>
+                                                    <td>{{$item->id}}</td>
+                                                    <td>{{$item->username}}</td>
+                                                    <td>{{$item->Hovaten}}</td>
+                                                    <td>{{$item->Ngaysinh}}</td>
+                                                    <td>{{$item->Ngayvaolam}}</td>
+                                                    <td>{{$item->Tenchinhanh}}</td>
+                                                    <td>{{$item->Trangthai}}</td>
+                                                    <td>
+                                                        <a href="{{url('nhanvien/xoa/'.$item->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
+                                                        <a href ="" data-toggle="modal" data-target="#fix{{$item->id}}">
+                                                            <i style="font-size:22px" class="material-icons">edit_calendar</i>
+                                                            <a>
+                                                    </td>
+                                                </tr>
+                                        @endforeach
 
                                     <!-- Sửa -->
-                                        <div class="modal fade" id="fix{{$item->id}}" role="dialog">
-                                            <div class="modal-dialog">
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        <h4 style='color:#00b0e4' class="modal-title">Sửa Thông tin nhân viên {{$item->Hovaten}}</h4>
-                                                    </div>
-                                                    <div  class="body">
-                                                        <form action = "{{url('nhanvien/sua/'.$item->id)}}" id="form_validation" method="POST">
-                                                            @csrf
-                                                            <div class="form-group form-float">
-                                                                <div class="form-line">
-                                                                    <input  type="text" class="form-control" name="username" value ="{{$item->username}}"  required>
-                                                                </div>
-                                                                <div class="form-line">
-                                                                    <input  type="text" class="form-control" name="hovaten" value ="{{$item->Hovaten}}"  required>
-                                                                </div>
-                                                                <div class="form-line">
-                                                                    <input  type="text" class="form-control" name="ngaysinh" value ="{{$item->Ngaysinh}}"  required>
-                                                                </div>
-                                                                <div class="form-line">
-                                                                    <input  type="text" class="form-control" name="ngayvaolam" value ="{{$item->Ngayvaolam}}"  required>
-                                                                </div>
-                                                                    <div class="demo-single-button-dropdowns">
-                                                                        <div class="form-group">
-                                                                            <select class="selective form-control" name="id_noilamviec">
-                                                                                    <option value="{{$item->noilamviec->id}}">{{$item->noilamviec->Tenchinhanh}}</option>
-                                                                                @foreach($noilamviec as $value)
-                                                                                    <option value="{{$value->id}}">{{$value->Tenchinhanh}}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-{{--                                                                <div class="form-line">--}}
-{{--                                                                    <input  type="text" class="form-control" name="trangthai" value ="{{$item->Trangthai}}"  required>--}}
-{{--                                                                </div>--}}
-                                                                <div class="demo-radio-button">
-                                                                    <input value = "active" name="group1" type="radio" id="radio_1" checked />
-                                                                    <label name for="radio_1">Đang làm việc</label>
-                                                                    <input value = "close" name="group1" type="radio" id="radio_2" />
-                                                                    <label name for="radio_2">Tạm ngừng việc</label>
-                                                                </div>
-                                                            </div>
-                                                            <button class="btn btn-primary waves-effect" type="submit">Chấp nhận</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
+                                        @include('admin.Nhanvien.suanhanvien')
                                     </tbody>
                                 </table>
                             </div>
@@ -191,8 +144,6 @@
 
     <!-- Bootstrap Core Js -->
     <script src="{{ asset('project_asset/plugins/bootstrap/js/bootstrap.js')}}"></script>
-
-
 
     <!-- Slimscroll Plugin Js -->
     <script src="{{ asset('project_asset//plugins/jquery-slimscroll/jquery.slimscroll.js')}}"></script>

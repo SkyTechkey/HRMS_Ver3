@@ -124,4 +124,10 @@ Route::get('nhanvien/xoa/{id}', 'Nhanvien\NhanvienController@destroy')->name('de
 Route::get('xuat', 'Nhanvien\NhanvienController@export')->name('export');
 Route::post('nhap', 'Nhanvien\NhanvienController@import')->name('import');
 
+Route::get('data', function () {
+//    $data=DB::table('users')->get();
+    $data = DB::table('users')->join('contacts', 'users.id', '=', 'contacts.user_id')->get();
+    print_r("<br/>$data");
+
+});
 

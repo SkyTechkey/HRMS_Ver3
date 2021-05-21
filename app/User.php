@@ -40,7 +40,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function noilamviec() {
+    public function lamviec() {
         return $this->belongsTo('App\Models\Noilamviec', 'ID_Noilamviec', 'id');
     }
 

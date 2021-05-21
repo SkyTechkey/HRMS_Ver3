@@ -126,7 +126,7 @@ class NoilamviecController extends Controller implements FromCollection, WithHea
     }
 
     public function import() {
-        $excel = Excel::import(new NoilamviecImport(), request()->file('file'));
+        Excel::import(new NoilamviecImport(), request()->file('file'));
         return back();
     }
 }

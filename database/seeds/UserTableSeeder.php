@@ -25,6 +25,7 @@ class UserTableSeeder extends Seeder
             'NgaycapCMND' => '2017/05/21',
             'NoicapCMND' => 'Da Nang',
             'Ngaysinh' => '2000/05/07',
+            'Noisinh' => 'Da Nang',
             'ID_Phongban' => 1,
             'ID_Chucvu' => 1,
             'ID_Noilamviec' => 1,
@@ -46,7 +47,10 @@ class UserTableSeeder extends Seeder
             'Ghichu' => 'Dep choai',
             'Trangthai' => 'Oke',
             'username' => 'admin',
-            'password' => bcrypt('123456')
+            'password' => bcrypt('123456'),
+            'tongiao' => 1,
+            'quoctich' => 1,
+            'ngoaingu' => 1,
         ]);
 
         DB::table('users')->insert([
@@ -61,6 +65,7 @@ class UserTableSeeder extends Seeder
                 'NgaycapCMND' => '2017/05/21',
                 'NoicapCMND' => 'Da Nang',
                 'Ngaysinh' => '2000/05/07',
+                'Noisinh' => 'Da Nang',
                 'ID_Phongban' => 1,
                 'ID_Chucvu' => 1,
                 'ID_Noilamviec' => 1,
@@ -83,6 +88,9 @@ class UserTableSeeder extends Seeder
                 'Trangthai' => 'Oke',
                 'username' => 'user',
                 'password' => bcrypt('123456'),
+                'tongiao' => 1,
+                'quoctich' => 1,
+                'ngoaingu' => 1,
             ],
             [
                 'Hovaten' => 'Ho Van Vinh',
@@ -117,6 +125,9 @@ class UserTableSeeder extends Seeder
                 'Trangthai' => 'Oke',
                 'username' => 'user',
                 'password' => bcrypt('123456'),
+                'tongiao' => 1,
+                'quoctich' => 1,
+                'ngoaingu' => 1,
             ]
         ]);
 

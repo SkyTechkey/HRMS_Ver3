@@ -1,5 +1,5 @@
 <div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -12,7 +12,7 @@
 
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input  type="text" class="form-control" name="hovanten" placeholder="Họ và tên"  required>
+                                <input  type="text" class="form-control" name="hovaten" placeholder="Họ và tên"  required>
                             </div>
                             <div class="form-line">
                                 <input  type="text" class="form-control" name="tenthuonggoi" placeholder="Tên thường gọi"  required>
@@ -27,7 +27,7 @@
                                 <input  type="text" class="form-control" name="sodienthoai" placeholder="Số điện thoại"  required>
                             </div>
                             <div class="form-line">
-                                <input  type="text" class="form-control" name="emai" placeholder="Email"  required>
+                                <input  type="text" class="form-control" name="email" placeholder="Email"  required>
                             </div>
                             <div class="form-line">
                                 <input  type="text" class="form-control" name="socmnd" placeholder="Số CMND"  required>
@@ -37,6 +37,9 @@
                             </div>
                             <div class="form-line">
                                 <input  type="text" class="form-control" name="noicapcmnd" placeholder="Nơi cấp CMND"  required>
+                            </div>
+                            <div class="form-line">
+                                <input  type="text" class="form-control" name="ngaysinh" placeholder="Ngày sinh"  required>
                             </div>
                             <div class="form-line">
                                 <input  type="text" class="form-control" name="noisinh" placeholder="Nơi sinh"  required>
@@ -52,6 +55,9 @@
                             </div>
                             <div class="form-line">
                                 <input  type="text" class="form-control" name="diachithuongtru" placeholder="Địa chỉ thường trú"  required>
+                            </div>
+                            <div class="form-line">
+                                <input  type="text" class="form-control" name="diachitamtru" placeholder="Địa chỉ tạm trú"  required>
                             </div>
                             <div class="form-line">
                                 <input  type="text" class="form-control" name="masothue" placeholder="Mã số thuế"  required>
@@ -101,29 +107,41 @@
                                 <input  type="text" class="form-control" name="tinhtranghonnhan" placeholder="Tình trạng hôn nhân"  required>
                             </div>
                             <div class="form-line">
-                                <input  type="text" class="form-control" name="hinhthuchonnhan" placeholder="Hình thức nhân viên"  required>
+                                <input  type="text" class="form-control" name="hinhthucnhanvien" placeholder="Hình thức nhân viên"  required>
                             </div>
                             <div class="form-line">
                                 <input  type="text" class="form-control" name="ghichu" placeholder="Ghi chú"  required>
                             </div>
 {{--                            <div class="form-line">--}}
                             <div class="demo-radio-button">
-                                <input value = "active" name="group1" type="radio" id="radio_1" checked />
-                                <label name for="radio_1">Đang làm việc</label>
-                                <input value = "close" name="group1" type="radio" id="radio_2" />
-                                <label name for="radio_2">Tạm ngừng việc</label>
+                                <input value = "active" name="group1" type="radio" id="radio_3" checked />
+                                <label name for="radio_3">Đang làm việc</label>
+                                <input value = "close" name="group1" type="radio" id="radio_4" />
+                                <label name for="radio_4">Tạm ngừng việc</label>
                             </div>
                                 {{--                                                        <input  type="text" class="form-control" name="diachi" placeholder="Trạng thái"  required>--}}
 {{--                            </div>--}}
+                            <div class="form-line">
+                                <input  type="text" class="form-control" name="hinhanh" placeholder="Hình ảnh"  required>
+                            </div>
                             <div class="form-line">
                                 <input  type="text" class="form-control" name="tendangnhap" placeholder="Tên đăng nhập"  required>
                             </div>
                             <div class="form-line">
                                 <input  type="text" class="form-control" name="matkhau" placeholder="Mật khẩu"  required>
                             </div>
+                            <div class="form-line">
+                                <input  type="text" class="form-control" name="tongiao" placeholder="Tôn giáo"  required>
+                            </div>
+                            <div class="form-line">
+                                <input  type="text" class="form-control" name="quoctich" placeholder="Quốc tịch"  required>
+                            </div>
+                            <div class="form-line">
+                                <input  type="text" class="form-control" name="ngoaingu" placeholder="Ngoại ngữ"  required>
+                            </div>
                         </div>
-
                     </div>
+
                 </form>
             </div>
             <div class="modal-footer">
