@@ -58,25 +58,26 @@
 
                         <div class="header">
                             <h2>
-                                Thêm nhân viên
+                                Sửa nhân viên {{$edit_user->Hovaten}}
                                 
                             </h2>
                         </div>
 
                         <div  class="body">
-                                        <form action = "{{url('nhanvien/them')}}" method="POST" enctype="multipart/form-data">
+                        
+                                        <form action = "{{url('nhanvien/sua/'.$edit_user->id)}}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group form-float">
                                             
                                                 <div class="form-line">
-                                                    <input disabled type="text" value ="{{$Id_new + 1}}"  class="form-control" name="id_nv" required>
+                                                    <input disabled type="text" value ="{{$edit_user->id}}"  class="form-control" name="id_nv" required>
                                                     
                                                 </div>
                                             </div>
                                             <div class="form-group form-float">
                                                 
                                                 <div class="form-line">
-                                                    <input type="text" place class="form-control" name="username" required>
+                                                    <input value="{{$edit_user->username}}" type="text" place class="form-control" name="username" required>
                                                     <label class="form-label">Tên đăng nhập</label>
                                                 </div>
                                                 
@@ -85,7 +86,7 @@
                                             <div class="form-group form-float">
                                                 
                                                 <div class="form-line">
-                                                    <input type="text" place class="form-control" name="password" required>
+                                                    <input value="**********" disabled type="text" place class="form-control" name="password" required>
                                                     <label class="form-label">Mật khẩu</label>
                                                 </div>
                                                 
@@ -94,7 +95,7 @@
                                             <div class="form-group form-float">
                                                 
                                                 <div class="form-line">
-                                                    <input type="text" place class="form-control" name="fullname" required>
+                                                    <input value="{{$edit_user->Hovaten}}" type="text" place class="form-control" name="fullname" required>
                                                     <label class="form-label">Họ và tên</label>
                                                 </div>
                                                 
@@ -104,7 +105,7 @@
                                             
                                                 
                                                 <div class="form-line" id="bs_datepicker_container">
-                                                    <input type="text" class="form-control" name = "ngaySinh" placeholder="Ngày sinh">
+                                                    <input value="{{$edit_user->Ngaysinh}}" type="text" class="form-control" name = "ngaySinh" placeholder="Ngày sinh">
                                                 </div>
                                                
                                             </div>
@@ -114,7 +115,7 @@
                                             
                                                 
                                                 <div class="form-line" id="bs_datepicker_container">
-                                                    <input type="text" class="form-control" name="ngayVaoLam" placeholder="Ngày vào làm">
+                                                    <input value="{{$edit_user->Ngayvaolam}}" type="text" class="form-control" name="ngayVaoLam" placeholder="Ngày vào làm">
                                                 </div>
                                                
                                             </div>
@@ -143,10 +144,13 @@
                                                 </select>
                                                 
                                             </div>
+                                            <div style="width:200px">
+                                                <img width="100%" src ="{{asset('project_asset/images/images_user/'.$edit_user->Hinhanh)}}">
+                                            </div>
                                             <div class="form-group form-float">
                                                 <label class="form-label">Avatar</label>
                                                 <div class="form-line">
-                                                    <input type="file" place class="form-control" name="avatar" required>
+                                                    <input type="file" place class="form-control" name="avatar" >
                                                     
                                                 </div>
                                                 
@@ -154,6 +158,8 @@
                                             <button class="btn btn-primary waves-effect" type="submit">Chấp nhận</button>
                                         </form>
                                     </div>
+
+
                         </div>
                         
                     </div>

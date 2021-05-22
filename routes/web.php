@@ -105,23 +105,25 @@ Route::get('nganhang', 'Nganhang\NganhangController@index')->name('index');
 Route::post('nganhang/them', 'Nganhang\NganhangController@store')->name('store');
 Route::post('nganhang/sua/{id}', 'Nganhang\NganhangController@update')->name('update');
 Route::get('nganhang/xoa/{id}', 'Nganhang\NganhangController@destroy')->name('destroy');
-Route::get('xuat', 'Nganhang\NganhangController@export')->name('export');
-Route::post('nhap', 'Nganhang\NganhangController@import')->name('import');
+Route::get('nganhang/xuat', 'Nganhang\NganhangController@export')->name('export');
+Route::post('nganhang/import', 'Nganhang\NganhangController@import')->name('import');
 
 //Noilamviec
 Route::get('noilamviec', 'Noilamviec\NoilamviecController@index')->name('index');
 Route::post('noilamviec/them', 'Noilamviec\NoilamviecController@store')->name('store');
 Route::post('noilamviec/sua/{id}', 'Noilamviec\NoilamviecController@update')->name('update');
 Route::get('noilamviec/xoa/{id}', 'Noilamviec\NoilamviecController@destroy')->name('destroy');
-Route::get('xuat', 'Noilamviec\NoilamviecController@export')->name('export');
-Route::post('nhapnoilamviec', 'Noilamviec\NoilamviecController@import')->name('import');
+Route::get('noilamviec/xuat', 'Noilamviec\NoilamviecController@export')->name('export');
+Route::post('noilamviec/import', 'Noilamviec\NoilamviecController@import')->name('import');
 
 //Nhanvien
 Route::get('nhanvien', 'Nhanvien\NhanvienController@index')->name('index');
-Route::post('nhanvien/sua/{id}', 'Nhanvien\NhanvienController@update')->name('update');
+Route::get('nhanvien/sua/{id}', 'Nhanvien\NhanvienController@getUpdate');
+Route::post('nhanvien/sua/{id}', 'Nhanvien\NhanvienController@update');
+Route::get('nhanvien/them', 'Nhanvien\NhanvienController@create');
 Route::post('nhanvien/them', 'Nhanvien\NhanvienController@store')->name('store');
 Route::get('nhanvien/xoa/{id}', 'Nhanvien\NhanvienController@destroy')->name('destroy');
-Route::get('xuat', 'Nhanvien\NhanvienController@export')->name('export');
-Route::post('nhap', 'Nhanvien\NhanvienController@import')->name('import');
+Route::get('nhanvien/xuat', 'Nhanvien\NhanvienController@export')->name('export');
+Route::post('nhanvien/import', 'Nhanvien\NhanvienController@import')->name('import');
 
 

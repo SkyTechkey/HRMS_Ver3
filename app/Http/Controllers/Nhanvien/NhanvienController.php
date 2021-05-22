@@ -12,9 +12,14 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Excel;
 use App\Imports\UserImport;
-
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 class NhanvienController extends Controller implements FromCollection, WithHeadings
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +41,9 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
     public function create()
     {
 
+        $Id_new = DB::table('users')->max('id');
+        $tbl_Noilamviec = Noilamviec::all();
+        return view('admin.Nhanvien.themnhanvien',compact('Id_new','tbl_Noilamviec'));
     }
 
     /**
@@ -48,47 +56,28 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
     {
         $nhanvien = new User();
 
-        $nhanvien->Hovaten = $request->hovaten;
-        $nhanvien->Tenthuonggoi = $request->tenthuonggoi;
-        $nhanvien->Gioitinh = $request->gioitinh;
-        $nhanvien->Ngayvaolam = $request->ngayvaolam;
-        $nhanvien->Sodienthoai = $request->sodienthoai;
-        $nhanvien->Email = $request->Socmnd;
-        $nhanvien->ngaycapCMND = $request->ngaycapcmnd;
-        $nhanvien->NoicapCMND = $request->noicapcmnd;
-        $nhanvien->Noisinh = $request->noisinh;
-        $nhanvien->ID_Phongban = $request->phongban;
-        $nhanvien->ID_Chucvu = $request->chucvu;
-        $nhanvien->ID_Noilamviec = $request->noilamviec;
-        $nhanvien->Diachithuongtru = $request->diachithuongtru;
-        $nhanvien->Diachitamtru = $request->diachitamtru;
-        $nhanvien->Masothue = $request->masothue;
-        $nhanvien->Sotaikhoan = $request->sotaikhoan;
-        $nhanvien->ID_Nganhang = $request->nganghang;
-        $nhanvien->Ngayvaocongdoan = $request->ngayvaocongdoan;
-        $nhanvien->Ngayvaodoan = $request->ngayvaocongdoan;
-        $nhanvien->Ngayvaodang = $request->ngayvaodang;
-        $nhanvien->ID_Quoctich = $request->quoctich;
-        $nhanvien->ID_Tongiao = $request->tongiao;
-        $nhanvien->ID_Dantoc = $request->dantoc;
-        $nhanvien->ID_Nguoigioithieu = $request->nguoigioithieu;
-        $nhanvien->Tinhtranghonnhan = $request->tinhtranghonnhan;
-        $nhanvien->ID_HinhthucNV = $request->hinhthucnhanvien;
-        $nhanvien->Hinhanh = $request->hinhanh;
-        $nhanvien->Ghichu = $request->ghichu;
-        //trang thai
-        $checkActiveOrClose = $request->get('group1');
-        if( $checkActiveOrClose == 'close' ){
-            $nhanvien->Trangthai = "Đang làm việc";
+        $nhanvien->Hovaten = $request->fullname;
+        $nhanvien->username = $request->username;
+        $nhanvien->password = bcrypt($request->password);
+        $nhanvien->Ngaysinh =$request->ngaySinh;
+        $nhanvien->Ngayvaolam = $request->ngayVaoLam;
+        $nhanvien->ID_Noilamviec = $request->input('noiLamViec');
+        $nhanvien->TrangThai = $request->input('status');
+        
+        $fileImage = $request->avatar;
+        if(!empty($fileImage)){
+            $nhanvien->Hinhanh = $fileImage->getClientOriginalName();
+            
         }
-        else if($checkActiveOrClose == 'close'){
-            $nhanvien->Trangthai = "Tạm ngừng việc";
+        else{
+            return redirect('nhanvien')->with('success', 'Vui lòng chọn ảnh đại diện!');
         }
-        $nhanvien->username = $request->tendangnhap;
-        $nhanvien->password = $request->matkhau;
-        $nhanvien->save();
-
-        return back();
+        if($nhanvien->save()){
+            if(!empty($fileImage)){
+                $fileImage->move('project_asset/images/images_user',$fileImage->getClientOriginalName());
+            }
+            return redirect('nhanvien')->with('success', 'Tạo mới thành công thành công nhân viên!');
+        }
     }
 
     /**
@@ -108,9 +97,12 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function getUpdate($id)
     {
-        //
+        $edit_user = User::find($id);
+        $tbl_Noilamviec = NoilamViec::all();
+        
+        return view('admin.Nhanvien.suanhanvien',compact('edit_user','tbl_Noilamviec'));
     }
 
     /**
@@ -122,25 +114,28 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
      */
     public function update(Request $request, $id)
     {
+     
         $nhanvien = User::find($id);
+        $nhanvien->Hovaten = $request->fullname;
         $nhanvien->username = $request->username;
-        $nhanvien->Hovaten = $request->hovaten;
-        $nhanvien->Ngaysinh = $request->ngaysinh;
-        $nhanvien->Ngayvaolam = $request->ngayvaolam;
-        $nhanvien->ID_Noilamviec = $request->id_noilamviec;
-        $nhanvien->Trangthai = $request->trangthai;
-
-        $checkActiveOrClose = $request->get('group1');
-        if( $checkActiveOrClose == 'close' ){
-            $nhanvien->Trangthai = "Đang làm việc";
+        $nhanvien->password = bcrypt($request->password);
+        $nhanvien->Ngaysinh =Carbon::parse($request->ngaySinh);
+        $nhanvien->Ngayvaolam = Carbon::parse($request->ngayVaoLam);
+        $nhanvien->ID_Noilamviec = $request->input('noiLamViec');
+        $nhanvien->TrangThai = $request->input('status');
+        
+        $fileImage = $request->avatar;
+        if(!empty($fileImage)){
+            $nhanvien->Hinhanh = $fileImage->getClientOriginalName();
+            
         }
-        else if($checkActiveOrClose == 'close'){
-            $nhanvien->Trangthai = "Tạm ngừng việc";
+        
+        if($nhanvien->save()){
+            if(!empty($fileImage)){
+                $fileImage->move('project_asset/images/images_user',$fileImage->getClientOriginalName());
+            }
+            return redirect('nhanvien')->with('success', 'Sửa thành công thông tin nhân viên!');
         }
-//        dd($nhanvien);
-        $nhanvien->save();
-
-        return back();
     }
 
     /**
@@ -151,8 +146,12 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
      */
     public function destroy($id)
     {
-        $id = User::find($id)->delete();
-        return back();
+        $user = User::find($id);
+        if(!empty($id)){
+            $user->delete();
+            return redirect()->back()->with('success', 'Xóa thành công thông tin nhân viên!');
+        }
+        
     }
 
     public function collection()

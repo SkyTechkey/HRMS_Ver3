@@ -51,9 +51,9 @@
                             <h2>
                                 Danh Sách Ngân Hàng Công Ty SkyTech
                                 <div style="float:right" >
-                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#largeModal">Thêm Nhân Viên</button>
-                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Import">Import</button>
-                                    <a href="{{url('xuat')}}" class="btn btn-info btn-lg">Export</a>
+                                    <a href="{{url('nhanvien/them')}}" class="btn btn-info btn-lg">Thêm Nhân Viên</a>
+                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Import</button>
+                                    <a href="{{url('nhanvien/xuat')}}" class="btn btn-info btn-lg">Export</a>
                                 </div>
                             </h2>
                         </div>
@@ -80,7 +80,7 @@
                                     @foreach($nhanvien as $item)
                                         <tr>
                                             <td><?php echo $i++; ?></td>
-                                            <td><img src="project_asset/images/image_data/{{$item->Hinhanh}}" width="100px"></td>
+                                            <td><img src="project_asset/images/images_user/{{$item->Hinhanh}}" width="100px"></td>
                                             <td>{{$item->id}}</td>
                                             <td>{{$item->username}}</td>
                                             <td>{{$item->Hovaten}}</td>
@@ -94,90 +94,36 @@
                                             </td>
                                         </tr>
 
-                                    <!-- Sửa -->
-                                        <div class="modal fade" id="fix{{$item->id}}" role="dialog">
-                                            <div class="modal-dialog">
-                                                <!-- Modal content-->
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        <h4 style='color:#00b0e4' class="modal-title">Sửa Thông tin nhân viên {{$item->Hovaten}}</h4>
-                                                    </div>
-                                                    <div  class="body">
-                                                        <form action = "{{url('nhanvien/sua/'.$item->id)}}" id="form_validation" method="POST">
-                                                            @csrf
-                                                            <div class="form-group form-float">
-                                                                <div class="form-line">
-                                                                    <input  type="text" class="form-control" name="username" value ="{{$item->username}}"  required>
-                                                                </div>
-                                                                <div class="form-line">
-                                                                    <input  type="text" class="form-control" name="hovaten" value ="{{$item->Hovaten}}"  required>
-                                                                </div>
-                                                                <div class="form-line">
-                                                                    <input  type="text" class="form-control" name="ngaysinh" value ="{{$item->Ngaysinh}}"  required>
-                                                                </div>
-                                                                <div class="form-line">
-                                                                    <input  type="text" class="form-control" name="ngayvaolam" value ="{{$item->Ngayvaolam}}"  required>
-                                                                </div>
-                                                                    <div class="demo-single-button-dropdowns">
-                                                                        <div class="form-group">
-                                                                            <select class="selective form-control" name="id_noilamviec">
-                                                                                    <option value="{{$item->noilamviec->id}}">{{$item->noilamviec->Tenchinhanh}}</option>
-                                                                                @foreach($noilamviec as $value)
-                                                                                    <option value="{{$value->id}}">{{$value->Tenchinhanh}}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
-                                                                    </div>
-{{--                                                                <div class="form-line">--}}
-{{--                                                                    <input  type="text" class="form-control" name="trangthai" value ="{{$item->Trangthai}}"  required>--}}
-{{--                                                                </div>--}}
-                                                                <div class="demo-radio-button">
-                                                                    <input value = "active" name="group1" type="radio" id="radio_1" checked />
-                                                                    <label name for="radio_1">Đang làm việc</label>
-                                                                    <input value = "close" name="group1" type="radio" id="radio_2" />
-                                                                    <label name for="radio_2">Tạm ngừng việc</label>
-                                                                </div>
-                                                            </div>
-                                                            <button class="btn btn-primary waves-effect" type="submit">Chấp nhận</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                   
+                                                                
                                     @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-
-
-                        <!-- Thêm  -->
-                        @include('admin.Nhanvien.themnhanvien');
-
-                        {{--Import--}}
-                        <div class="modal fade" id="Import" role="dialog">
-                            <div class="modal-dialog">
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        <h4 style='color:#00b0e4' class="modal-title">Thêm ngân hàng</h4>
-                                    </div>
-                                    <div  class="body">
-                                        <form action = "{{url('nhap')}}" method="POST" enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <input type="file" class="form-control" name="file" required>
-                                                </div>
-                                            </div>
-                                            <button class="btn btn-primary waves-effect" type="submit">Chấp nhận</button>
-                                        </form>
-                                    </div>
-                                </div>
+                        <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                        
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 style='color:#00b0e4' class="modal-title">Tạo Phòng Ban Công Ty SkyTech</h4>
+                            </div>
+                            <div  class="body">
+                            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="file" name="file" class="form-control">
+                                    <br>
+                                    <button class="btn btn-success">Import User Data</button>
+                                    <a class="btn btn-warning" href="{{ route('export') }}">Export User Data</a>
+                                </form>
                             </div>
                         </div>
+                        
+                        </div>
+                    </div>
+                       
 
                     </div>
                 </div>
