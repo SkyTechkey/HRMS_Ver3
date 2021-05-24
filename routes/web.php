@@ -121,7 +121,10 @@ Route::get('nhanvien', 'Nhanvien\NhanvienController@index')->name('index');
 Route::get('nhanvien/sua/{id}', 'Nhanvien\NhanvienController@getUpdate');
 Route::post('nhanvien/sua/{id}', 'Nhanvien\NhanvienController@update');
 Route::get('nhanvien/them', 'Nhanvien\NhanvienController@create');
-Route::post('nhanvien/them', 'Nhanvien\NhanvienController@store')->name('store');
+Route::post('nhanvien/them', 'Nhanvien\NhanvienController@store');
+Route::post('/nhanvien/them/quanhuyen','Nhanvien\NhanVienController@getQuanHuyen');
+
+
 Route::get('nhanvien/xoa/{id}', 'Nhanvien\NhanvienController@destroy')->name('destroy');
 Route::get('nhanvien/xuat', 'Nhanvien\NhanvienController@export')->name('export');
 Route::post('nhanvien/import', 'Nhanvien\NhanvienController@import')->name('import');

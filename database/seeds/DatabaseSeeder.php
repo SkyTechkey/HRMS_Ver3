@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
     $this->call(NoilamviecTableSeeder::class);
    	$this->call(UserTableSeeder::class);
     $this->call(DataBranch::class);
+    $this->call(QuanHuyenTableSeeder::class);
+    $this->call(ThanhPhoTableSeeder::class);
+    $this->call(XaPhuongTableSeeder::class);
     
     }
 }

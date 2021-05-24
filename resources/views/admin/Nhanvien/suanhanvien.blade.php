@@ -77,7 +77,7 @@
                                             <div class="form-group form-float">
                                                 
                                                 <div class="form-line">
-                                                    <input value="{{$edit_user->username}}" type="text" place class="form-control" name="username" required>
+                                                    <input value="{{$edit_user->username}}" disabled type="text" place class="form-control" name="username" required>
                                                     <label class="form-label">Tên đăng nhập</label>
                                                 </div>
                                                 
@@ -123,7 +123,7 @@
                                             <div style="width:400px" class="form-group form-float">
                                                 
                                                 <select  class="selective form-control" name="noiLamViec" required>
-                                                        <option value="" >Nơi làm việc</option>
+                                                        <option value="{{$edit_user->ID_Noilamviec}}" >Nơi làm việc - {{$id_Noilamviec_User->Tenchinhanh}}</option>
                                                         
                                                         @foreach($tbl_Noilamviec as $value)
                                                         <option value="{{$value->id}}">{{$value->Tenchinhanh}}</option>
@@ -136,7 +136,7 @@
                                             <div style="width:400px" class="form-group form-float">
                                                 
                                                 <select class="selective form-control" name="status" required>
-                                                        <option value="">Trạng thái hoạt động</option>
+                                                        <option value="{{$edit_user->Trangthai}}">Trạng thái hoạt động - {{$edit_user->Trangthai}}</option>
                                                         <option value="Hoạt động">Hoạt động</option>
                                                         <option value="Ngưng hoạt động">Ngưng hoạt động</option>
                                                         <option value="Tạm dừng">Tạm dừng</option>

@@ -90,7 +90,7 @@
                                             <td>{{$item->Trangthai}}</td>
                                             <td>
                                                 <a href="{{url('nhanvien/xoa/'.$item->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
-                                                <a href =""  type="button" data-toggle="modal" data-target="#fix{{$item->id}}"><i style="font-size:22px" class="material-icons">edit_calendar</i><a>
+                                                <a href ="{{url('nhanvien/sua/'.$item->id)}}"><i style="font-size:22px" class="material-icons">edit_calendar</i><a>
                                             </td>
                                         </tr>
 

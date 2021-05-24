@@ -14,6 +14,10 @@ use Excel;
 use App\Imports\UserImport;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\ThanhPho;
+use App\XaPhuong;
+use App\QuanHuyen;
+use Illuminate\Support\Facades\Validator;
 class NhanvienController extends Controller implements FromCollection, WithHeadings
 {
     public function __construct()
@@ -40,10 +44,16 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
      */
     public function create()
     {
+        
+        
+        
 
         $Id_new = DB::table('users')->max('id');
         $tbl_Noilamviec = Noilamviec::all();
-        return view('admin.Nhanvien.themnhanvien',compact('Id_new','tbl_Noilamviec'));
+        $thanhPho = ThanhPho::all();
+        
+        
+        return view('admin.Nhanvien.themnhanvien',compact('Id_new','tbl_Noilamviec','thanhPho'));
     }
 
     /**
@@ -54,6 +64,10 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'username' => ['required', 'string', 'max:255','unique:users'],
+        ]);
+        
         $nhanvien = new User();
 
         $nhanvien->Hovaten = $request->fullname;
@@ -86,9 +100,13 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function getQuanHuyen()
     {
-        //
+        $id_ThanhPho = $_POST['ID'];
+        
+        $getQuanHuyen = QuanHuyen::where('ID_Thanhpho',$id_ThanhPho)->get();
+        
+        return response()->json(['success'=>$getQuanHuyen]);
     }
 
     /**
@@ -100,9 +118,11 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
     public function getUpdate($id)
     {
         $edit_user = User::find($id);
+        $id_Noilamviec_User = Noilamviec::find($edit_user->ID_Noilamviec);
+        
         $tbl_Noilamviec = NoilamViec::all();
         
-        return view('admin.Nhanvien.suanhanvien',compact('edit_user','tbl_Noilamviec'));
+        return view('admin.Nhanvien.suanhanvien',compact('edit_user','tbl_Noilamviec','id_Noilamviec_User'));
     }
 
     /**
@@ -115,6 +135,7 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
     public function update(Request $request, $id)
     {
      
+        
         $nhanvien = User::find($id);
         $nhanvien->Hovaten = $request->fullname;
         $nhanvien->username = $request->username;

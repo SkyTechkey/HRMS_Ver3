@@ -4,8 +4,9 @@
 @endsection
 @section('css')
     <!-- Bootstrap Core Css -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="{{ asset('project_asset/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     
 
     <!-- Waves Effect Css -->
@@ -118,7 +119,38 @@
                                                 </div>
                                                
                                             </div>
+                                            <div style="width:400px" class="form-group form-float">
+                                                
+                                                <select id ="getThanhPho"  class="selective form-control" name="thanhPho" required>
+                                                        <option value="" >Tỉnh\Thành phố</option>
+                                                        @foreach($thanhPho as $value)                 
+                                                        <option  value="{{$value->id}}">{{$value->Tenthanhpho}}</option>
+                                                          
+                                                        @endforeach   
+                                                </select>
+                                                
+                                            </div>
+                                            <div  style="width:400px" class="form-group form-float">
+                                                
+                                                <select id="load_data"  class="selective form-control" name="xaPhuong" required>
+                                                        <option value="" >Quận\Huyện</option>
+                                                                         
+                                                        
+                                                        
+                                                </select>
+                                                
+                                            </div>
                                             
+                                            <div  style="width:400px" class="form-group form-float">
+                                                
+                                                <select  class="selective form-control" name="xaPhuong" required>
+                                                        <option value="" >Xã\Phường</option>
+                                                                         
+                                                        <option class ="getXaPhuong" value=""></option>
+                                                        
+                                                </select>
+                                                
+                                            </div>
                                             <div style="width:400px" class="form-group form-float">
                                                 
                                                 <select  class="selective form-control" name="noiLamViec" required>
@@ -143,7 +175,7 @@
                                                 </select>
                                                 
                                             </div>
-                                            <div class="form-group form-float">
+                                            <div style="width:400px" class="form-group form-float">
                                                 <label class="form-label">Avatar</label>
                                                 <div class="form-line">
                                                     <input type="file" place class="form-control" name="avatar" required>
@@ -197,6 +229,7 @@
     <!-- Demo Js -->
     <script src="{{ asset('project_asset/js/demo.js')}}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
     <script type="text/javascript">
         $('.delete-confirm').on('click', function (event) {
             event.preventDefault();
@@ -213,6 +246,47 @@
             });
         });
     </script>
-
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+            $('#getThanhPho').on('change',function(){
+                var idThanhPho = $(this).val();
+                
+                $.ajax({
+                    method: "POST",// phương thức dữ liệu được truyền đi
+                    url: "{{ url('/nhanvien/them/quanhuyen') }}",// gọi đến file server show_data.php để xử lý
+                    // data: $("#fr_form").serialize(),//lấy toàn thông tin các fields trong form bằng hàm serialize của jqueryinput
+                    data: {
+                        'ID': idThanhPho,
+                        _token: '{{csrf_token()}}'
+                    },
+                    success : function(response){//kết quả trả về từ server nếu gửi thành công
+                        // var data = JSON.parse(response);
+                        if (response.success) {
+                            var result = response.success;
+                            var html = '';
+                            
+                            
+                            $.map(result, function(value, index){
+                                
+                                html+=  
+                                       
+                                        
+                                        '<option value='+value['id']+' >'+value['Tenquanhuyen']+'</option>';
+                                        
+                                   
+                                            
+                            });    
+                            $('#load_data').html(html);                
+                        }           
+                        
+                        
+                        
+                    }
+                });
+            });
+            
+        });
+    </script>
 @endsection
 @endsection
