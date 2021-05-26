@@ -18,5 +18,9 @@
 <p>Quản lý nơi làm việc.<p>
 <p>Quản lý người dùng.<p>
 
+
+<p>Chỉnh sửa người dùng.</p>
+
+<p>Load quận huyện với database</p>
 ## Help
 -Ho Van Vinh - 0905 063 126

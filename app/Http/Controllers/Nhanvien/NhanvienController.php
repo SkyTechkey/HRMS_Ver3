@@ -13,6 +13,9 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Excel;
 use App\Imports\UserImport;
+use App\Models\Tinhthanh;
+use App\Models\QuanHuyen;
+use App\Models\XaPhuong;
 
 class NhanvienController extends Controller implements FromCollection, WithHeadings
 {
@@ -29,10 +32,10 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
 //           $nhanvien,
 //           $noilamviec
 //        ]);
-        $join = DB::table('users')
-            ->join('tbl_noilamviec', 'users.ID_Noilamviec', '=', 'tbl_noilamviec.id')->get();
-        dd($join);
-        return view('admin.Nhanvien.danhsach', compact('nhanvien', 'noilamviec', 'join'));
+//        $join = DB::table('users')
+//            ->join('tbl_noilamviec', 'users.ID_Noilamviec', '=', 'tbl_noilamviec.id')->get();
+//        dd($join);
+        return view('admin.Nhanvien.danhsach', compact('nhanvien', 'noilamviec'));
     }
 
     /**
@@ -42,7 +45,21 @@ class NhanvienController extends Controller implements FromCollection, WithHeadi
      */
     public function create()
     {
+        $tinhthanh = Tinhthanh::all();
+        return view('admin.Nhanvien.themnhanvien', compact('tinhthanh'));
+    }
 
+    public function getQuanHuyen(Request $request, $id)
+    {
+        $quanhuyen = Quanhuyen::where("id_tinhthanh", $id)->pluck("tenquanhuyen", "id");
+        // dd($quanhuyen);
+        return response()->json($quanhuyen);
+    }
+
+    public function getXaPhuong($id)
+    {
+        $xaphuong = XaPhuong::all()->where("id_quanhuyen", $id)->pluck("tenxaphuong", "id");
+        return response()->json($xaphuong);
     }
 
     /**

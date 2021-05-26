@@ -23,7 +23,10 @@
                             <div class="form-line">
                                 <input  type="text" class="form-control" name="ngayvaolam" value ="{{$item->Ngayvaolam}}"  required>
                             </div>
-                            <div class="demo-single-button-dropdowns">
+                            @foreach($noilamviec as $value)
+                                <button type="button" value="{{$value->id}}" onclick="alert('ID = {{$value->id}} và {{$value->Tenchinhanh}}')">{{$value->Tenchinhanh}}</button>
+                            @endforeach
+                                <div class="demo-single-button-dropdowns">
                                 <div class="form-group">
                                     <select class="selective form-control" name="id_noilamviec">
                                         <option >Chọn nơi làm việc</option>
@@ -50,4 +53,7 @@
             </div>
         </div>
     </div>
+    <script language="javascript">
+
+    </script>
 

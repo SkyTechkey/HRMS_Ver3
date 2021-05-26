@@ -51,7 +51,7 @@
                             <h2>
                                 Danh Sách Ngân Hàng Công Ty SkyTech
                                 <div style="float:right" >
-                                    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#largeModal">Thêm Nhân Viên</button>
+                                    <a class="btn btn-info btn-lg" href="{{url('/themnhanvien')}}">Thêm Nhân Viên</a>
                                     <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#Import">Import</button>
                                     <a href="{{url('xuat')}}" class="btn btn-info btn-lg">Export</a>
                                 </div>
@@ -77,7 +77,7 @@
                                     </thead>
                                     <?php $i = 1; ?>
                                     <tbody>
-                                        @foreach($join as $item)
+                                        @foreach($nhanvien as $item)
                                                 <tr>
                                                     <td><?php echo $i++; ?></td>
                                                     <td><img src="project_asset/images/image_data/{{$item->Hinhanh}}" width="100px"></td>
