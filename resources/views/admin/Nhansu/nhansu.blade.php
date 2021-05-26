@@ -44,7 +44,7 @@ Manage Role
   @if ( Session::has('success') )
     <div id='alert' data-notify="container" class="bootstrap-notify-container alert alert-dismissible alert-success p-r-35 animated fadeInDown" role="alert" data-notify-position="bottom-center" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 0.5s ease-in-out 0s; z-index: 1031; top: 77px; left: 0px; right: 0px;">
         <button type="button" aria-hidden="true" class="close" data-notify="dismiss" style="position: absolute; right: 10px; top: 5px; z-index: 1033;">×</button>
-        <span data-notify="icon"></span> 
+        <span data-notify="icon"></span>
         <span data-notify="title"></span> <span data-notify="message">{{ Session::get('success') }}</span>
         <a href="#" target="_blank" data-notify="url"></a>
     </div>
@@ -813,7 +813,7 @@ Manage Role
           @if(session('success'))
             <div class ="alert alert-danger alert-dismissible">
                 <button type="button" class="close" data-dismiss ="alert" aria-hidden="true"></button>
-                
+
                 {{session('success')}}
             </div>
           @endif
@@ -842,7 +842,7 @@ Manage Role
                                     <a class='btn btn-primary' href="{{route('ngoaingu')}}">Ngoại ngữ</a>
                                 </div>
                           </h2>
-                          
+
                       </div>
                       <div class="body">
                           <div class="table-responsive">
@@ -859,10 +859,10 @@ Manage Role
                                           <th>Chức năng</th>
                                       </tr>
                                   </thead>
-                                  
+
                                   <tbody>
                                     @foreach($listnhansu as $key => $nhansu)
-                                        
+
                                       <tr>
                                           <td>{{ $nhansu->name }}</td>
                                           <td>{{ $nhansu->role }} </td>
@@ -873,7 +873,7 @@ Manage Role
                                           <td>{{ $nhansu->ngoaingu }}</td>
                                           <td>
                                               @can('sua')
-                                              <a data-toggle="modal" data-target="#sua{{$nhansu->id}}" style='cursor: pointer'><i class="fa fa-edit"></i></a>
+                                              <a data-toggle="modal" data-target="#sua{{$nhansu->id}}" style='cursor: pointer'><i class="fa fa-edit"></i>
                                               @endcan
                                               @can('xoa')
                                               <span><a data-toggle="modal" data-target="#xoa{{$nhansu->id}}" style='cursor: pointer'><i class="fa fa-trash"></i></a></span>
@@ -934,8 +934,8 @@ Manage Role
                                                         </div>
                                                         @endforeach
                                                         </div>
-                                                    
-                                                
+
+
                                                 <div class="modal-footer">
                                                     <button type="submit" class="btn btn-link waves-effect">Lưu</button>
                                                     <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Đóng</button>
@@ -943,7 +943,7 @@ Manage Role
                                                 </form>
                                             </div>
                                         </div>
-                                            
+
                                         </div>
                                       </div>
                                       <div class="modal fade" id="xoa{{$nhansu->id}}" tabindex="-1" role="dialog">
@@ -960,7 +960,7 @@ Manage Role
                                                 </form>
                                             </div>
                                         </div>
-                                            
+
                                         </div>
                                       </div>
                                     @endforeach
@@ -1496,7 +1496,7 @@ Manage Role
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" class="form-control" id="email"  name="email" placeholder="Email" maxlength="64" required />
-                            </div>	
+                            </div>
                         <div class="form-group">
                                 <label for="role">Vai trò</label>
                                 <input type="text" class="form-control" id="role"  name="role" placeholder="Vai trò" maxlength="15" required />
@@ -1504,12 +1504,12 @@ Manage Role
                         <div class="form-group">
                                 <label for="salary">Lương</label>
                                 <input type="text" class="form-control" id="salary"  name="salary" placeholder="Lương" maxlength="15" required />
-                            </div>	
+                            </div>
                         <div class="form-group">
                                 <label for="phone">Số điện thoại</label>
                                 <input type="text" class="form-control" id="phone"  name="phone" placeholder="Số điện thoại" maxlength="15" required />
                             </div>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-link waves-effect">SAVE CHANGES</button>
@@ -1517,12 +1517,12 @@ Manage Role
                     </div>
                     </form>
                 </div>
-                
+
             </div>
         </div>
           <!-- #END# Exportable Table -->
       </div>
-      
+
   </section>
     @endsection
 @section('js')

@@ -23,7 +23,7 @@ class PhanQuyenController extends Controller
     public function getRole()
     {
         $role = Role::all();
-        return view('Admin.PhanQuyen.role',compact('role'));
+        return view('admin.Settings.QLQuyen.role',compact('role'));
     }
 
     /**
@@ -36,39 +36,23 @@ class PhanQuyenController extends Controller
         $role = new Role;
         $role->name = $request->name;
         if($role->save()){
-            
-            
 
-            return redirect('role')->with('success',__('Bạn đã thêm vai trò mới thành công'));
+            return redirect('settings/role')->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function deleteRole($id)
     {
         $role = Role::find($id);
         if(!empty($role)){
             if($role->delete()){
-                return redirect('role')->with('success',__('Đã xóa thành công vai trò'));
+                return redirect('settings/role')->with('success',__('Đã xóa dữ liệu thành công!'));
             }
         }
         else{
             return view('errors.401');
         }
-        
+
     }
 
     /**
@@ -82,8 +66,8 @@ class PhanQuyenController extends Controller
         $role = Role::find($id);
         $role->name = $request->name;
         if($role->save()){
-            
-            return redirect('role')->with('success',__('Bạn đã sửa vai trò mới thành công'));
+
+            return redirect('settings/role')->with('success',__('Bạn đã sửa vai trò mới thành công'));
         }
     }
 
@@ -115,7 +99,7 @@ class PhanQuyenController extends Controller
         $chucNang = Permission::find($id);
         $chucNang->name = $request->name;
         if($chucNang->save()){
-            
+
             return redirect('chucnang')->with('success',__('Bạn đã sửa chức năng mới thành công'));
         }
     }
@@ -137,11 +121,11 @@ class PhanQuyenController extends Controller
         else{
             return view('errors.401');
         }
-        
+
     }
 
     public function index(){
-       
+
         $role = Role::all();
         return view('admin.PhanQuyen.role_user',compact('role'));
     }
@@ -171,16 +155,16 @@ class PhanQuyenController extends Controller
                 $user->syncRoles($userRoleNew);
                 $user->save();
                 return redirect()->back()->with('success',__('Đã cập nhập thành công vai trò cho nhân viên'));
-            }  
+            }
         }
-        
+
     }
     public function editRolePermission(Request $request ,$id){
         $role = Role::find($id);
         $permission[] = $request->get('permission');
         $role->syncPermissions($permission);
         return redirect()->back()->with('success',__('Đã cập nhập thành công chức năng cho vai trò'));
-       
+
 
     }
 }

@@ -13,10 +13,10 @@
                     <a href="javascript:void(0);"><img src="{{asset('bap/logo/multicrm_logo_2.png')}}"/></a>
 
                 </div>
-                <div class="col-lg-6 col-sm-12">
+                <div class="col-lg-6 col-sm-12" >
 
 
-                    <form id="sign_up" method="POST" action="{{ route('login') }}">
+                    <form id="sign_up" method="POST" action="{{ route('login') }}" data-pjax>
 
                         @if (isset($errorMessage))
                             <span class="help-block">
@@ -74,20 +74,6 @@
 
                         </div>
 
-                            @if(config('bap.GOOGLE_RECAPTCHA_KEY'))
-                                <div class="row">
-                                    <div class="col-sm-12 text-center" >
-
-                                        @if($errors->has('g-recaptcha-response'))
-                                            <span class="help-block error-block">
-                                             <strong class="col-red">@lang('auth.invalid_captacha')</strong>
-                                            </span>
-                                        @endif
-
-                                        <div class="g-recaptcha" style="display: inline-block"  data-sitekey="{{ config('bap.GOOGLE_RECAPTCHA_KEY') }}"></div>
-                                    </div>
-                                </div>
-                            @endif
 
                         <div class="row m-t-15 m-b--20">
                             @if(config('bap.allow_registration'))
@@ -137,47 +123,9 @@
 
                     </form>
 
-                    @if(config('services.github.client_id') || config('services.twitter.client_id') || config('services.facebook.client_id')  || config('services.google.client_id'))
-                        <br/>.
-                        <div class="text-center">
-                            @if(config('services.github.client_id'))
-                                <a href="{{ url('/auth/github') }}" class="btn btn-sm btn-github"><i
-                                            class="fa fa-github"></i> Github</a>
-                            @endif
-                            @if(config('services.twitter.client_id'))
-                                <a href="{{ url('/auth/twitter') }}" class="btn btn-sm btn-twitter"><i
-                                            class="fa fa-twitter"></i> Twitter</a>
-                            @endif
-                            @if(config('services.facebook.client_id'))
-                                <a href="{{ url('/auth/facebook') }}" class="btn btn-sm btn-facebook"><i
-                                            class="fa fa-facebook"></i> Facebook</a>
-                            @endif
-
-                                @if(config('services.google.client_id'))
-                                    <a href="{{ url('/auth/google') }}" class="btn btn-sm btn-google"><i
-                                                class="fa fa-google"></i> Google</a>
-                                @endif
-                        </div>
-                    @endif
 
 
-                    @if(config('bap.allow_registration'))
-                        <div class="col-lg-12 login-sentence">
 
-                            <h4 class="text-center">@lang('auth.dont_have_account')  @lang('auth.create_account_its_free')</h4>
-                            <br/>
-                            <br/>
-                            <div class="text-center">
-                                <a class="font-bold btn bg-pink btn-md " href="{{ route('register') }}">
-                            <span class="font-25">
-                                @lang('auth.register')
-                            </span>
-
-                                </a>
-                            </div>
-
-                        </div>
-                    @endif
 
                 </div>
 
@@ -190,12 +138,32 @@
             </div>
         </div>
 
-        @if(config('bap.vectors'))
-            <div class="text-center">
-                <a class="vectors"  target="_blank" href="https://www.freepik.com">Vectors by Freepik</a>
-            </div>
-        @endif
     </div>
+    <script type="text/javascript">
+     /*   $(function(){
+      // pjax
+      $(document).pjax('submit', '#pjax-container-vinh')
+      })
+      */
+      $(document).on('pjax:error', function(event, xhr, textStatus, errorThrown, options){
+        if (xhr.status == 422) {
+            options.success(xhr.responseText, status, xhr);
+//                alert('false');
+            return false;
+        }
+    });
+
+        $(document).ready(function(){
+
+      // does current browser support PJAX
+        if ($.support.pjax) {
+        $.pjax.defaults.timeout = 2000; // time in milliseconds
+        }
+
+        });
+      </script>
+      <script type="text/javascript" src="{{ asset('js/jquery.pjax.js')}}"></script>
+      <script type="text/javascript" src="{{ asset('js/jquery.pjax.min.js')}}"></script>
 
 @endsection
 

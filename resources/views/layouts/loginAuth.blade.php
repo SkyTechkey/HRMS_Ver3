@@ -10,8 +10,8 @@ use Krucas\Settings\Facades\Settings as Settings;
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>{{ config('app.name') }}</title>
-    <!-- Favicon-->
+    <title>Phần mềm QL Nhân sự SkyTech</title>
+    <!-- Favicon {{ config('app.name') }}-->
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -26,25 +26,15 @@ use Krucas\Settings\Facades\Settings as Settings;
     <link href="https://fonts.googleapis.com/css?family=Lato:300&display=swap" rel="stylesheet">
 
     <!-- Css -->
-    
+
     <link rel="stylesheet" type="text/css" href="{{asset('bap/plugins/bootstrap/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('bap/plugins/node-waves/waves.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('bap/plugins/animate-css/animate.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('bap/scss/style.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('bap/scss/auth.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('bap/plugins/font-awesome/css/font-awesome.min.css')}}">
-    
-    @if(config('bap.google_ga'))
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id={{ config('app.google_ga') }}"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
 
-            gtag('config', '{{ config('bap.google_ga') }}');
-        </script>
-    @endif
+
 
 </head>
 
@@ -53,7 +43,7 @@ use Krucas\Settings\Facades\Settings as Settings;
 @yield('content')
 
 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+   <!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
 
     <!-- Scripts -->
     <script src="{{asset('bap/plugins/jquery/jquery.min.js')}}"></script>
@@ -62,7 +52,6 @@ use Krucas\Settings\Facades\Settings as Settings;
     <script src="{{asset('bap/js/admin.js')}}"></script>
     <script src="{{asset('bap/js/login.js')}}"></script>
     <script src="{{asset('bap/js/login.js')}}"></script>
-
 
 </body>
 </html>
