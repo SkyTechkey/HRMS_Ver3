@@ -8,6 +8,32 @@
             <li><a href="#" class="list-group-item">Tags</a></li>
 
             <li class="header">
+                <h6>DANH MỤC</h6>
+            </li>
+           <!-- @can('View.Danhmuc.Dia-chi-Hanh-Chinh') --> <!-- chú thích: các em tạo seed có quyền trên để sau này nó gọi ra -->
+                <li class="{{ Request::is(route('index.tinhthanhpho')) ? 'active' : '' }}">
+                    <a href="{{route('index.tinhthanhpho')}}" class="list-group-item">
+                        <span>QL Tỉnh/Thành phố</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is(route('index.quanhuyen')) ? 'active' : '' }}">
+                    <a href="{{route('index.quanhuyen')}}" class="list-group-item">
+                        <span>QL Quận/Huyện</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is(route('index.xaphuong')) ? 'active' : '' }}">
+                    <a href="{{route('index.xaphuong')}}" class="list-group-item">
+                        <span>QL Xã/Phường</span>
+                    </a>
+                </li>
+           <!-- @endcan -->
+            <li class="{{ Request::is('settings/role') ? 'active' : '' }}">
+                <a href="{{url('settings/role')}}" class="list-group-item">
+                    <span>Nhóm quyền</span>
+                </a>
+            </li>
+
+            <li class="header">
                 <h6>QUẢN LÝ QUYỀN</h6>
             </li>
             <li class="{{ Request::is('phanquyen') ? 'active' : '' }}">
@@ -20,6 +46,8 @@
                     <span>Nhóm quyền</span>
                 </a>
             </li>
+
+
         </ul>
 
     </div>
