@@ -103,3 +103,7 @@ Route::post('phanquyen/sua/{id}','PhanQuyen\PhanQuyenController@editRolePermissi
 
 Route::get('send-mail', 'MailController@send');
 
+# Drop down list city
+Route::get('dropdownlist','DropdownController@index');
+Route::get('get-district-list','DropdownController@getDistrictList');
+Route::get('get-ward-list','DropdownController@getWardList');

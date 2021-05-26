@@ -15,8 +15,12 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="{{asset('project_asset/js/jquery.pjax.js')}}"></script>
     <script type="text/javascript">
+            $(document).on('submit', 'form[form_validation]', function(event) {
+                $.pjax.submit(event, '#pjax-container')
+        })
         $(document).ready(function(){
             $(document).pjax('a', '#pjax-container')
+            // $(document).pjax('button', '#pjax-container')
       // does current browser support PJAX
         if ($.support.pjax) {
             $.pjax.defaults.timeout = 2000; // time in milliseconds
