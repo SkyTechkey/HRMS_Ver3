@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Ngoaingu;
+use App\Models\QuanLyNgoaiNgu;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -15,9 +15,10 @@ class NgoainguImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        $ngoaingu = new Ngoaingu();
-        $ngoaingu->id = @$row['id'];
-        $ngoaingu->TenNN_Ngoaingu = @$row['tennn_ngoaingu'];
+        $ngoaingu = new QuanLyNgoaiNgu();
+        
+        $ngoaingu->Ten_ngoaingu = @$row['ten_ngoai_ngu'];
+        $ngoaingu->Trangthai = @$row['trang_thai'];
         return $ngoaingu;
 ;
     }

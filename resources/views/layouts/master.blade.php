@@ -10,7 +10,8 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet"
+        type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -20,11 +21,12 @@
     <link href="{{ asset('bap/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,latin-ext,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,latin-ext,cyrillic-ext"
+        rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
 
-        <!-- Bootstrap Core Css -->
+    <!-- Bootstrap Core Css -->
     <link href="{{ asset('project_asset/plugins/bootstrap/css/bootstrap.css')}}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
@@ -36,7 +38,8 @@
     <link href="{{ asset('project_asset/plugins/bootstrap-select/css/bootstrap-select.css')}}" rel="stylesheet" />
 
     <!-- JQuery DataTable Css -->
-    <link href="{{ asset('project_asset/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}" rel="stylesheet">
+    <link href="{{ asset('project_asset/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}"
+        rel="stylesheet">
 
     <!-- Custom Css-->
     <link href="{{ asset('project_asset/css/style.css')}}" rel="stylesheet">
@@ -52,7 +55,7 @@
     <script type="text/javascript" src="{{ asset('bap/plugins/jquery/jquery.min.js')}}"></script>
 </head>
 
-<body class="theme-red" >
+<body class="theme-red">
     <!-- Page Loader class=theme-indigo sidebar-small -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -98,8 +101,8 @@
     </section>
     @include('layouts.bottom_js')
 
-<!-- #js footer -->
-@stack('footer-script')
+    <!-- #js footer -->
+    @stack('footer-script')
     <!-- #Dành cho Pjax
         <script>
             var csrf_token = '{{ csrf_token() }}';

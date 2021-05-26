@@ -20,6 +20,18 @@
                     <span>Nhóm quyền</span>
                 </a>
             </li>
+
+            <li class="header">
+                <h6>DOANH MỤC</h6>
+            </li>
+            @can('View.NgoaiNgu')
+            <li class="{{ Request::is('quanlyngoaingu') ? 'active' : '' }}">
+                <a href="{{route('Index.quanlyngoaingu')}}" class="list-group-item">
+                    <span>Quản lý ngoại ngữ</span>
+                </a>
+            </li>
+            @endcan
+
         </ul>
 
     </div>

@@ -97,15 +97,37 @@ class UserTableSeeder extends Seeder
 
       ]);
 */
-      $role = Role::create(['name' => 'admin']);
-      $permission = Permission::create(['name' => 'xem']);
-      $permission->assignRole($role);
-      $permission = Permission::create(['name' => 'them']);
-      $permission->assignRole($role);
-      $permission = Permission::create(['name' => 'sua']);
-      $permission->assignRole($role);
-      $permission = Permission::create(['name' => 'xoa']);
-      $permission->assignRole($role);
+        $role = Role::create(['name' => 'admin']);
+        $permission = Permission::create(['name' => 'xem']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'them']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'sua']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'xoa']);
+        $permission->assignRole($role);
+
+        // Thêm phân quyền quản trị ngoại ngữ
+        $permission = Permission::create(['name' => 'View.NgoaiNgu']);
+        $permission->assignRole($role);
+        
+        
+        $permission = Permission::create(['name' => 'Edit.NgoaiNgu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.NgoaiNgu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.NgoaiNgu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.NgoaiNgu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.NgoaiNgu']);
+        $permission->assignRole($role);
+
+    // Gán quyền cho admin
+        $user = \App\User::where('username', 'admin')->first();
+        $user->assignRole('admin');
+
+
       //$role = Role::create(['name' => 'employee']);
      // $user = \App\User::where('email', 'admin@gmail.com')->first();
     //  $user->givePermissionTo('xem', 'them', 'sua', 'xoa');

@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Ngoaingu;
+use App\Models\QuanLyNgoaingu;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class NgoainguExport implements FromCollection
@@ -12,6 +12,7 @@ class NgoainguExport implements FromCollection
     */
     public function collection()
     {
-        return Ngoaingu::all();
+        return QuanLyNgoaiNgu::all();
+        
     }
 }
