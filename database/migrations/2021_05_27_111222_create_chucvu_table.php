@@ -16,7 +16,8 @@ class CreateChucvuTable extends Migration
         Schema::create('tbl_chucvu', function (Blueprint $table) {
             $table->id();
             $table->string('Ten_chucvu');
-            $table->string('Luong');
+            $table->string('Ghichu');
+            
             $table->string('Trangthai');
             $table->timestamps();
         });

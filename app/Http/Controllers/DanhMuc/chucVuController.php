@@ -29,10 +29,11 @@ class chucVuController extends Controller
      */
     public function store(Request $request)
     {
+        
         $createChucVu = new ChucVu;
         $createChucVu->Ten_chucvu = $request->name;
         $createChucVu->Trangthai = $request->status;
-        $createChucVu->Luong = $request->luong;
+        $createChucVu->Ghichu = $request->ghichu;
         if($createChucVu->save()){
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
@@ -115,7 +116,7 @@ class chucVuController extends Controller
         $update_Chucvu = ChucVu::find($id);
         if(!empty($update_Chucvu)){
             $update_Chucvu->Ten_chucvu = $request->name;
-            $update_Chucvu->Luong = $request->luong;
+            $update_Chucvu->Ghichu = $request->ghichu;
             $update_Chucvu->Trangthai = $request->status;
             if($update_Chucvu->save()){
                 

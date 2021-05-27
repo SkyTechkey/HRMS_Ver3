@@ -100,7 +100,7 @@ Quản lý chức vụ
                             <tr>
                                 <th>Mã Chức Vụ</th>
                                 <th>Tên Chức Vụ</th>
-                                <th>Lương</th>
+                                <th>Ghi Chú</th>
                                 <th>Trạng Thái</th>
                                 <th width="10%">Chức Năng</th>
 
@@ -112,7 +112,7 @@ Quản lý chức vụ
 
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->Ten_chucvu}}</td>
-                                <td>{{$value->Luong}}</td>
+                                <td>{{$value->Ghichu}}</td>
                                 <td>{{$value->Trangthai}}</td>
                                 <td>
                                     @can('Delete.ChucVu')
@@ -164,18 +164,22 @@ Quản lý chức vụ
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Luong">Lương</label>
+                        <label for="Ghichu">Ghi chú</label>
                         <div class="form-line">
-                            <input type="text" value="{{$value->Luong}}" class="form-control" id="Luong" name="luong"
+                            <input type="text" value="{{$value->Ghichu}}" class="form-control" id="ghichu" name="ghichu"
                                 placeholder="Lương" maxlength="255" required />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="Trangthai">Trạng thái</label>
-                        <div class="form-line">
-                            <input type="text" value="{{$value->Trangthai}}" class="form-control" id="Trangthai"
-                                name="status" placeholder="Số lượng" maxlength="255" required />
-                        </div>
+                        <select name="status" class="form-control show-tick">
+                            <option value="{{$value->Trangthai}}">-- {{$value->Trangthai}} --</option>
+
+                            <option value="Hoạt động">Hoạt động</option>
+                            <option value="Tạm ngừng">Tạm ngừng</option>
+                            <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+
+                        </select>
                     </div>
 
 
@@ -209,18 +213,22 @@ Quản lý chức vụ
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Luong">Lương</label>
+                        <label for="Ghichu">Ghi chú</label>
                         <div class="form-line">
-                            <input type="text" class="form-control" id="Luong" name="luong" placeholder="Lương"
+                            <input type="text" class="form-control" id="Luong" name="ghichu" placeholder="Ghi chú"
                                 maxlength="255" required />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="Trangthai">Trạng thái</label>
-                        <div class="form-line">
-                            <input type="text" class="form-control" id="Trangthai" name="status" placeholder="Số lượng"
-                                maxlength="255" required />
-                        </div>
+                        <select name="status" class="form-control show-tick">
+                            <option value="">-- Vui lòng chọn trạng thái --</option>
+
+                            <option value="Hoạt động">Hoạt động</option>
+                            <option value="Tạm ngừng">Tạm ngừng</option>
+                            <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+
+                        </select>
                     </div>
 
 

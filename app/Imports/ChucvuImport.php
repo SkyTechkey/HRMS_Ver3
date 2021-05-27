@@ -18,7 +18,7 @@ class ChucvuImport implements ToModel, WithHeadingRow
         $chucVu = new ChucVu();
         
         $chucVu->Ten_chucvu = @$row['ten_chuc_vu'];
-        $chucVu->Luong = @$row['luong'];
+        $chucVu->Ghichu = @$row['ghi_chu'];
         $chucVu->Trangthai = @$row['trang_thai'];
         return $chucVu;
 ;
