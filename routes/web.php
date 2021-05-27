@@ -73,8 +73,28 @@ Route::middleware(['auth'])->group(function () {
         Route::get('nhansu/create', 'Quanly\QuanlyNhansuController@create')->name('nhansuCreate');
         Route::post('nhansu/create', 'Quanly\QuanlyNhansuController@store')->name('nhansuStore');
     });
-
-
+    // Quản lý tuyển dụng
+    // Quản lý chức vụ
+    Route::group(['middleware' => ['can:View.TuyenDung']], function () {
+        Route::get('settings/danhmuc/tuyendung','DanhMuc\tuyenDungController@index')->name('tuyendung.index');
+    });
+    Route::group(['middleware' => ['can:Edit.TuyenDung']], function () {
+        Route::post('settings/danhmuc/tuyendung/update/{id}','DanhMuc\tuyenDungController@update')->name('tuyendung.edit');
+    });
+    Route::group(['middleware' => ['can:Create.TuyenDung']], function () {
+        Route::post('settings/danhmuc/tuyendung/store','DanhMuc\tuyenDungController@store')->name('tuyendung.store');
+    });
+    Route::group(['middleware' => ['can:Delete.TuyenDung']], function () {
+        Route::get('settings/danhmuc/tuyendung/destroy/{id}','DanhMuc\tuyenDungController@destroy')->name('tuyendung.delete');
+        
+    });
+    Route::group(['middleware' => ['can:Import.TuyenDung']], function () {
+        Route::post('settings/danhmuc/tuyendung/import', 'DanhMuc\tuyenDungController@import')->name('tuyendung.import');
+    });
+    Route::group(['middleware' => ['can:Export.TuyenDung']], function () {
+        Route::get('settings/danhmuc/tuyendung/export', 'DanhMuc\tuyenDungController@export')->name('tuyendung.export');
+    
+    });
 
     Route::get('tongiao','Quanly\QuanlyTongiaoController@index')->name('tongiao');
     Route::post('tongiao/them','Quanly\QuanlyTongiaoController@create');
