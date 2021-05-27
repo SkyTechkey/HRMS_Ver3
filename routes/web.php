@@ -112,7 +112,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('phanquyen','PhanQuyen\PhanQuyenController@getPhanQuyen')->name('suaQuyen');
     Route::post('phanquyen/sua/{id}','PhanQuyen\PhanQuyenController@editRolePermission');
 
-
+    Route::get('/settings/danhmuc/tinhthanhpho', 'Danhmuc\TinhthanhphoController@index')->name('Index.tinhthanhpho'); //chú thích: Hiển thị danh sách
+    Route::get('/getQuanhuyen/{id}', "Danhmuc\TinhthanhphoController@getQuanhuyen")->name('getQuanhuyen'); //Hiển thị danh sách quận huyện
+    Route::get('/getXaphuong/{id}', "Danhmuc\TinhthanhphoController@getXaphuong")->name('getXaphuong'); //Hiển thị danh sách xã phường
+    Route::post('/settings/danhmuc/tinhthanhpho/themdiadanh', "Danhmuc\TinhthanhphoController@store")->name('store.tinhthanhpho'); //Thêm địa chỉ
+    Route::get('/settings/danhmuc/tinhthanhpho/xoadiadanh/{id}', "Danhmuc\TinhthanhphoController@destroy")->name('destroy.tinhthanhpho'); //Xoa địa chỉ
+    Route::post('/settings/danhmuc/tinhthanhpho/suadiadanh/{id}', "Danhmuc\TinhthanhphoController@update")->name('update.tinhthanhpho'); //Sua địa chỉ
 
 });
 
