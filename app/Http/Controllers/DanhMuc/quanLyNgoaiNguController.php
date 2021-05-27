@@ -117,10 +117,10 @@ class quanLyNgoaiNguController extends Controller
             $update_Ngoaingu->Trangthai = $request->status;
             if($update_Ngoaingu->save()){
                 
-                return with('success',__('Đã cập nhập dữ liệu thành công!'));
+                return back()->with('success',__('Đã cập nhập dữ liệu thành công!'));
             }
             else{
-                return with('error',__('Lỗi không thể cập nhập dữ liệu!'));
+                return back()->with('error',__('Lỗi không thể cập nhập dữ liệu!'));
             }
         }
         else{

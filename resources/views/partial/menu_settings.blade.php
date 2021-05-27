@@ -26,7 +26,7 @@
             </li>
             @can('View.NgoaiNgu')
             <li class="{{ Request::is('quanlyngoaingu') ? 'active' : '' }}">
-                <a href="{{route('Index.quanlyngoaingu')}}" class="list-group-item">
+                <a href="{{route('quanlyngoaingu.index')}}" class="list-group-item">
                     <span>Quản lý ngoại ngữ</span>
                 </a>
             </li>
