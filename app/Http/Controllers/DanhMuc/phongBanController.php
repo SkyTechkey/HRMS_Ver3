@@ -33,8 +33,9 @@ class phongBanController extends Controller
     {
         
         $createPhongBan = new PhongBan;
-        $createPhongBan->Ten_phongban = $request->name;       
-        $createPhongBan->Trangthai = $request->status;
+        $createPhongBan->Ten_phongban = $request->name;  
+        $createPhongBan->Ghichu = $request->ghichu;     
+        $createPhongBan->Trangthai = $request->get('status');
         $createPhongBan->Chinhanh = $request->get('chinhanh');
         if($createPhongBan->save()){
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
@@ -118,7 +119,8 @@ class phongBanController extends Controller
         $update_Phongban = PhongBan::find($id);
         if(!empty($update_Phongban)){
             $update_Phongban->Ten_phongban = $request->name;       
-            $update_Phongban->Trangthai = $request->status;
+            $update_Phongban->Trangthai = $request->get('status');
+            $update_Phongban->Ghichu = $request->ghichu;
             $update_Phongban->Chinhanh = $request->get('chinhanh');
             if($update_Phongban->save()){
                 

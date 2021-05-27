@@ -102,6 +102,7 @@ Quản lý phòng ban
                                 <th>Tên Phòng Ban</th>
                                 <th>Chi Nhánh</th>
                                 <th>Trạng Thái</th>
+                                <th>Ghi Chú</th>
                                 <th width="10%">Chức Năng</th>
 
                             </tr>
@@ -114,6 +115,7 @@ Quản lý phòng ban
                                 <td>{{$value->Ten_phongban}}</td>
                                 <td>{{$value->Chinhanh}}</td>
                                 <td>{{$value->Trangthai}}</td>
+                                <td>{{$value->Ghichu}}</td>
                                 <td>
                                     @can('Delete.PhongBan')
                                     <a href="{{route('phongban.delete',$value->id)}}" class="button delete-confirm"><i
@@ -161,6 +163,13 @@ Quản lý phòng ban
                         <div class="form-line">
                             <input type="text" value="{{$value->Ten_phongban}}" class="form-control" id="Tenphongban"
                                 name="name" placeholder="Tên phòng ban" maxlength="255" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Ghichu">Ghi chú</label>
+                        <div class="form-line">
+                            <input type="text" value="{{$value->Ghichu}}" class="form-control" id="Ghichu" name="ghichu"
+                                placeholder="Ghi chú" maxlength="255" required />
                         </div>
                     </div>
                     <div class="form-group">
@@ -214,6 +223,13 @@ Quản lý phòng ban
                         <div class="form-line">
                             <input type="text" class="form-control" id="Tenphongban" name="name"
                                 placeholder="Tên phòng ban" maxlength="255" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Ghichu">Ghi chú</label>
+                        <div class="form-line">
+                            <input type="text" class="form-control" id="Ghichu" name="ghichu" placeholder="Ghi chú"
+                                maxlength="255" required />
                         </div>
                     </div>
                     <div class="form-group">

@@ -16,6 +16,7 @@ class CreatePhongbanTable extends Migration
         Schema::create('tbl_phongban', function (Blueprint $table) {
             $table->id();
             $table->string('Ten_phongban');
+            $table->string('Ghichu');
             $table->string('Chinhanh')->nullable();
             $table->string('Trangthai');
             $table->timestamps();

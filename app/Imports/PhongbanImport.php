@@ -18,6 +18,7 @@ class PhongbanImport implements ToModel, WithHeadingRow
         $phongBan = new PhongBan();
         
         $phongBan->Ten_phongban = @$row['ten_phong_ban'];
+        $phongBan->Ghichu = @$row['ghi_chu'];
         $phongBan->Chinhanh = @$row['chi_nhanh'];
         $phongBan->Trangthai = @$row['trang_thai'];
         return $phongBan;
