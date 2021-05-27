@@ -96,23 +96,23 @@ Route::middleware(['auth'])->group(function () {
 
     // Quản lý ngoại ngữ
     Route::group(['middleware' => ['can:View.NgoaiNgu']], function () {
-        Route::get('Settings/Danhmuc/Quanlyngoaingu','DanhMuc\quanLyNgoaiNguController@index')->name('quanlyngoaingu.index');
+        Route::get('settings/danhmuc/quanlyngoaingu','DanhMuc\quanLyNgoaiNguController@index')->name('quanlyngoaingu.index');
     });
     Route::group(['middleware' => ['can:Edit.NgoaiNgu']], function () {
-        Route::post('Settings/Danhmuc/Quanlyngoaingu/update/{id}','DanhMuc\quanLyNgoaiNguController@update')->name('quanlyngoaingu.edit');
+        Route::post('settings/danhmuc/quanlyngoaingu/update/{id}','DanhMuc\quanLyNgoaiNguController@update')->name('quanlyngoaingu.edit');
     });
     Route::group(['middleware' => ['can:Create.NgoaiNgu']], function () {
-        Route::post('Settings/Danhmuc/Quanlyngoaingu/store','DanhMuc\quanLyNgoaiNguController@s')->name('quanlyngoaingu.store');
+        Route::post('settings/danhmuc/quanlyngoaingu/store','DanhMuc\quanLyNgoaiNguController@store')->name('quanlyngoaingu.store');
     });
     Route::group(['middleware' => ['can:Delete.NgoaiNgu']], function () {
-        Route::get('Settings/Danhmuc/Quanlyngoaingu/delete/{id}','DanhMuc\quanLyNgoaiNguController@delete')->name('quanlyngoaingu.delete');
-        Route::get('Settings/Danhmuc/Quanlyngoaingu/destroy','DanhMuc\quanLyNgoaiNguController@destroy')->name('quanlyngoaingu.destroyall');
+        Route::get('settings/danhmuc/quanlyngoaingu/delete/{id}','DanhMuc\quanLyNgoaiNguController@delete')->name('quanlyngoaingu.delete');
+        Route::get('settings/danhmuc/quanlyngoaingu/destroy','DanhMuc\quanLyNgoaiNguController@destroy')->name('quanlyngoaingu.destroyall');
     });
     Route::group(['middleware' => ['can:Import.NgoaiNgu']], function () {
-        Route::post('Settings/Danhmuc/Quanlyngoaingu/import', 'DanhMuc\quanLyNgoaiNguController@import')->name('quanlyngoaingu.import');
+        Route::post('settings/danhmuc/quanlyngoaingu/import', 'DanhMuc\quanLyNgoaiNguController@import')->name('quanlyngoaingu.import');
     });
     Route::group(['middleware' => ['can:Export.NgoaiNgu']], function () {
-        Route::get('Settings/Danhmuc/Quanlyngoaingu/export', 'DanhMuc\quanLyNgoaiNguController@export')->name('quanlyngoaingu.export');
+        Route::get('settings/danhmuc/quanlyngoaingu/export', 'DanhMuc\quanLyNgoaiNguController@export')->name('quanlyngoaingu.export');
     
     });
    
