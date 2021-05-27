@@ -266,7 +266,7 @@ Quản lý ngoại ngữ
 <!-- #END MODEL -->
 <!-- #JS load thông báo -->
 <script type="text/javascript">
-    $("#alert").delay(4000).slideUp(200, function () {
+    $("#slice-alert").delay(4000).slideUp(200, function () {
         $(this).alert('close');
     });
 </script>

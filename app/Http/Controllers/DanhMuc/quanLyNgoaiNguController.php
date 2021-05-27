@@ -33,10 +33,10 @@ class quanLyNgoaiNguController extends Controller
         $createNgoaiNgu->Ten_ngoaingu = $request->name;
         $createNgoaiNgu->Trangthai = $request->status;
         if($createNgoaiNgu->save()){
-            return redirect()->back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
+            return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
         else{
-            return redirect()->back()->with('error',__('Lỗi không thể thêm dữ liệu!'));
+            return back()->with('error',__('Lỗi không thể thêm dữ liệu!'));
         }
     }
 
@@ -56,11 +56,11 @@ class quanLyNgoaiNguController extends Controller
 
             
             
-                return redirect()->back()->with('success',__('Đã xóa dữ liệu thành công!'));
+                return back()->with('success',__('Đã xóa dữ liệu thành công!'));
         
             }
             else{
-                return redirect()->back()->with('error',__('Lỗi không thể xóa dữ liệu!'));
+                return back()->with('error',__('Lỗi không thể xóa dữ liệu!'));
             }
         }
         else{
@@ -92,10 +92,10 @@ class quanLyNgoaiNguController extends Controller
     {
         if (!empty(request()->file('file'))){
             Excel::import(new NgoainguImport,request()->file('file'));
-            return redirect()->back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
+            return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
         else{
-            return redirect()->back()->with('error',__('Vui lòng chọn tệp'));
+            return back()->with('error',__('Vui lòng chọn tệp'));
         }
     }
     public function export() 
@@ -117,10 +117,10 @@ class quanLyNgoaiNguController extends Controller
             $update_Ngoaingu->Trangthai = $request->status;
             if($update_Ngoaingu->save()){
                 
-                return redirect()->back()->with('success',__('Đã cập nhập dữ liệu thành công!'));
+                return with('success',__('Đã cập nhập dữ liệu thành công!'));
             }
             else{
-                return redirect()->back()->with('error',__('Lỗi không thể cập nhập dữ liệu!'));
+                return with('error',__('Lỗi không thể cập nhập dữ liệu!'));
             }
         }
         else{
