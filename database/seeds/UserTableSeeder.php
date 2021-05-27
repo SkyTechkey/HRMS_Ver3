@@ -106,6 +106,24 @@ class UserTableSeeder extends Seeder
       $permission->assignRole($role);
       $permission = Permission::create(['name' => 'xoa']);
       $permission->assignRole($role);
+
+    //   Phân Quyền Phòng Ban
+        $permission = Permission::create(['name' => 'View.PhongBan']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Edit.PhongBan']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.PhongBan']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.PhongBan']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.PhongBan']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.PhongBan']);
+        $permission->assignRole($role);
+
+    // Gán quyền cho admin
+        $user = \App\User::where('username', 'admin')->first();
+        $user->assignRole('admin');
       //$role = Role::create(['name' => 'employee']);
      // $user = \App\User::where('email', 'admin@gmail.com')->first();
     //  $user->givePermissionTo('xem', 'them', 'sua', 'xoa');

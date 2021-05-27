@@ -75,6 +75,32 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
+    // Router phân quyền phòng ban
+     // Quản lý chức vụ
+     Route::group(['middleware' => ['can:View.PhongBan']], function () {
+        Route::get('settings/danhmuc/phongban','DanhMuc\phongBanController@index')->name('phongban.index');
+    });
+    Route::group(['middleware' => ['can:Edit.PhongBan']], function () {
+        Route::post('settings/danhmuc/phongban/update/{id}','DanhMuc\phongBanController@update')->name('phongban.edit');
+    });
+    Route::group(['middleware' => ['can:Create.PhongBan']], function () {
+        Route::post('settings/danhmuc/phongban/store','DanhMuc\phongBanController@store')->name('phongban.store');
+    });
+    Route::group(['middleware' => ['can:Delete.PhongBan']], function () {
+        Route::get('settings/danhmuc/phongban/destroy/{id}','DanhMuc\phongBanController@destroy')->name('phongban.delete');
+        
+    });
+    Route::group(['middleware' => ['can:Import.PhongBan']], function () {
+        Route::post('settings/danhmuc/phongban/import', 'DanhMuc\phongBanController@import')->name('phongban.import');
+    });
+    Route::group(['middleware' => ['can:Export.PhongBan']], function () {
+        Route::get('settings/danhmuc/phongban/export', 'DanhMuc\phongBanController@export')->name('phongban.export');
+    
+    });
+
+
+
+
 
     Route::get('tongiao','Quanly\QuanlyTongiaoController@index')->name('tongiao');
     Route::post('tongiao/them','Quanly\QuanlyTongiaoController@create');
