@@ -100,6 +100,8 @@ Quản lý ngoại ngữ
                             <tr>
                                 <th>Mã Trình Độ Ngoại Ngữ</th>
                                 <th>Tên Trình Độ Ngoại Ngữ</th>
+                                <th>Ghi Chú</th>
+                                <th>Trạng Thái</th>
                                 <th width="10%">Chức Năng</th>
 
                             </tr>
@@ -110,6 +112,8 @@ Quản lý ngoại ngữ
 
                                 <td>{{$value->id}}</td>
                                 <td>{{$value->Ten_ngoaingu}}</td>
+                                <td>{{$value->Ghichu}}</td>
+                                <td>{{$value->Trangthai}}</td>
                                 <td>
                                     @can('Delete.NgoaiNgu')
                                     <a href="{{route('quanlyngoaingu.delete',$value->id)}}"
@@ -161,11 +165,22 @@ Quản lý ngoại ngữ
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Trangthai">Trạng thái</label>
+                        <label for="Ghichu">Ghi chú</label>
                         <div class="form-line">
-                            <input type="text" value="{{$value->Trangthai}}" class="form-control" id="Trangthai"
-                                name="status" placeholder="Số lượng" maxlength="255" required />
+                            <input type="text" value="{{$value->Ghichu}}" class="form-control" id="Ghichu" name="ghichu"
+                                placeholder="Ghi chú" maxlength="255" required />
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Trangthai">Trạng thái</label>
+                        <select name="status" class="form-control show-tick">
+                            <option value="{{$value->Trangthai}}">-- {{$value->Trangthai}} --</option>
+
+                            <option value="Hoạt động">Hoạt động</option>
+                            <option value="Tạm ngừng">Tạm ngừng</option>
+                            <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+
+                        </select>
                     </div>
 
 
@@ -199,11 +214,22 @@ Quản lý ngoại ngữ
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Trangthai">Trạng thái</label>
+                        <label for="Ghichu">Ghi chú</label>
                         <div class="form-line">
-                            <input type="text" class="form-control" id="Trangthai" name="status" placeholder="Số lượng"
+                            <input type="text" class="form-control" id="Ghichu" name="ghichu" placeholder="Ghi chú"
                                 maxlength="255" required />
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Trangthai">Trạng thái</label>
+                        <select name="status" class="form-control show-tick" required>
+                            <option value="">-- Vui lòng chọn trạng thái --</option>
+
+                            <option value="Hoạt động">Hoạt động</option>
+                            <option value="Tạm ngừng">Tạm ngừng</option>
+                            <option value="Ngừng hoạt động">Ngừng hoạt động</option>
+
+                        </select>
                     </div>
 
 

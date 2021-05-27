@@ -31,6 +31,7 @@ class quanLyNgoaiNguController extends Controller
     {
         $createNgoaiNgu = new QuanLyNgoaiNgu;
         $createNgoaiNgu->Ten_ngoaingu = $request->name;
+        $createNgoaiNgu->Ghichu = $request->ghichu;
         $createNgoaiNgu->Trangthai = $request->status;
         if($createNgoaiNgu->save()){
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
@@ -114,6 +115,7 @@ class quanLyNgoaiNguController extends Controller
         $update_Ngoaingu = QuanLyNgoaiNgu::find($id);
         if(!empty($update_Ngoaingu)){
             $update_Ngoaingu->Ten_ngoaingu = $request->name;
+            $update_Ngoaingu->Ghichu = $request->ghichu;
             $update_Ngoaingu->Trangthai = $request->status;
             if($update_Ngoaingu->save()){
                 

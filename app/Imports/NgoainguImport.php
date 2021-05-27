@@ -18,6 +18,7 @@ class NgoainguImport implements ToModel, WithHeadingRow
         $ngoaingu = new QuanLyNgoaiNgu();
         
         $ngoaingu->Ten_ngoaingu = @$row['ten_ngoai_ngu'];
+        $ngoaingu->Ghichu = @$row['ghi_chu'];
         $ngoaingu->Trangthai = @$row['trang_thai'];
         return $ngoaingu;
 ;

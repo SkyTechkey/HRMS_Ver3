@@ -16,6 +16,7 @@ class CreateTrinhdongoainguTable extends Migration
         Schema::create('tbl_trinhdongoaingu', function (Blueprint $table) {
             $table->id();
             $table->string('Ten_ngoaingu')->nullable();
+            $table->string('Ghichu')->nullable();
             $table->string('Trangthai')->nullable();
             $table->timestamps();
         });
