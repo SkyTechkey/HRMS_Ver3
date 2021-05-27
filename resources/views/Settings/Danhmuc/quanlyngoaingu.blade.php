@@ -85,11 +85,7 @@ Quản lý ngoại ngữ
                             Danh
                             Sách</a>
                         @endcan
-                        @can('Delete.NgoaiNgu')
-                        <a href="{{route('quanlyngoaingu.destroyall')}}"
-                            class="btn btn-info btn-lg button delete-all">Xóa
-                            Tất Cả</a>
-                        @endcan
+
                         @can('Create.NgoaiNgu')
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Tạo
                             Mới</button>

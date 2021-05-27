@@ -47,7 +47,7 @@ class quanLyNgoaiNguController extends Controller
      * @return \Illuminate\Http\Response
      */
     
-    public function delete($id)
+    public function destroy($id)
     {
         $deleteNgoaiNgu = QuanLyNgoaiNgu::find($id);
         
@@ -135,15 +135,5 @@ class quanLyNgoaiNguController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
-    {
-        $destroyAll = QuanLyNgoaiNgu::all();
-        if($destroyAll){
-            QuanLyNgoaiNgu::whereNotNull('id')->delete();
-            return redirect()->back()->with('success',__('Đã xóa tất cả dữ liệu thành công!'));
-        }
-        else{
-            return view('errors.401');
-        }
-    }
+    
 }

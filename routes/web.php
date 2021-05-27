@@ -105,8 +105,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('settings/danhmuc/quanlyngoaingu/store','DanhMuc\quanLyNgoaiNguController@store')->name('quanlyngoaingu.store');
     });
     Route::group(['middleware' => ['can:Delete.NgoaiNgu']], function () {
-        Route::get('settings/danhmuc/quanlyngoaingu/delete/{id}','DanhMuc\quanLyNgoaiNguController@delete')->name('quanlyngoaingu.delete');
-        Route::get('settings/danhmuc/quanlyngoaingu/destroy','DanhMuc\quanLyNgoaiNguController@destroy')->name('quanlyngoaingu.destroyall');
+        Route::get('settings/danhmuc/quanlyngoaingu/destroy/{id}','DanhMuc\quanLyNgoaiNguController@destroy')->name('quanlyngoaingu.delete');
+        
     });
     Route::group(['middleware' => ['can:Import.NgoaiNgu']], function () {
         Route::post('settings/danhmuc/quanlyngoaingu/import', 'DanhMuc\quanLyNgoaiNguController@import')->name('quanlyngoaingu.import');
