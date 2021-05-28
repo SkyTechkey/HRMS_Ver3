@@ -106,6 +106,38 @@ class UserTableSeeder extends Seeder
       $permission->assignRole($role);
       $permission = Permission::create(['name' => 'xoa']);
       $permission->assignRole($role);
+        
+      // Thêm phân quyền quản trị tỉnh thành
+        $permission = Permission::create(['name' => 'View.TinhThanh']);
+        $permission->assignRole($role);
+        
+        
+        $permission = Permission::create(['name' => 'Edit.TinhThanh']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.TinhThanh']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.TinhThanh']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.TinhThanh']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.TinhThanh']);
+        $permission->assignRole($role);
+        
+        // Thêm phân quyền quản trị nơi làm việc
+        $permission = Permission::create(['name' => 'View.NoiLamViec']);
+        $permission->assignRole($role);
+        
+        
+        $permission = Permission::create(['name' => 'Edit.NoiLamViec']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.NoiLamViec']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.NoiLamViec']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.NoiLamViec']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.NoiLamViec']);
+        $permission->assignRole($role);
       //$role = Role::create(['name' => 'employee']);
      // $user = \App\User::where('email', 'admin@gmail.com')->first();
     //  $user->givePermissionTo('xem', 'them', 'sua', 'xoa');
