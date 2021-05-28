@@ -119,5 +119,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/settings/danhmuc/tinhthanhpho/xoadiadanh/{id}', "Danhmuc\TinhthanhphoController@destroy")->name('destroy.tinhthanhpho'); //Xoa địa chỉ
     Route::post('/settings/danhmuc/tinhthanhpho/suadiadanh/{id}', "Danhmuc\TinhthanhphoController@update")->name('update.tinhthanhpho'); //Sua địa chỉ
 
+
+    Route::get('/settings/danhmuc/noilamviec', "Noilamviec\NoilamviecController@index")->name('index.noilamviec'); //Hien thi danh sach
+    Route::post('/settings/danhmuc/noilamviec/them', "Noilamviec\NoilamviecController@store")->name('store.noilamviec'); //Them noi lam viec
+    Route::post('/settings/danhmuc/noilamviec/sua/{id}', "Noilamviec\NoilamviecController@update")->name('update.noilamviec'); //Sua noi lam viec
+    Route::get('/settings/danhmuc/noilamviec/xoa/{id}', "Noilamviec\NoilamviecController@destroy")->name('destroy.noilamviec.{id}'); //Sua noi lam viec
+
 });
 

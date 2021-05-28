@@ -104,9 +104,15 @@ class TinhthanhphoController extends Controller
      */
     public function destroy($id)
     {
-        $id = DiaDanh::find($id)->delete();
-
-        return back();
+        
+        $tinhthanh = DiaDanh::find($id);
+        if(count($tinhthanh->noilamviec) > 0){
+            return back()->with('success',__('Lỗi không thể xóa dữ liệu!'));
+        }else
+            {
+                $tinhthanh->delete();
+                return  back()->with('error',__('Đã xóa dữ liệu thành công! '));
+        }
     }
 
     public function getQuanHuyen($id)

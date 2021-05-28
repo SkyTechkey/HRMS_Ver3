@@ -7,7 +7,7 @@
                     <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THIÊM MỚI THIẾT BỊ</h4>
             </div>
             <div class="modal-body">
-                <form action="{{url('/themdiadanh')}}" method="post">
+                <form action="{{route('store.tinhthanhpho')}}" method="post">
                     <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}"/>
                     <div class="form-group">
                             <div class="col-sm-4">

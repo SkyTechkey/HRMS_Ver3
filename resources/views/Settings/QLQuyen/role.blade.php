@@ -1,4 +1,4 @@
-@extends('admin.Settings.settings')
+@extends('Settings.settings')
 @section('title')
     Vai trò
 @endsection

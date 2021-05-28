@@ -32,6 +32,16 @@
                     <span>Nhóm quyền</span>
                 </a>
             </li>
+            <li class="{{ Request::is('index.noilamviec') ? 'active' : '' }}">
+                <a href="{{route ('index.noilamviec')}}" class="list-group-item">
+                    <span>Nơi làm việc</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('index.Index.tinhthanhpho') ? 'active' : '' }}">
+                <a href="{{route ('Index.tinhthanhpho')}}" class="list-group-item">
+                    <span>Tỉnh/Thành phố</span>
+                </a>
+            </li>
 
             <li class="header">
                 <h6>QUẢN LÝ QUYỀN</h6>

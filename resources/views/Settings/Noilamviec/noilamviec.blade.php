@@ -1,6 +1,6 @@
 @extends('Settings.settings')
 @section('title')
-    Tinh/Thành phố
+    Nơi làm việc
 @endsection
 @section('css')
 @endsection
@@ -36,9 +36,12 @@
                         <h2>
                             Danh sách Nhóm quyền
                             <div style="float:right" >
-                                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#create">Thêm địa chỉ</button>
+
+                            <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#myModal">Thêm mới</button>
                             </div>
                         </h2>
+
+
 
                     </div>
                     <div  class="body">
@@ -46,35 +49,37 @@
                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                 <thead>
                                     <tr>
-                                        <th>STT</th>
-                                        <th>Tinh/Thành phố</th>
-                                        <th>Quận/Huyện</th>
-                                        <th>Xã/Phường</th>
-                                        <th>Chức năng</th>
+                                        <th>ID</th>
+                                        <th>Nơi làm việc</th>
+                                        <th>Địa chỉ</th>
+                                        <th width="10%" >Chức Năng</th>
                                     </tr>
-                                    </thead>
-                                    <?php $i = 1; ?>
-                                    <tbody>
-                                        @foreach($diadanh as $item)
-                                                <tr>
-                                                    <td><?php echo $i++; ?></td>
-                                                    <td>{{$item->tinhthanh->tentinhthanh}}</td>
-                                                    <td>{{$item->quanhuyen->tenquanhuyen}}</td>
-                                                    <td>{{$item->xaphuong->tenxaphuong}}</td>
-                                                    <td>
-                                                        <a href="{{url('settings/danhmuc/tinhthanhpho/xoadiadanh/'.$item->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
-                                                        <a href ="" data-toggle="modal" data-target="#fix{{$item->id}}">
-                                                            <i style="font-size:22px" class="material-icons">edit_calendar</i>
-                                                            <a>
-                                                    </td>
-                                                </tr>
-                                        @endforeach
-                                    </tbody>
+                                </thead>
+
+                                <tbody>
+                                    @foreach($noilamviec as $item)
+                                    <tr>
+
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->Tenchinhanh}}</td>
+                                        <td>
+                                            {{$item->diachi->tinhthanh->tentinhthanh}}, 
+                                            {{$item->diachi->quanhuyen->tenquanhuyen}}, 
+                                            {{$item->diachi->xaphuong->tenxaphuong}}
+                                        </td>
+                                        <td>
+                                        <a href="{{url('/settings/danhmuc/noilamviec/xoa/'.$item->id)}}"  class="button delete-confirm"><i style="font-size:22px" class="material-icons">delete_forever</i></a>
+                                        <a href="" type="button" data-toggle="modal" data-target="#fix{{$item->id}}"><i style="font-size:22px" class="material-icons">edit_calendar</i><a>
+                                        </td>
+
+                                    </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
                     <!-- Thêm phòng ban Modal -->
-                   @include('Settings.Danhmuc.them_sua');
+                   @include('Settings.Noilamviec.them_sua');
                 </div>
             </div>
         </div>
@@ -114,4 +119,3 @@
 @endpush
 
 @endsection
-

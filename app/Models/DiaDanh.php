@@ -19,4 +19,8 @@ class DiaDanh extends Model
     public function xaphuong() {
         return $this->belongsTo('App\Models\XaPhuong', 'id_xaphuong', 'id');
     }
+
+    public function noilamviec() {
+        return $this->hasMany('App\Models\Noilamviec', 'Id_Diachi', 'id');
+    }
 }

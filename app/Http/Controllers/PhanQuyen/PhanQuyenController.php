@@ -23,7 +23,7 @@ class PhanQuyenController extends Controller
     public function getRole()
     {
         $role = Role::all();
-        return view('admin.Settings.QLQuyen.role',compact('role'));
+        return view('Settings.QLQuyen.role',compact('role'));
     }
 
     /**
@@ -127,12 +127,12 @@ class PhanQuyenController extends Controller
     public function index(){
 
         $role = Role::all();
-        return view('admin.PhanQuyen.role_user',compact('role'));
+        return view('PhanQuyen.role_user',compact('role'));
     }
     public function getListRoleUser(){
         $user = User::all();
         $role = Role::all();
-        return view('admin.PhanQuyen.list_user_role',compact('user','role'));
+        return view('PhanQuyen.list_user_role',compact('user','role'));
     }
 
     public function postEditRoleUser(Request $request, $id){
