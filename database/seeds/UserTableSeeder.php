@@ -99,6 +99,7 @@ class UserTableSeeder extends Seeder
       ]);
 */
 <<<<<<< HEAD
+<<<<<<< HEAD
       $role = Role::create(['name' => 'admin']);
       $permission = Permission::create(['name' => 'xem']);
       $permission->assignRole($role);
@@ -162,6 +163,8 @@ class UserTableSeeder extends Seeder
         $permission->assignRole($role);
 >>>>>>> origin/QuanLyTinhThanh-NoiLamViec-ChiNhanh-Nhieu
 =======
+=======
+>>>>>>> origin/QuanLyChucVu_Viet
         $role = Role::create(['name' => 'admin']);
         $permission = Permission::create(['name' => 'xem']);
         $permission->assignRole($role);
@@ -171,6 +174,7 @@ class UserTableSeeder extends Seeder
         $permission->assignRole($role);
         $permission = Permission::create(['name' => 'xoa']);
         $permission->assignRole($role);
+<<<<<<< HEAD
 
         // Thêm phân quyền quản trị ngoại ngữ
         $permission = Permission::create(['name' => 'View.NgoaiNgu']);
@@ -201,17 +205,34 @@ class UserTableSeeder extends Seeder
         $permission->assignRole($role);
         $permission = Permission::create(['name' => 'Export.PhongBan']);
 >>>>>>> origin/QuanLyPhongBan_Viet
+=======
+      
+        $permission = Permission::create(['name' => 'View.ChucVu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Edit.ChucVu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.ChucVu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.ChucVu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.ChucVu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.ChucVu']);
+>>>>>>> origin/QuanLyChucVu_Viet
         $permission->assignRole($role);
 
     // Gán quyền cho admin
         $user = \App\User::where('username', 'admin')->first();
         $user->assignRole('admin');
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 >>>>>>> origin/QuanLyNgoaiNgu_Viet
 =======
 >>>>>>> origin/QuanLyPhongBan_Viet
+=======
+>>>>>>> origin/QuanLyChucVu_Viet
       //$role = Role::create(['name' => 'employee']);
      // $user = \App\User::where('username', 'admin')->first();
     //  $user->givePermissionTo('xem', 'them', 'sua', 'xoa');

@@ -103,6 +103,37 @@ Route::middleware(['auth'])->group(function () {
 
 
 
+
+
+
+     // Quản lý chức vụ
+     Route::group(['middleware' => ['can:View.ChucVu']], function () {
+        Route::get('settings/danhmuc/chucvu','DanhMuc\chucVuController@index')->name('chucvu.index');
+    });
+    Route::group(['middleware' => ['can:Edit.ChucVu']], function () {
+        Route::post('settings/danhmuc/chucvu/update/{id}','DanhMuc\chucVuController@update')->name('chucvu.edit');
+    });
+    Route::group(['middleware' => ['can:Create.ChucVu']], function () {
+        Route::post('settings/danhmuc/chucvu/store','DanhMuc\chucVuController@store')->name('chucvu.store');
+    });
+    Route::group(['middleware' => ['can:Delete.ChucVu']], function () {
+        Route::get('settings/danhmuc/chucvu/destroy/{id}','DanhMuc\chucVuController@destroy')->name('chucvu.delete');
+        
+    });
+    Route::group(['middleware' => ['can:Import.ChucVu']], function () {
+        Route::post('settings/danhmuc/chucvu/import', 'DanhMuc\chucVuController@import')->name('chucvu.import');
+    });
+    Route::group(['middleware' => ['can:Export.ChucVu']], function () {
+        Route::get('settings/danhmuc/chucvu/export', 'DanhMuc\chucVuController@export')->name('chucvu.export');
+    
+    });
+
+
+
+
+
+
+
     Route::get('tongiao','Quanly\QuanlyTongiaoController@index')->name('tongiao');
     Route::post('tongiao/them','Quanly\QuanlyTongiaoController@create');
     Route::get('tongiao/xoa/{id}','Quanly\QuanlyTongiaoController@destroy');
