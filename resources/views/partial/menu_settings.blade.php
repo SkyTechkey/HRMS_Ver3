@@ -27,6 +27,7 @@
                     </a>
                 </li>
            <!-- @endcan -->
+<<<<<<< HEAD
 
            @can('View.Role')
                 <li class="header">
@@ -43,6 +44,40 @@
                     </a>
                 </li>
             @endcan
+=======
+            <li class="{{ Request::is('settings/role') ? 'active' : '' }}">
+                <a href="{{url('settings/role')}}" class="list-group-item">
+                    <span>Nhóm quyền</span>
+                </a>
+            </li>
+            @can(View.NoiLamViec)
+            <li class="{{ Request::is('index.noilamviec') ? 'active' : '' }}">
+                <a href="{{route ('index.noilamviec')}}" class="list-group-item">
+                    <span>Nơi làm việc</span>
+                </a>
+            </li>
+            @endcan
+            @can(View.TinhThanh)
+            <li class="{{ Request::is('index.Index.tinhthanhpho') ? 'active' : '' }}">
+                <a href="{{route ('Index.tinhthanhpho')}}" class="list-group-item">
+                    <span>Tỉnh/Thành phố</span>
+                </a>
+            </li>
+            @endcan
+            <li class="header">
+                <h6>QUẢN LÝ QUYỀN</h6>
+            </li>
+            <li class="{{ Request::is('phanquyen') ? 'active' : '' }}">
+                <a href="{{url('phanquyen')}}" class="list-group-item">
+                    <span>Bảng Phân Quyền</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('settings/role') ? 'active' : '' }}">
+                <a href="{{url('settings/role')}}" class="list-group-item">
+                    <span>Nhóm quyền</span>
+                </a>
+            </li>
+>>>>>>> origin/QuanLyTinhThanh-NoiLamViec-ChiNhanh-Nhieu
 
 
         </ul>

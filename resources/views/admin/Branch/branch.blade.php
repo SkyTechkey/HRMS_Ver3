@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('Settings.settings')
 
 @section('title')
     Chi nhánh
