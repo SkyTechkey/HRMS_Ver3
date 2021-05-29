@@ -77,8 +77,22 @@
                     <span>Nhóm quyền</span>
                 </a>
             </li>
+<<<<<<< HEAD
 >>>>>>> origin/QuanLyTinhThanh-NoiLamViec-ChiNhanh-Nhieu
 
+=======
+
+            <li class="header">
+                <h6>DOANH MỤC</h6>
+            </li>
+            @can('View.NgoaiNgu')
+            <li class="{{ Request::is('quanlyngoaingu') ? 'active' : '' }}">
+                <a href="{{route('quanlyngoaingu.index')}}" class="list-group-item">
+                    <span>Quản lý ngoại ngữ</span>
+                </a>
+            </li>
+            @endcan
+>>>>>>> origin/QuanLyNgoaiNgu_Viet
 
         </ul>
 

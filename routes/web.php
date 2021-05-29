@@ -93,13 +93,38 @@ Route::middleware(['auth'])->group(function () {
     Route::get('quoctich/export', 'Quanly\QuanlyQuoctichController@export')->name('QuoctichExport');
     Route::post('quoctich/import', 'Quanly\QuanlyQuoctichController@import')->name('QuoctichImport');
 
-    Route::get('ngoaingu','Quanly\QuanlyNgoainguController@index')->name('ngoaingu');
-    Route::post('ngoaingu/them','Quanly\QuanlyNgoainguController@create');
-    Route::get('ngoaingu/xoa/{id}','Quanly\QuanlyNgoainguController@destroy');
-    Route::get('ngoaingu/xoaAll','Quanly\QuanlyNgoainguController@destroyAll');
-    Route::post('ngoaingu/sua/{id}','Quanly\QuanlyNgoainguController@edit');
-    Route::get('ngoaingu/export', 'Quanly\QuanlyNgoainguController@export')->name('NgoainguExport');
-    Route::post('ngoaingu/import', 'Quanly\QuanlyNgoainguController@import')->name('NgoainguImport');
+
+
+    // Quản lý ngoại ngữ
+    Route::group(['middleware' => ['can:View.NgoaiNgu']], function () {
+        Route::get('settings/danhmuc/quanlyngoaingu','DanhMuc\quanLyNgoaiNguController@index')->name('quanlyngoaingu.index');
+    });
+    Route::group(['middleware' => ['can:Edit.NgoaiNgu']], function () {
+        Route::post('settings/danhmuc/quanlyngoaingu/update/{id}','DanhMuc\quanLyNgoaiNguController@update')->name('quanlyngoaingu.edit');
+    });
+    Route::group(['middleware' => ['can:Create.NgoaiNgu']], function () {
+        Route::post('settings/danhmuc/quanlyngoaingu/store','DanhMuc\quanLyNgoaiNguController@store')->name('quanlyngoaingu.store');
+    });
+    Route::group(['middleware' => ['can:Delete.NgoaiNgu']], function () {
+        Route::get('settings/danhmuc/quanlyngoaingu/destroy/{id}','DanhMuc\quanLyNgoaiNguController@destroy')->name('quanlyngoaingu.delete');
+        
+    });
+    Route::group(['middleware' => ['can:Import.NgoaiNgu']], function () {
+        Route::post('settings/danhmuc/quanlyngoaingu/import', 'DanhMuc\quanLyNgoaiNguController@import')->name('quanlyngoaingu.import');
+    });
+    Route::group(['middleware' => ['can:Export.NgoaiNgu']], function () {
+        Route::get('settings/danhmuc/quanlyngoaingu/export', 'DanhMuc\quanLyNgoaiNguController@export')->name('quanlyngoaingu.export');
+    
+    });
+   
+   
+
+    
+    
+
+
+
+
 
     Route::get('chucnang','PhanQuyen\PhanQuyenController@getChucNang');
     Route::post('chucnang/them','PhanQuyen\PhanQuyenController@createChucNang');

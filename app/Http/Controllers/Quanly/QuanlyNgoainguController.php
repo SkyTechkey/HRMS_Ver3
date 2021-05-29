@@ -12,8 +12,7 @@ use App\Imports\NgoainguImport;
 class QuanlyNgoainguController extends Controller
 {
     public function index(Request $request){
-		# $request->user()->authorizeRoles(['admin']);
-				$ngoaingus = Ngoaingu::all();
+		    $list_trinhDoNgoaiNgu = Ngoaingu::all();
 	      return view('admin.Nhansu.ngoaingu', compact('ngoaingus'));
     }
     public function create(Request $request){
@@ -39,14 +38,14 @@ class QuanlyNgoainguController extends Controller
 		}
 
         public function destroyAll(){
-			$ngoaingus = Ngoaingu::All();
-            if($ngoaingus){
-                Ngoaingu::whereNotNull('id')->delete();
-                return redirect('ngoaingu')->with('success',__('Thành công'));
-        }
-        else{
-            return view('errors.401');
-        }
+                $ngoaingus = Ngoaingu::All();
+                if($ngoaingus){
+                    Ngoaingu::whereNotNull('id')->delete();
+                    return redirect('ngoaingu')->with('success',__('Thành công'));
+            }
+            else{
+                return view('errors.401');
+            }
 		}
 
 		public function edit($id, Request $request)
