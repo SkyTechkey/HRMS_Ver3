@@ -107,6 +107,7 @@ class UserTableSeeder extends Seeder
       $permission = Permission::create(['name' => 'xoa']);
       $permission->assignRole($role);
 
+<<<<<<< HEAD
     //   Phân Quyền Phòng Ban
         $permission = Permission::create(['name' => 'View.PhongBan']);
         $permission->assignRole($role);
@@ -124,6 +125,25 @@ class UserTableSeeder extends Seeder
     // Gán quyền cho admin
         $user = \App\User::where('username', 'admin')->first();
         $user->assignRole('admin');
+=======
+      //   Phân Quyền Phòng Ban
+      $permission = Permission::create(['name' => 'View.TuyenDung']);
+      $permission->assignRole($role);
+      $permission = Permission::create(['name' => 'Edit.TuyenDung']);
+      $permission->assignRole($role);
+      $permission = Permission::create(['name' => 'Delete.TuyenDung']);
+      $permission->assignRole($role);
+      $permission = Permission::create(['name' => 'Create.TuyenDung']);
+      $permission->assignRole($role);
+      $permission = Permission::create(['name' => 'Import.TuyenDung']);
+      $permission->assignRole($role);
+      $permission = Permission::create(['name' => 'Export.TuyenDung']);
+      $permission->assignRole($role);
+
+  // Gán quyền cho admin
+      $user = \App\User::where('username', 'admin')->first();
+      $user->assignRole('admin');
+>>>>>>> origin/QuanLyTuyenDung_Viet
       //$role = Role::create(['name' => 'employee']);
      // $user = \App\User::where('email', 'admin@gmail.com')->first();
     //  $user->givePermissionTo('xem', 'them', 'sua', 'xoa');
