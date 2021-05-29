@@ -52,6 +52,7 @@ class UserTableSeeder extends Seeder
             'Email' => 'vinh.hvdn@gmail.com',
             'Socmnd' => '212618080',
             'NgaycapCMND' => '2021/03/16',
+            
             'NoicapCMND' => 'Da Nang',
             'Ngaysinh' => '1989/11/20',
             'ID_Phongban' => 1,
