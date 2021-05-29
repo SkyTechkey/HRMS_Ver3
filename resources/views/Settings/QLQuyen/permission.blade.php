@@ -1,7 +1,7 @@
 @extends('layouts.master')
 <!-- # Nội dung tiêu đề -->
 @section('title')
-Quản lý ngoại ngữ
+Quản lý chức năng
 @endsection
 <!-- #END tiêu đề -->
 <!-- # Nội dung CSS, js bổ sung -->
@@ -74,19 +74,19 @@ Quản lý ngoại ngữ
             <div class="header">
 
                 <h2>
-                    Danh Sách Trình Độ Ngoại Ngữ
+                    Danh Sách Chức Năng
                     <div style="float:right">
-                        @can('Import.NgoaiNgu')
+                        @can('Import.Permission')
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
                             data-target="#importModal">Nhập từ dữ liệu excel</button>
                         @endcan
-                        @can('Export.NgoaiNgu')
-                        <a href="{{route('quanlyngoaingu.export')}}" class="btn btn-info btn-lg">Xuất
+                        @can('Export.Permission')
+                        <a href="{{route('permission.export')}}" class="btn btn-info btn-lg">Xuất
                             Danh
                             Sách</a>
                         @endcan
 
-                        @can('Create.NgoaiNgu')
+                        @can('Create.Permission')
                         <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Tạo
                             Mới</button>
                         @endcan
@@ -98,10 +98,8 @@ Quản lý ngoại ngữ
                     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                         <thead>
                             <tr>
-                                <th>Mã Trình Độ Ngoại Ngữ</th>
-                                <th>Tên Trình Độ Ngoại Ngữ</th>
-                                <th>Ghi Chú</th>
-                                <th>Trạng Thái</th>
+                                <th>Mã Chức Năng</th>
+                                <th>Tên Chức Năng </th>
                                 <th width="10%">Chức Năng</th>
 
                             </tr>
@@ -111,17 +109,15 @@ Quản lý ngoại ngữ
                             <tr>
 
                                 <td>{{$value->id}}</td>
-                                <td>{{$value->Ten_ngoaingu}}</td>
-                                <td>{{$value->Ghichu}}</td>
-                                <td>{{$value->Trangthai}}</td>
+                                <td>{{$value->name}}</td>
+
                                 <td>
-                                    @can('Delete.NgoaiNgu')
-                                    <a href="{{route('quanlyngoaingu.delete',$value->id)}}"
-                                        class="button delete-confirm"><i style="font-size:22px"
-                                            class="material-icons">delete_forever</i></a>
+                                    @can('Delete.Permission')
+                                    <a href="{{route('permission.delete',$value->id)}}" class="button delete-confirm"><i
+                                            style="font-size:22px" class="material-icons">delete_forever</i></a>
                                     @endcan
 
-                                    @can('Edit.NgoaiNgu')
+                                    @can('Edit.Permission')
                                     <a href="" type="button" data-toggle="modal" data-target="#fix{{$value->id}}"><i
                                             style="font-size:22px" class="material-icons">edit_calendar</i><a>
                                             @endcan
@@ -151,37 +147,20 @@ Quản lý ngoại ngữ
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP NGOẠI NGỮ</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP QUYỀN</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('quanlyngoaingu.edit',$value->id) }}" method="post">
+                <form action="{{ route('permission.edit',$value->id) }}" method="post">
                     @csrf
 
                     <div class="form-group">
-                        <label for="Tenngoaingu">Tên ngoại ngữ</label>
+                        <label for="Tenchucnang">Tên chức năng</label>
                         <div class="form-line">
-                            <input type="text" value="{{$value->Ten_ngoaingu}}" class="form-control" id="Tenngoaingu"
-                                name="name" placeholder="Tên ngoại ngữ" maxlength="255" required />
+                            <input type="text" value="{{$value->name}}" class="form-control" id="Tenchucnang"
+                                name="name" placeholder="Tên chức năng" maxlength="255" required />
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="Ghichu">Ghi chú</label>
-                        <div class="form-line">
-                            <input type="text" value="{{$value->Ghichu}}" class="form-control" id="Ghichu" name="ghichu"
-                                placeholder="Ghi chú" maxlength="255" required />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Trangthai">Trạng thái</label>
-                        <select name="status" class="form-control show-tick">
-                            <option value="{{$value->Trangthai}}">-- {{$value->Trangthai}} --</option>
 
-                            <option value="Hoạt động">Hoạt động</option>
-                            <option value="Tạm ngừng">Tạm ngừng</option>
-                            <option value="Ngừng hoạt động">Ngừng hoạt động</option>
-
-                        </select>
-                    </div>
 
 
             </div>
@@ -200,36 +179,18 @@ Quản lý ngoại ngữ
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI NGOẠI NGỮ</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI CHỨC NĂNG</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('quanlyngoaingu.store') }}" method="post">
+                <form action="{{ route('permission.store') }}" method="post">
                     @csrf
 
                     <div class="form-group">
-                        <label for="Tenngoaingu">Tên ngoại ngữ</label>
+                        <label for="Tenchucnang">Tên chức năng</label>
                         <div class="form-line">
-                            <input type="text" class="form-control" id="Tenngoaingu" name="name"
-                                placeholder="Tên ngoại ngữ" maxlength="255" required />
+                            <input type="text" class="form-control" id="Tenchucnang" name="name"
+                                placeholder="Tên chức năng" maxlength="255" required />
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Ghichu">Ghi chú</label>
-                        <div class="form-line">
-                            <input type="text" class="form-control" id="Ghichu" name="ghichu" placeholder="Ghi chú"
-                                maxlength="255" required />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Trangthai">Trạng thái</label>
-                        <select name="status" class="form-control show-tick" required>
-                            <option value="">-- Vui lòng chọn trạng thái --</option>
-
-                            <option value="Hoạt động">Hoạt động</option>
-                            <option value="Tạm ngừng">Tạm ngừng</option>
-                            <option value="Ngừng hoạt động">Ngừng hoạt động</option>
-
-                        </select>
                     </div>
 
 
@@ -248,11 +209,11 @@ Quản lý ngoại ngữ
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI NGOẠI NGỮ</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI CHỨC NĂNG</h4>
             </div>
             <div class="card bg-light mt-3">
                 <div class="card-body">
-                    <form action="{{ route('quanlyngoaingu.import') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('permission.import') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="file" name="file" class="form-control">
                         <br>

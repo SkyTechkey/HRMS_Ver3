@@ -12,12 +12,17 @@
             </li>
             <li class="{{ Request::is('phanquyen') ? 'active' : '' }}">
                 <a href="{{url('phanquyen')}}" class="list-group-item">
-                    <span>Bảng Phân Quyền</span>
+                    <span>Bảng phân quyền</span>
                 </a>
             </li>
-            <li class="{{ Request::is('settings/role') ? 'active' : '' }}">
-                <a href="{{url('settings/role')}}" class="list-group-item">
+            <li class="{{ Request::is('role') ? 'active' : '' }}">
+                <a href="{{route('role.index')}}" class="list-group-item">
                     <span>Nhóm quyền</span>
+                </a>
+            </li>
+            <li class="{{ Request::is('permission') ? 'active' : '' }}">
+                <a href="{{route('permission.index')}}" class="list-group-item">
+                    <span>Nhóm chức năng</span>
                 </a>
             </li>
 

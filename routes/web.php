@@ -93,28 +93,49 @@ Route::middleware(['auth'])->group(function () {
     Route::post('quoctich/import', 'Quanly\QuanlyQuoctichController@import')->name('QuoctichImport');
 
 
-
-    // Quản lý ngoại ngữ
-    Route::group(['middleware' => ['can:View.NgoaiNgu']], function () {
-        Route::get('settings/danhmuc/quanlyngoaingu','DanhMuc\quanLyNgoaiNguController@index')->name('quanlyngoaingu.index');
+    // Quản lý role
+    Route::group(['middleware' => ['can:View.Role']], function () {
+        Route::get('settings/role','QLQuyen\roleController@index')->name('role.index');
     });
-    Route::group(['middleware' => ['can:Edit.NgoaiNgu']], function () {
-        Route::post('settings/danhmuc/quanlyngoaingu/update/{id}','DanhMuc\quanLyNgoaiNguController@update')->name('quanlyngoaingu.edit');
+    Route::group(['middleware' => ['can:Edit.Role']], function () {
+        Route::post('settings/role/update/{id}','QLQuyen\roleController@update')->name('role.edit');
     });
-    Route::group(['middleware' => ['can:Create.NgoaiNgu']], function () {
-        Route::post('settings/danhmuc/quanlyngoaingu/store','DanhMuc\quanLyNgoaiNguController@store')->name('quanlyngoaingu.store');
+    Route::group(['middleware' => ['can:Create.Role']], function () {
+        Route::post('settings/role/store','QLQuyen\roleController@store')->name('role.store');
     });
-    Route::group(['middleware' => ['can:Delete.NgoaiNgu']], function () {
-        Route::get('settings/danhmuc/quanlyngoaingu/destroy/{id}','DanhMuc\quanLyNgoaiNguController@destroy')->name('quanlyngoaingu.delete');
+    Route::group(['middleware' => ['can:Delete.Role']], function () {
+        Route::get('settings/role/destroy/{id}','QLQuyen\roleController@destroy')->name('role.delete');
         
     });
-    Route::group(['middleware' => ['can:Import.NgoaiNgu']], function () {
-        Route::post('settings/danhmuc/quanlyngoaingu/import', 'DanhMuc\quanLyNgoaiNguController@import')->name('quanlyngoaingu.import');
+    Route::group(['middleware' => ['can:Import.Role']], function () {
+        Route::post('settings/role/import', 'QLQuyen\roleController@import')->name('role.import');
     });
-    Route::group(['middleware' => ['can:Export.NgoaiNgu']], function () {
-        Route::get('settings/danhmuc/quanlyngoaingu/export', 'DanhMuc\quanLyNgoaiNguController@export')->name('quanlyngoaingu.export');
+    Route::group(['middleware' => ['can:Export.Role']], function () {
+        Route::get('settings/role/export', 'QLQuyen\roleController@export')->name('role.export');
     
     });
+// Quản lý permission
+    Route::group(['middleware' => ['can:View.Permission']], function () {
+        Route::get('settings/permission','QLQuyen\permissionController@index')->name('permission.index');
+    });
+    Route::group(['middleware' => ['can:Edit.Permission']], function () {
+        Route::post('settings/permission/update/{id}','QLQuyen\permissionController@update')->name('permission.edit');
+    });
+    Route::group(['middleware' => ['can:Create.Permission']], function () {
+        Route::post('settings/permission/store','QLQuyen\permissionController@store')->name('permission.store');
+    });
+    Route::group(['middleware' => ['can:Delete.Permission']], function () {
+        Route::get('settings/permission/destroy/{id}','QLQuyen\permissionController@destroy')->name('permission.delete');
+        
+    });
+    Route::group(['middleware' => ['can:Import.Permission']], function () {
+        Route::post('settings/permission/import', 'QLQuyen\permissionController@import')->name('permission.import');
+    });
+    Route::group(['middleware' => ['can:Export.Permission']], function () {
+        Route::get('settings/permission/export', 'QLQuyen\permissionController@export')->name('permission.export');
+    
+    });
+   
    
    
 

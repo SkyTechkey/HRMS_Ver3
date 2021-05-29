@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\DanhMuc;
+namespace App\Http\Controllers\QLQuyen;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\QuanLyNgoaiNgu;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\NgoainguExport;
-use App\Imports\NgoainguImport;
+use App\Exports\RoleExport;
+use App\Imports\Roleimport;
 
-class quanLyNgoaiNguController extends Controller
+class roleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +19,8 @@ class quanLyNgoaiNguController extends Controller
      */
     public function index()
     {
-        $danhsach = QuanLyNgoaiNgu::all();
-        return view('Settings.Danhmuc.quanlyngoaingu',compact('danhsach'));
+        $danhsach = Role::all();
+        return view('Settings.QLQuyen.role',compact('danhsach'));
     }
 
     /**
@@ -29,11 +30,10 @@ class quanLyNgoaiNguController extends Controller
      */
     public function store(Request $request)
     {
-        $createNgoaiNgu = new QuanLyNgoaiNgu;
-        $createNgoaiNgu->Ten_ngoaingu = $request->name;
-        $createNgoaiNgu->Ghichu = $request->ghichu;
-        $createNgoaiNgu->Trangthai = $request->status;
-        if($createNgoaiNgu->save()){
+        $createRole = new Role;
+        $createRole->name = $request->name;
+        
+        if($createRole->save()){
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
         else{
@@ -50,10 +50,10 @@ class quanLyNgoaiNguController extends Controller
     
     public function destroy($id)
     {
-        $deleteNgoaiNgu = QuanLyNgoaiNgu::find($id);
+        $deleteRole = Role::find($id);
         
-        if(!empty($deleteNgoaiNgu)){
-            if($deleteNgoaiNgu->delete()){
+        if(!empty($deleteRole)){
+            if($deleteRole->delete()){
 
             
             
@@ -92,7 +92,7 @@ class quanLyNgoaiNguController extends Controller
     public function import() 
     {
         if (!empty(request()->file('file'))){
-            Excel::import(new NgoainguImport,request()->file('file'));
+            Excel::import(new RoleImport,request()->file('file'));
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
         else{
@@ -101,7 +101,7 @@ class quanLyNgoaiNguController extends Controller
     }
     public function export() 
     {
-        return Excel::download(new NgoainguExport, 'ngoaingu.xlsx');
+        return Excel::download(new RoleExport, 'role.xlsx');
     }
     /**
      * Update the specified resource in storage.
@@ -112,12 +112,11 @@ class quanLyNgoaiNguController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update_Ngoaingu = QuanLyNgoaiNgu::find($id);
-        if(!empty($update_Ngoaingu)){
-            $update_Ngoaingu->Ten_ngoaingu = $request->name;
-            $update_Ngoaingu->Ghichu = $request->ghichu;
-            $update_Ngoaingu->Trangthai = $request->status;
-            if($update_Ngoaingu->save()){
+        $update_Role = Role::find($id);
+        if(!empty($update_Role)){
+            $update_Role->name = $request->name;
+            
+            if($update_Role->save()){
                 
                 return back()->with('success',__('Đã cập nhập dữ liệu thành công!'));
             }

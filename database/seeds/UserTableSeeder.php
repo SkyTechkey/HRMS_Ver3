@@ -108,19 +108,34 @@ class UserTableSeeder extends Seeder
         $permission->assignRole($role);
 
         // Thêm phân quyền quản trị ngoại ngữ
-        $permission = Permission::create(['name' => 'View.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'View.Role']);
         $permission->assignRole($role);
         
         
-        $permission = Permission::create(['name' => 'Edit.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'Edit.Role']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Delete.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'Delete.Role']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Create.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'Create.Role']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Import.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'Import.Role']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Export.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'Export.Role']);
+        $permission->assignRole($role);
+        
+        $permission = Permission::create(['name' => 'View.Permission']);
+        $permission->assignRole($role);
+        
+        
+        $permission = Permission::create(['name' => 'Edit.Permission']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.Permission']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.Permission']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.Permission']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.Permission']);
         $permission->assignRole($role);
 
     // Gán quyền cho admin
