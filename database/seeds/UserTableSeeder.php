@@ -97,6 +97,7 @@ class UserTableSeeder extends Seeder
 
       ]);
 */
+<<<<<<< HEAD
       $role = Role::create(['name' => 'admin']);
       $permission = Permission::create(['name' => 'xem']);
       $permission->assignRole($role);
@@ -120,11 +121,35 @@ class UserTableSeeder extends Seeder
         $permission = Permission::create(['name' => 'Import.PhongBan']);
         $permission->assignRole($role);
         $permission = Permission::create(['name' => 'Export.PhongBan']);
+=======
+        $role = Role::create(['name' => 'admin']);
+        $permission = Permission::create(['name' => 'xem']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'them']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'sua']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'xoa']);
+        $permission->assignRole($role);
+      
+        $permission = Permission::create(['name' => 'View.ChucVu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Edit.ChucVu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.ChucVu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.ChucVu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.ChucVu']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.ChucVu']);
+>>>>>>> origin/QuanLyChucVu_Viet
         $permission->assignRole($role);
 
     // Gán quyền cho admin
         $user = \App\User::where('username', 'admin')->first();
         $user->assignRole('admin');
+<<<<<<< HEAD
 =======
       //   Phân Quyền Phòng Ban
       $permission = Permission::create(['name' => 'View.TuyenDung']);
@@ -144,6 +169,8 @@ class UserTableSeeder extends Seeder
       $user = \App\User::where('username', 'admin')->first();
       $user->assignRole('admin');
 >>>>>>> origin/QuanLyTuyenDung_Viet
+=======
+>>>>>>> origin/QuanLyChucVu_Viet
       //$role = Role::create(['name' => 'employee']);
      // $user = \App\User::where('email', 'admin@gmail.com')->first();
     //  $user->givePermissionTo('xem', 'them', 'sua', 'xoa');
