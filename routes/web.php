@@ -37,11 +37,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('settings', 'Settings\settingsController@index')->name('settings.index'); //đặt tên này sau này trong code k cần làm đường dẫn
 
     // Menu cài đặt
-        Route::get('settings/role','PhanQuyen\PhanQuyenController@getRole')->name('quyen');
-        Route::post('settings/role/create','PhanQuyen\PhanQuyenController@createRole')->name('createNhomquyen');
-        Route::get('settings/role/delete/{id}','PhanQuyen\PhanQuyenController@deleteRole');
-        Route::post('settings/role/edit/{id}','PhanQuyen\PhanQuyenController@editRole');
-
+    //Route::resource('settings/role', 'PhanQuyen\RoleController');
+        Route::get('settings/role','PhanQuyen\RoleController@index')->name('role.index');
+        Route::post('settings/role/store','PhanQuyen\RoleController@store')->name('role.store');
+        Route::get('settings/role/delete/{id}','PhanQuyen\RoleController@destroy')->name('role.delete');
+        Route::post('settings/role/edit/{id}','PhanQuyen\RoleController@edit')->name('role.edit');
+        Route::post('settings/role/update/{id}','PhanQuyen\RoleController@update')->name('role.update');
 
     Route::get('/phongban','PhongBan\PhongbanController@index');
     Route::get('/phongban/them','Phongban\PhongbanController@getThem');

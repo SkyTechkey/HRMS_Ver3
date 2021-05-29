@@ -11,12 +11,18 @@
     @endpush
 <!-- #END Nội dung CSS, js -->
 @section('content')
-    <!-- #NOTIFICATIONS Nếu có không thì k dùng-->
+<!-- #NOTIFICATIONS -->
     @if(session('success'))
         <div data-notify="container" id = "slice-alert" class="bootstrap-notify-container alert alert-dismissible alert-success p-r-35 animated fadeInDown" role="alert" data-notify-position="bottom-left" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 5s ease-in-out 0s; z-index: 1031; top: 100px; right: 30px;">
             <span data-notify="icon">
             </span> <span data-notify="title"></span>
             </span> <span data-notify="message">{{session('success')}}</span><a href="#" target="_blank" data-notify="url"></a>
+        </div>
+    @elseif(session('error'))
+        <div data-notify="container" id = "slice-alert" class="bootstrap-notify-container alert alert-dismissible alert-warning p-r-35 animated fadeInDown" role="alert" data-notify-position="bottom-left" style="display: inline-block; margin: 0px auto; position: fixed; transition: all 5s ease-in-out 0s; z-index: 1031; top: 100px; right: 30px;">
+            <span data-notify="icon">
+            </span> <span data-notify="title"></span>
+            </span> <span data-notify="message">{{session('error')}}</span><a href="#" target="_blank" data-notify="url"></a>
         </div>
     @endif
     @if ($errors->any())
@@ -28,7 +34,7 @@
             </ul>
         </div>
     @endif
-    <!-- #END Thongbao -->
+<!-- #END Thongbao -->
 
     <div class="block-header">
         <h2>Tổng Quát</h2>

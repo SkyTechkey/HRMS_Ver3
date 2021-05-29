@@ -101,13 +101,14 @@
                         </li>
                     </ul>
                 </li>
-
-                <li >
-                    <a href="{{url('settings')}}" title="Hệ thống" class="toggled waves-effect waves-block">
-                        <i class="material-icons">settings</i>
-                        <span>Hệ thống</span>
-                    </a>
-                </li>
+                @can('View.Settings')
+                    <li >
+                        <a href="{{url('settings')}}" title="Hệ thống" class="toggled waves-effect waves-block">
+                            <i class="material-icons">settings</i>
+                            <span>Hệ thống</span>
+                        </a>
+                    </li>
+                @endcan
             </ul>
         </div>
         <!-- #Menu -->

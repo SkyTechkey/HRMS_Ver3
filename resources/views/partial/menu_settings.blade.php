@@ -27,25 +27,22 @@
                     </a>
                 </li>
            <!-- @endcan -->
-            <li class="{{ Request::is('settings/role') ? 'active' : '' }}">
-                <a href="{{url('settings/role')}}" class="list-group-item">
-                    <span>Nhóm quyền</span>
-                </a>
-            </li>
 
-            <li class="header">
-                <h6>QUẢN LÝ QUYỀN</h6>
-            </li>
-            <li class="{{ Request::is('phanquyen') ? 'active' : '' }}">
-                <a href="{{url('phanquyen')}}" class="list-group-item">
-                    <span>Bảng Phân Quyền</span>
-                </a>
-            </li>
-            <li class="{{ Request::is('settings/role') ? 'active' : '' }}">
-                <a href="{{url('settings/role')}}" class="list-group-item">
-                    <span>Nhóm quyền</span>
-                </a>
-            </li>
+           @can('View.Role')
+                <li class="header">
+                    <h6>QUẢN LÝ QUYỀN</h6>
+                </li>
+                <li class="{{ Request::is('phanquyen') ? 'active' : '' }}">
+                    <a href="{{url('phanquyen')}}" class="list-group-item">
+                        <span>Bảng Phân Quyền</span>
+                    </a>
+                </li>
+                <li class="{{ Request::is('settings/role') ? 'active' : '' }}">
+                    <a href="{{url('settings/role')}}" class="list-group-item">
+                        <span>Nhóm quyền</span>
+                    </a>
+                </li>
+            @endcan
 
 
         </ul>

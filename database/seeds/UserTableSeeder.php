@@ -106,10 +106,27 @@ class UserTableSeeder extends Seeder
       $permission->assignRole($role);
       $permission = Permission::create(['name' => 'xoa']);
       $permission->assignRole($role);
+
+
+    // Thêm phân quyền quản trị menu settting
+        $permission = Permission::create(['name' => 'View.Settings']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'View.Role']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Edit.Role']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.Role']);
+        $permission->assignRole($role);
+
+        
+    // Gán quyền cho admin
+        $user = \App\User::where('username', 'admin')->first();
+        $user->assignRole('admin');
+
       //$role = Role::create(['name' => 'employee']);
-     // $user = \App\User::where('email', 'admin@gmail.com')->first();
+     // $user = \App\User::where('username', 'admin')->first();
     //  $user->givePermissionTo('xem', 'them', 'sua', 'xoa');
-     // $user->assignRole('admin');
+
       //   DB::table('users')->insert([
       //       'name' => 'nhandzz',
       //       'username' => 'admin1',
