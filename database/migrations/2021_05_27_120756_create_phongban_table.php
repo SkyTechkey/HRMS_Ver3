@@ -13,11 +13,12 @@ class CreatePhongbanTable extends Migration
      */
     public function up()
     {
-        Schema::create('phongban', function (Blueprint $table) {
+        Schema::create('tbl_phongban', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('tinhtrang');
-            $table->string('chinhanh');
+            $table->string('Ten_phongban');
+            $table->string('Ghichu');
+            $table->string('Chinhanh')->nullable();
+            $table->string('Trangthai');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreatePhongbanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('phongban');
+        Schema::dropIfExists('tbl_phongban');
     }
 }

@@ -109,6 +109,7 @@ class UserTableSeeder extends Seeder
       $permission = Permission::create(['name' => 'xoa']);
       $permission->assignRole($role);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
     // Thêm phân quyền quản trị menu settting
@@ -185,14 +186,32 @@ class UserTableSeeder extends Seeder
         $permission = Permission::create(['name' => 'Import.NgoaiNgu']);
         $permission->assignRole($role);
         $permission = Permission::create(['name' => 'Export.NgoaiNgu']);
+=======
+
+    //   Phân Quyền Phòng Ban
+        $permission = Permission::create(['name' => 'View.PhongBan']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Edit.PhongBan']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.PhongBan']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.PhongBan']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.PhongBan']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.PhongBan']);
+>>>>>>> origin/QuanLyPhongBan_Viet
         $permission->assignRole($role);
 
     // Gán quyền cho admin
         $user = \App\User::where('username', 'admin')->first();
         $user->assignRole('admin');
+<<<<<<< HEAD
 
 
 >>>>>>> origin/QuanLyNgoaiNgu_Viet
+=======
+>>>>>>> origin/QuanLyPhongBan_Viet
       //$role = Role::create(['name' => 'employee']);
      // $user = \App\User::where('username', 'admin')->first();
     //  $user->givePermissionTo('xem', 'them', 'sua', 'xoa');
