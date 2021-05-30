@@ -17,5 +17,6 @@ class ChinhanhTableSeeder extends Seeder
             'Diachi' => 'Đường 2/9 - TP.Đà Nẵng',
             'Trangthai' => 'Hoạt động'
             ]);
+
     }
 }
