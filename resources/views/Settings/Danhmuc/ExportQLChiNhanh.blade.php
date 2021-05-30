@@ -27,7 +27,6 @@
                     <td>{{$value->Diachi}}</td>
                     <td>{{$value->Sodienthoai}}</td>
                     <td>{{$value->Email}}</td>
-                    <td>{{$value->Sodienthoai}}</td>
                     <td>{{$value->Trangthai}}</td>
                     <td>{{$value->Ghichu}}</td>
 

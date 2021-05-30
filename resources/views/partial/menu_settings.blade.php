@@ -24,7 +24,7 @@
             <li class="header">
                 <h6>DOANH MỤC</h6>
             </li>
-            @can('View.ChiNhanh')
+            @can('View.Chinhanh')
             <li class="{{Route::is('quanlychinhanh.index') ? 'active' : '' }}">
                 <a  href="{{route('quanlychinhanh.index')}}" class="list-group-item">
                     <span>Quản lý Chi Nhánh</span>

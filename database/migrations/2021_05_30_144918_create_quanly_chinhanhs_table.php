@@ -16,11 +16,11 @@ class CreateQuanlyChinhanhsTable extends Migration
         Schema::create('tbl_Chinhanh', function (Blueprint $table) {
             $table->id();
             $table->string('Tenchinhanh')->nullable();
-            $table->string('Diachi')->nullable();
             $table->string('Tennguoidungdau')->nullable();
-            $table->string('Email')->nullable();
-            $table->string('Sodienthoai')->nullable();
             $table->string('Chucvu')->nullable();
+            $table->string('Diachi')->nullable();
+            $table->string('Sodienthoai')->nullable();
+            $table->string('Email')->nullable();
             $table->string('Trangthai')->nullable();
             $table->string('Ghichu')->nullable();
             $table->timestamps();

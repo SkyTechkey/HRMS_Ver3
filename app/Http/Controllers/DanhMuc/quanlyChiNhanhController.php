@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ChiNhanhExport;
 use App\Imports\ChinhanhImport;
 
-class quanlyChinhNhanhController extends Controller
+class quanlyChiNhanhController extends Controller
 {
 
     public function index()

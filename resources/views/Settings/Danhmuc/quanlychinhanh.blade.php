@@ -21,7 +21,7 @@ Quản lý Chi nhánh
 @section('content_menu')
     <!-- #NOTIFICATIONS -->
     @if(session('success'))
-       <!-- <div data-notify="container" id="slice-alert"
+       <div data-notify="container" id="slice-alert"
             class="bootstrap-notify-container alert alert-dismissible alert-success p-r-35 animated fadeInDown" role="alert"
             data-notify-position="bottom-left"
             style="display: inline-block; margin: 0px auto; position: fixed; transition: all 5s ease-in-out 0s; z-index: 1031; top: 100px; right: 30px;">
@@ -29,8 +29,6 @@ Quản lý Chi nhánh
             </span> <span data-notify="title"></span>
             </span> <span data-notify="message">{{session('success')}}</span><a href="#" target="_blank" data-notify="url"></a>
         </div>
-    -->
-
     @elseif(session('error'))
         <div data-notify="container" id="slice-alert"
             class="bootstrap-notify-container alert alert-dismissible alert-warning p-r-35 animated fadeInDown" role="alert"
@@ -108,7 +106,6 @@ Quản lý Chi nhánh
                                     <td>{{$value->Diachi}}</td>
                                     <td>{{$value->Sodienthoai}}</td>
                                     <td>{{$value->Email}}</td>
-                                    <td>{{$value->Sodienthoai}}</td>
                                     @if($value->Trangthai=='Hoạt động')
                                         <td><span class="label bg-blue">Hoạt động</span></td>
                                     @elseif($value->Trangthai=='Tạm ngừng')
@@ -195,6 +192,13 @@ Quản lý Chi nhánh
                             </div>
                         </div>
                         <div class="form-group">
+                            <label for="Email">Email</label>
+                            <div class="form-line">
+                                <input type="text" value="{{$value->Email}}" class="form-control" id="Email"
+                                    name="Email" placeholder="Email" maxlength="255"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="Trangthai">Trạng thái</label>
                             <select name="status" class="form-control show-tick">
                                 <option value="{{$value->Trangthai}}">-- {{$value->Trangthai}} --</option>
@@ -240,43 +244,48 @@ Quản lý Chi nhánh
                         <div class="form-group">
                             <label for="TenChinhanh">Tên Chi Nhánh</label>
                             <div class="form-line">
-                                <input type="text" value="{{$value->Tenchinhanh}}" class="form-control" id="Tenchinhanh"
+                                <input type="text"  class="form-control" id="Tenchinhanh"
                                     name="name" placeholder="Tên Chi Nhánh" maxlength="255" required />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="Tennguoidungdau">Người đứng đầu</label>
                             <div class="form-line">
-                                <input type="text" value="{{$value->Tennguoidungdau}}" class="form-control" id="Tennguoidungdau"
+                                <input type="text"  class="form-control" id="Tennguoidungdau"
                                     name="Tennguoidungdau" placeholder="Người đứng đầu" maxlength="255"  />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="Chucvu">Chức vụ</label>
                             <div class="form-line">
-                                <input type="text" value="{{$value->Chucvu}}" class="form-control" id="Chucvu"
+                                <input type="text"  class="form-control" id="Chucvu"
                                     name="Chucvu" placeholder="Chức vụ" maxlength="255"  />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="Diachi">Địa chỉ</label>
                             <div class="form-line">
-                                <input type="text" value="{{$value->Diachi}}" class="form-control" id="Diachi"
+                                <input type="text"  class="form-control" id="Diachi"
                                     name="Diachi" placeholder="Địa chỉ" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="Sodienthoai">Số Điện thoại</label>
                             <div class="form-line">
-                                <input type="text" value="{{$value->Sodienthoai}}" class="form-control" id="Sodienthoai"
+                                <input type="text"  class="form-control" id="Sodienthoai"
                                     name="Sodienthoai" placeholder="Số điện thoại" maxlength="255"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Email">Email</label>
+                            <div class="form-line">
+                                <input type="text"  class="form-control" id="Email"
+                                    name="Email" placeholder="Email" maxlength="255"  />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="Trangthai">Trạng thái</label>
                             <select name="status" class="form-control show-tick">
-                                <option value="{{$value->Trangthai}}">-- {{$value->Trangthai}} --</option>
-
                                 <option value="Hoạt động">Hoạt động</option>
                                 <option value="Tạm ngừng">Tạm ngừng</option>
                                 <option value="Ngừng hoạt động">Ngừng hoạt động</option>
@@ -287,7 +296,7 @@ Quản lý Chi nhánh
                         <div class="form-group">
                             <label for="Ghichu">Ghi chú</label>
                             <div class="form-line">
-                                <input type="text" value="{{$value->Ghichu}}" class="form-control" id="Ghichu" name="Ghichu"
+                                <input type="text" class="form-control" id="Ghichu" name="Ghichu"
                                     placeholder="Ghi chú" maxlength="255"  />
                             </div>
                         </div>

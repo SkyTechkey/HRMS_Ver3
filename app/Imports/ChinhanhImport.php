@@ -17,16 +17,15 @@ public function headingRow() : int
     {
         $chinhanh = new QuanlyChinhanh();
 
-        $chinhanh->Tenchinhanh = @$row['Ten_chi_nhanh'];
-        $chinhanh->Diachi = @$row['Dia_chi'];
-        $chinhanh->Tennguoidungdau = @$row['Ten_nguoi_dung_dau'];
-        $chinhanh->Email = @$row['Email'];
-        $chinhanh->Sodienthoai = @$row['Sodienthoai'];
+        $chinhanh->Tenchinhanh = @$row['Tenchinhanh'];
+        $chinhanh->Tennguoidungdau = @$row['Tennguoidungdau'];
         $chinhanh->Chucvu = @$row['Chucvu'];
+        $chinhanh->Diachi = @$row['Diachi'];
+        $chinhanh->Sodienthoai = @$row['Sodienthoai'];
+        $chinhanh->Email = @$row['Email'];
         $chinhanh->Trangthai = @$row['Trangthai'];
         $chinhanh->Ghichu = @$row['Ghichu'];
 
         return $chinhanh;
-;
     }
 }
