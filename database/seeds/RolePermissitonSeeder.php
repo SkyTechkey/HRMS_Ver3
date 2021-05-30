@@ -41,7 +41,20 @@ class RolePermissitonSeeder extends Seeder
         $permission->assignRole($role);
         $permission = Permission::create(['name' => 'Export.NgoaiNgu']);
         $permission->assignRole($role);
-
+        
+        // Thêm phân quyền quản trị quốc tịch
+        $permission = Permission::create(['name' => 'View.QuocTich']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Edit.QuocTich']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.QuocTich']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.QuocTich']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.QuocTich']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.QuocTich']);
+        $permission->assignRole($role);
 
 
     // Gán quyền cho admin cái này để ở cuối cùng. Viết 1 lần thôi k cần viết lại nhiều lần
