@@ -64,6 +64,28 @@ Route::middleware(['auth'])->group(function () {
 
         });
 
+        // Quản lý quốc tịch
+        Route::group(['middleware' => ['can:View.QuocTich']], function () {
+            Route::get('settings/danhmuc/quanlyquoctich','DanhMuc\quanLyQuocTichController@index')->name('quanlyquoctich.index');
+        });
+        Route::group(['middleware' => ['can:Edit.QuocTich']], function () {
+            Route::post('settings/danhmuc/quanlyquoctich/update/{id}','DanhMuc\quanLyQuocTichController@update')->name('quanlyquoctich.edit');
+        });
+        Route::group(['middleware' => ['can:Create.QuocTich']], function () {
+            Route::post('settings/danhmuc/quanlyquoctich/store','DanhMuc\quanLyQuocTichController@store')->name('quanlyquoctich.store');
+        });
+        Route::group(['middleware' => ['can:Delete.QuocTich']], function () {
+            Route::get('settings/danhmuc/quanlyquoctich/destroy/{id}','DanhMuc\quanLyQuocTichController@destroy')->name('quanlyquoctich.delete');
+
+        });
+        Route::group(['middleware' => ['can:Import.QuocTich']], function () {
+            Route::post('settings/danhmuc/quanlyquoctich/import', 'DanhMuc\quanLyQuocTichController@import')->name('quanlyquoctich.import');
+        });
+        Route::group(['middleware' => ['can:Export.QuocTich']], function () {
+            Route::get('settings/danhmuc/quanlyquoctich/export', 'DanhMuc\quanLyQuocTichController@export')->name('quanlyquoctich.export');
+
+        });
+
         // Quản lý Chi nhánh
         Route::group(['middleware' => ['can:View.Chinhanh']], function () {
             Route::get('settings/danhmuc/quanlychinhanh','DanhMuc\quanlyChinhNhanhController@index')->name('quanlychinhanh.index');
