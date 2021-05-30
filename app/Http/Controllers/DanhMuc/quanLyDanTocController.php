@@ -66,8 +66,18 @@ class quanLyDanTocController extends Controller
     {
         if (!empty(request()->file('file')))
         {
-            Excel::import(new DantocImport,request()->file('file'));
-            return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
+            $test = request()->file('file');
+
+            // if($test->getClientOriginalExtension == xlsx)
+            if($test->getClientOriginalExtension() == 'xlsx'){
+                Excel::import(new DantocImport,request()->file('file'));
+                return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
+            }
+            else{
+                return back()->with('error',__('Vui lòng chọn file excel!'));
+            }
+            
+            
         }
         else
         {
