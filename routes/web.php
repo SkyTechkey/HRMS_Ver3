@@ -64,6 +64,28 @@ Route::middleware(['auth'])->group(function () {
 
         });
 
+        // Quản lý Chi nhánh
+        Route::group(['middleware' => ['can:View.Chinhanh']], function () {
+            Route::get('settings/danhmuc/quanlychinhanh','DanhMuc\quanlyChinhNhanhController@index')->name('quanlychinhanh.index');
+        });
+        Route::group(['middleware' => ['can:Edit.Chinhanh']], function () {
+            Route::post('settings/danhmuc/quanlychinhanh/update/{id}','DanhMuc\quanlyChinhNhanhController@update')->name('quanlychinhanh.edit');
+        });
+        Route::group(['middleware' => ['can:Create.Chinhanh']], function () {
+            Route::post('settings/danhmuc/quanlychinhanh/store','DanhMuc\quanlyChinhNhanhController@store')->name('quanlychinhanh.store');
+        });
+        Route::group(['middleware' => ['can:Delete.Chinhanh']], function () {
+            Route::get('settings/danhmuc/quanlychinhanh/destroy/{id}','DanhMuc\quanlyChinhNhanhController@destroy')->name('quanlychinhanh.delete');
+
+        });
+        Route::group(['middleware' => ['can:Import.Chinhanh']], function () {
+            Route::post('settings/danhmuc/quanlychinhanh/import', 'DanhMuc\quanlyChinhNhanhController@import')->name('quanlychinhanh.import');
+        });
+        Route::group(['middleware' => ['can:Export.Chinhanh']], function () {
+            Route::get('settings/danhmuc/quanlychinhanh/export', 'DanhMuc\quanlyChinhNhanhController@export')->name('quanlychinhanh.export');
+
+        });
+
 
 });
 

@@ -14,6 +14,19 @@ class RolePermissitonSeeder extends Seeder
     public function run()
     {
         $role = Role::create(['name' => 'admin']);
+        // Thêm phân quyền quản trị chi nhánh
+        $permission = Permission::create(['name' => 'View.ChiNhanh']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Edit.ChiNhanh']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.ChiNhanh']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.ChiNhanh']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.ChiNhanh']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.ChiNhanh']);
+        $permission->assignRole($role);
 
         // Thêm phân quyền quản trị ngoại ngữ
         $permission = Permission::create(['name' => 'View.NgoaiNgu']);
