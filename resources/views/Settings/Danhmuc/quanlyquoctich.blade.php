@@ -259,7 +259,7 @@ Quản lý quốc tịch
                 <div class="card-body">
                     <div class="body">
                         <p>- Tải file mẫu <a style="color: blue"
-                                href="{{ asset('project_asset/template/templateImportDanhMucNgoaiNgu.xlsx')}}">Link</a>
+                                href="{{ asset('project_asset/template/templateImportDanhMucQuocTich.xlsx')}}">Link</a>
                         </p>
                         <form action="{{ route('quanlyquoctich.import') }}" method="POST" enctype="multipart/form-data">
                             @csrf
