@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-class QuoctichTableSeeder extends Seeder
+class DantocTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,9 +11,9 @@ class QuoctichTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tbl_quoctich')->insert([
+        DB::table('tbl_dantoc')->insert([
 
-            'Ten_quoctich' => 'Việt Nam',
+            'Ten_dantoc' => 'Kinh',
             'Trangthai' => 'Hoạt động'
             ]);
     }

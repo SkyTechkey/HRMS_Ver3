@@ -1,7 +1,7 @@
 @extends('Settings.settings')
 <!-- # Nội dung tiêu đề -->
 @section('title')
-Quản lý quốc tịch
+Quản lý dân tộc
 @endsection
 <!-- #END tiêu đề -->
 <!-- # Nội dung CSS, js bổ sung -->
@@ -60,18 +60,18 @@ Quản lý quốc tịch
 
             <div class="header">
                 <h2>
-                    Danh Sách Quốc Tịch
+                    Danh Sách Dân Tộc
                     <div style="float:right">
-                        @can('Import.QuocTich')
+                        @can('Import.DanToc')
                         <button type="button" class="btn bg-brown waves-effect" data-toggle="modal"
                             data-target="#importModal"><i class="material-icons">publish</i>Nhập từ file</button>
                         @endcan
-                        @can('Export.QuocTich')
-                        <a href="{{route('quanlyquoctich.export')}}" class="btn btn-success waves-effect">
+                        @can('Export.DanToc')
+                        <a href="{{route('quanlydantoc.export')}}" class="btn btn-success waves-effect">
                             <i class="material-icons">download</i>
                             Xuất file</a>
                         @endcan
-                        @can('Create.QuocTich')
+                        @can('Create.DanToc')
                         <button type="button" class="btn btn-primary waves-effect" data-toggle="modal"
                             data-target="#myModal">
                             <i class="material-icons">add</i>
@@ -86,8 +86,8 @@ Quản lý quốc tịch
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Mã QT</th>
-                                <th>Tên Quốc Tịch</th>
+                                <th>Mã DT</th>
+                                <th>Tên Dân Tộc</th>
                                 <th>Ghi Chú</th>
                                 <th>Trạng Thái</th>
                                 <th width="10%">Chức Năng</th>
@@ -99,7 +99,7 @@ Quản lý quốc tịch
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{$value->id}}</td>
-                                <td>{{$value->Ten_quoctich}}</td>
+                                <td>{{$value->Ten_dantoc}}</td>
                                 <td>{{$value->Ghichu}}</td>
                                 @if($value->Trangthai=='Hoạt động')
 
@@ -115,7 +115,7 @@ Quản lý quốc tịch
                                 @endif
 
                                 <td>
-                                    @can('Edit.QuocTich')
+                                    @can('Edit.DanToc')
 
                                     <a href="" type="button" data-toggle="modal" data-target="#fix{{$value->id}}">
                                         <i style="font-size:22px" class="material-icons  bg-light-green ">create</i></a>
@@ -123,8 +123,8 @@ Quản lý quốc tịch
 
                                     @endcan
 
-                                    @can('Delete.QuocTich')
-                                    <a href="{{route('quanlyquoctich.delete',$value->id)}}"
+                                    @can('Delete.DanToc')
+                                    <a href="{{route('quanlydantoc.delete',$value->id)}}"
                                         class="button delete-confirm"><i style="font-size:22px"
                                             class="material-icons bg-brown">delete_forever</i></a>
                                     @endcan
@@ -156,17 +156,17 @@ Quản lý quốc tịch
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP QUỐC TỊCH</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP DÂN TỘC</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('quanlyquoctich.edit',$value->id) }}" method="post">
+                <form action="{{ route('quanlydantoc.edit',$value->id) }}" method="post">
                     @csrf
 
                     <div class="form-group">
-                        <label for="Tenquoctich">Tên quốc tịch</label>
+                        <label for="Tendantoc">Tên dân tộc</label>
                         <div class="form-line">
-                            <input type="text" value="{{$value->Ten_quoctich}}" class="form-control" id="Tenquoctich"
-                                name="name" placeholder="Tên quốc tịch" maxlength="255" required />
+                            <input type="text" value="{{$value->Ten_dantoc}}" class="form-control" id="Tendantoc"
+                                name="name" placeholder="Tên ngoại ngữ" maxlength="255" required />
                         </div>
                     </div>
                     <div class="form-group">
@@ -205,17 +205,17 @@ Quản lý quốc tịch
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI QUỐC TỊCH</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI DÂN TỘC</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('quanlyquoctich.store') }}" method="post">
+                <form action="{{ route('quanlydantoc.store') }}" method="post">
                     @csrf
 
                     <div class="form-group">
-                        <label for="Tenquoctich">Tên quốc tịch</label>
+                        <label for="Tendantoc">Tên dân tộc</label>
                         <div class="form-line">
-                            <input type="text" class="form-control" id="Tenquoctich" name="name"
-                                placeholder="Tên quốc tịch" maxlength="255" required />
+                            <input type="text" class="form-control" id="Tendantoc" name="name" placeholder="Tên dân tộc"
+                                maxlength="255" required />
                         </div>
                     </div>
                     <div class="form-group">
@@ -253,7 +253,7 @@ Quản lý quốc tịch
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI QUỐC TỊCH</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI DÂN TỘC</h4>
             </div>
             <div class="card bg-light mt-3">
                 <div class="card-body">
@@ -261,7 +261,7 @@ Quản lý quốc tịch
                         <p>- Tải file mẫu <a style="color: blue"
                                 href="{{ asset('project_asset/template/templateImportDanhMucNgoaiNgu.xlsx')}}">Link</a>
                         </p>
-                        <form action="{{ route('quanlyquoctich.import') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('quanlydantoc.import') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="file" name="file" class="form-control">
                             <br>

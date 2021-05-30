@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQuoctichTable extends Migration
+class CreateDantocTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateQuoctichTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_quoctich', function (Blueprint $table) {
+        Schema::create('tbl_dantoc', function (Blueprint $table) {
             $table->id();
-            $table->string('Ten_quoctich')->nullable();
+            $table->string('Ten_dantoc')->nullable();
             $table->string('Trangthai')->nullable();
             $table->string('Ghichu')->nullable();
             $table->timestamps();
@@ -29,6 +29,6 @@ class CreateQuoctichTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_quoctich');
+        Schema::dropIfExists('tbl_dantoc');
     }
 }
