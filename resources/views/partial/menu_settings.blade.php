@@ -25,8 +25,8 @@
                 <h6>DOANH MỤC</h6>
             </li>
             @can('View.NgoaiNgu')
-            <li class="{{ Request::is('quanlyngoaingu') ? 'active' : '' }}">
-                <a href="{{route('quanlyngoaingu.index')}}" class="list-group-item">
+            <li class="{{Route::is('quanlyngoaingu.index') ? 'active' : '' }}">
+                <a  href="{{route('quanlyngoaingu.index')}}" class="list-group-item">
                     <span>Quản lý ngoại ngữ</span>
                 </a>
             </li>

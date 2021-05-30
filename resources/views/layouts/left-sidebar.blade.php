@@ -51,59 +51,8 @@
                     <span>TRANG MẪU</span>
                 </a>
             </li>
-            <li>
-                <a href="{{url('phongban')}}">
-                    <i class="material-icons">perm_contact_calendar</i>
-                    <span>Phòng Ban</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{url('branch')}}">
-                    <i class="material-icons">maps_home_work</i>
-                    <span>Chi Nhánh</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('nhansu') }}">
-                    <i class="material-icons">group</i>
-                    <span>Quản Lý Nhân Sự</span>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">perm_contact_calendar</i>
-                    <span>Vai Trò - Chức Năng</span>
-                </a>
-                <ul class="ml-menu">
-                    <li class="{{ Request::is('phanquyen') ? 'active' : '' }}">
-                        <a href="{{url('phanquyen')}}">
-                            <span>Bảng Phân Quyền</span>
-                        </a>
 
-                    </li>
-                    <li>
-                        <a href="{{url('role')}}">
-                            <span>Vai Trò</span>
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="{{url('chucnang')}}">
-                            <span>Chức Năng</span>
-                        </a>
-
-                    </li>
-
-                    <li>
-                        <a href="{{url('nhanvien/vaitro/danhsach')}}">
-                            <span>Danh Sách Vai Trò Nhân Viên</span>
-                        </a>
-
-                    </li>
-                </ul>
-            </li>
-
-            <li>
+            <li class="{{ Request::is('settings') ? 'active' : '' }}">
                 <a href="{{url('settings')}}" title="Hệ thống" class="toggled waves-effect waves-block">
                     <i class="material-icons">settings</i>
                     <span>Hệ thống</span>
@@ -116,7 +65,7 @@
     <div class="legal">
         <i title="@lang('core::core.minify_sidebar')" id="minify-sidebar" class="material-icons">keyboard_arrow_left</i>
         <div class="version">
-            <b>@lang('bap.version'): {{ config('bap.version') }}</b>
+            <b>version: HRMS 3.0</b>
         </div>
     </div>
     <!-- #Footer -->
