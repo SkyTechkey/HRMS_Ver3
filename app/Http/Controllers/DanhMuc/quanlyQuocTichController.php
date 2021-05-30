@@ -76,7 +76,7 @@ class quanlyQuocTichController extends Controller
     }
     public function export()
     {
-        return Excel::download(new QuocTichExport, 'DS_ChiNhanh.xlsx');
+        return Excel::download(new QuocTichExport, 'DS_QuocTich.xlsx');
     }
       public function update(Request $request, $id)
     {
