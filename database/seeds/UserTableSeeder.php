@@ -14,37 +14,9 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tbl_tongiao')->insert([
-            'TenTG_Tongiao' => 'cao dai',
-        ]);
-        DB::table('tbl_tongiao')->insert([
-            'TenTG_Tongiao' => 'phat giao',
-        ]);
-        DB::table('tbl_tongiao')->insert([
-            'TenTG_Tongiao' => 'thien chua giao',
-        ]);
-
-        DB::table('tbl_quoctich')->insert([
-            'TenQT_Quoctich' => 'Vietnam',
-        ]);
-        DB::table('tbl_quoctich')->insert([
-            'TenQT_Quoctich' => 'America',
-        ]);
-        DB::table('tbl_quoctich')->insert([
-            'TenQT_Quoctich' => 'Singapore',
-        ]);
-
-        DB::table('tbl_ngoaingu')->insert([
-            'TenNN_Ngoaingu' => 'tieng Anh',
-        ]);
-        DB::table('tbl_ngoaingu')->insert([
-            'TenNN_Ngoaingu' => 'tieng Phap',
-        ]);
-        DB::table('tbl_ngoaingu')->insert([
-            'TenNN_Ngoaingu' => 'tieng Lao',
-        ]);
         DB::table('users')->insert([
             'Hovaten' => 'Ho Van Vinh',
+<<<<<<< HEAD
             'Tenthuonggoi' => 'Vinh ez',
             'Gioitinh' => 'Nam',
             'Ngayvaolam' => '2021/03/16',
@@ -72,11 +44,15 @@ class UserTableSeeder extends Seeder
             'ID_Nguoigioithieu' => 1,
             'Tinhtranghonnhan' => 'Đã kết hôn',
             'ID_HinhthucNV' => 1,
+=======
+>>>>>>> origin/QuanLyQuocTich_Viet
             'Hinhanh' => 'vinh.jpg',
             'Ghichu' => 'Dep choai',
             'Trangthai' => 'Đang làm việc',
+
             'username' => 'admin',
             'password' => bcrypt('123456')
+<<<<<<< HEAD
             ]);
     /*    DB::table('users')->insert([
             'Hovaten' => 'Nguyễn văn A',
@@ -282,5 +258,10 @@ class UserTableSeeder extends Seeder
       // $this->call(PermissionTableSeeder::class);
       // // User seeder will use the roles above created.
       // $this->call(UserTableSeeder::class);
+=======
+
+            ]);
+
+>>>>>>> origin/QuanLyQuocTich_Viet
     }
 }

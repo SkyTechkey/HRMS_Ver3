@@ -4,27 +4,32 @@ namespace App\Http\Controllers\DanhMuc;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\QuanLyNgoaiNgu;
+use App\Models\QuanlyChinhanh;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\NgoainguExport;
-use App\Imports\NgoainguImport;
+use App\Exports\ChiNhanhExport;
+use App\Imports\ChinhanhImport;
 
-class quanLyNgoaiNguController extends Controller
+class quanlyChinhNhanhController extends Controller
 {
 
     public function index()
     {
-        $danhsach = QuanLyNgoaiNgu::all();
-        return view('Settings.Danhmuc.quanlyngoaingu',compact('danhsach'));
+        $danhsach = QuanlyChinhanh::all();
+        return view('Settings.Danhmuc.quanlychinhanh',compact('danhsach'));
     }
 
     public function store(Request $request)
     {
-        $createNgoaiNgu = new QuanLyNgoaiNgu;
-        $createNgoaiNgu->Ten_ngoaingu = $request->name;
-        $createNgoaiNgu->Ghichu = $request->ghichu;
-        $createNgoaiNgu->Trangthai = $request->status;
-        if($createNgoaiNgu->save())
+        $createchinhanh = new QuanlyChinhanh;
+        $createchinhanh->Tenchinhanh = $request->name;
+        $createchinhanh->Diachi = $request->Diachi;
+        $createchinhanh->Tennguoidungdau = $request->Tennguoidungdau;
+        $createchinhanh->Email = $request->Email;
+        $createchinhanh->Sodienthoai = $request->Sodienthoai;
+        $createchinhanh->Chucvu = $request->Chucvu;
+        $createchinhanh->Trangthai = $request->status;
+        $createchinhanh->Ghichu = $request->Ghichu;
+        if($createchinhanh->save())
         {
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
@@ -36,11 +41,11 @@ class quanLyNgoaiNguController extends Controller
 
     public function destroy($id)
     {
-        $deleteNgoaiNgu = QuanLyNgoaiNgu::find($id);
+        $deletechinhanh = QuanlyChinhanh::find($id);
 
-        if(!empty($deleteNgoaiNgu))
+        if(!empty($deletechinhanh))
         {
-            if($deleteNgoaiNgu->delete())
+            if($deletechinhanh->delete())
             {
                return back()->with('success',__('Đã xóa dữ liệu thành công!'));
             }
@@ -66,7 +71,7 @@ class quanLyNgoaiNguController extends Controller
     {
         if (!empty(request()->file('file')))
         {
-            Excel::import(new NgoainguImport,request()->file('file'));
+            Excel::import(new ChinhanhImport,request()->file('file'));
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
         else
@@ -76,16 +81,21 @@ class quanLyNgoaiNguController extends Controller
     }
     public function export()
     {
-        return Excel::download(new NgoainguExport, 'DS_NgoaiNgu.xlsx');
+        return Excel::download(new ChiNhanhExport, 'DS_ChiNhanh.xlsx');
     }
       public function update(Request $request, $id)
     {
-        $update_Ngoaingu = QuanLyNgoaiNgu::find($id);
-        if(!empty($update_Ngoaingu)){
-            $update_Ngoaingu->Ten_ngoaingu = $request->name;
-            $update_Ngoaingu->Ghichu = $request->ghichu;
-            $update_Ngoaingu->Trangthai = $request->status;
-            if($update_Ngoaingu->save())
+        $update_chinhanh = QuanlyChinhanh::find($id);
+        if(!empty($update_chinhanh)){
+            $update_chinhanh->Tenchinhanh = $request->name;
+            $update_chinhanh->Diachi = $request->Diachi;
+            $update_chinhanh->Tennguoidungdau = $request->Tennguoidungdau;
+            $update_chinhanh->Email = $request->Email;
+            $update_chinhanh->Sodienthoai = $request->Sodienthoai;
+            $update_chinhanh->Chucvu = $request->Chucvu;
+            $update_chinhanh->Ghichu = $request->ghichu;
+            $update_chinhanh->Trangthai = $request->status;
+            if($update_chinhanh->save())
             {
                 return back()->with('success',__('Đã cập nhập dữ liệu thành công!'));
             }

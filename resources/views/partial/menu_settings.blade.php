@@ -85,14 +85,32 @@
             <li class="header">
                 <h6>DOANH MỤC</h6>
             </li>
+            @can('View.ChiNhanh')
+            <li class="{{Route::is('quanlychinhanh.index') ? 'active' : '' }}">
+                <a href="{{route('quanlychinhanh.index')}}" class="list-group-item">
+                    <span>Quản lý Chi Nhánh</span>
+                </a>
+            </li>
+            @endcan
             @can('View.NgoaiNgu')
-            <li class="{{ Request::is('quanlyngoaingu') ? 'active' : '' }}">
+            <li class="{{Route::is('quanlyngoaingu.index') ? 'active' : '' }}">
                 <a href="{{route('quanlyngoaingu.index')}}" class="list-group-item">
                     <span>Quản lý ngoại ngữ</span>
                 </a>
             </li>
             @endcan
+<<<<<<< HEAD
 >>>>>>> origin/QuanLyNgoaiNgu_Viet
+=======
+            @can('View.QuocTich')
+            <li class="{{Route::is('quanlyquoctich.index') ? 'active' : '' }}">
+                <a href="{{route('quanlyquoctich.index')}}" class="list-group-item">
+                    <span>Quản lý quốc tịch</span>
+                </a>
+            </li>
+            @endcan
+
+>>>>>>> origin/QuanLyQuocTich_Viet
 
         </ul>
 

@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserSeeder::class);
         // User seeder will use the roles above created.
 <<<<<<< HEAD
+<<<<<<< HEAD
    	 $this->call(UserTableSeeder::class);
         $this->call(DataBranch::class);
 
@@ -32,5 +33,15 @@ class DatabaseSeeder extends Seeder
             XaPhuongTableSeeder::class
         ]);
 >>>>>>> origin/QuanLyTinhThanh-NoiLamViec-ChiNhanh-Nhieu
+=======
+      //
+
+   	    $this->call(UserTableSeeder::class);
+        $this->call(QuoctichTableSeeder::class);
+        $this->call(NgoainguTableSeeder::class);
+        $this->call(ChinhanhTableSeeder::class);
+        
+        $this->call(RolePermissitonSeeder::class);
+>>>>>>> origin/QuanLyQuocTich_Viet
     }
 }

@@ -31,6 +31,9 @@
 <script src="{{ asset('project_asset/js/admin.js')}}"></script>
 <script src="{{ asset('project_asset/js/pages/tables/jquery-datatable.js')}}"></script>
 
-<!-- Demo Js -->
+
+<!-- Demo Js <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
 <script src="{{ asset('project_asset/js/demo.js')}}"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="{{ asset('project_asset/plugins/sweetalert/sweetalert.min.js')}}"></script>
+

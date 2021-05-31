@@ -1,7 +1,7 @@
 @extends('Settings.settings')
 <!-- # Nội dung tiêu đề -->
 @section('title')
-Quản lý ngoại ngữ
+Quản lý Chi nhánh
 @endsection
 <!-- #END tiêu đề -->
 <!-- # Nội dung CSS, js bổ sung -->
@@ -59,18 +59,18 @@ Quản lý ngoại ngữ
 
                 <div class="header">
                     <h2>
-                        Danh Sách Trình Độ Ngoại Ngữ
+                        Danh Sách Trình Độ Chi Nhánh
                         <div style="float:right">
-                            @can('Import.NgoaiNgu')
+                            @can('Import.Chinhanh')
                             <button type="button" class="btn bg-brown waves-effect" data-toggle="modal"
                                 data-target="#importModal"><i class="material-icons">publish</i>Nhập từ file</button>
                             @endcan
-                            @can('Export.NgoaiNgu')
-                            <a href="{{route('quanlyngoaingu.export')}}" class="btn btn-success waves-effect">
+                            @can('Export.Chinhanh')
+                            <a href="{{route('quanlychinhanh.export')}}" class="btn btn-success waves-effect">
                                 <i class="material-icons">download</i>
                                 Xuất file</a>
                             @endcan
-                            @can('Create.NgoaiNgu')
+                            @can('Create.Chinhanh')
                             <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#myModal">
                                 <i class="material-icons">add</i>
                                 Thêm mới</button>
@@ -84,10 +84,15 @@ Quản lý ngoại ngữ
                             <thead>
                                 <tr>
                                     <th>STT</th>
-                                    <th>Mã NN</th>
-                                    <th>Tên Trình độ</th>
-                                    <th>Ghi Chú</th>
-                                    <th>Trạng Thái</th>
+                                    <th>Mã CN</th>
+                                    <th>Tên Chi nhánh</th>
+                                    <th>Người đứng đầu</th>
+                                    <th>Chức vụ</th>
+                                    <th>Địa chỉ</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Trạng thái</th>
+                                    <th>Ghi chú</th>
                                     <th width="10%">Chức Năng</th>
 
                                 </tr>
@@ -97,37 +102,31 @@ Quản lý ngoại ngữ
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{$value->id}}</td>
-                                    <td>{{$value->Ten_ngoaingu}}</td>
-                                    <td>{{$value->Ghichu}}</td>
+                                    <td>{{$value->Tenchinhanh}}</td>
+                                    <td>{{$value->Tennguoidungdau}}</td>
+                                    <td>{{$value->Chucvu}}</td>
+                                    <td>{{$value->Diachi}}</td>
+                                    <td>{{$value->Sodienthoai}}</td>
+                                    <td>{{$value->Email}}</td>
+                                    <td>{{$value->Sodienthoai}}</td>
                                     @if($value->Trangthai=='Hoạt động')
-
                                         <td><span class="label bg-blue">Hoạt động</span></td>
-
                                     @elseif($value->Trangthai=='Tạm ngừng')
                                         <td><span class="label bg-orange">Tạm ngừng</span></td>
-
                                     @else
                                         <td><span class="label bg-red">Ngừng hoạt động</span></td>
-
-
                                     @endif
-
+                                    <td>{{$value->Ghichu}}</td>
                                     <td>
-                                        @can('Edit.NgoaiNgu')
-
+                                        @can('Edit.Chinhanh')
                                             <a href=""  type="button" data-toggle="modal" data-target="#fix{{$value->id}}">
                                                 <i style="font-size:22px" class="material-icons  bg-light-green ">create</i></a>
-
-
                                          @endcan
-
-                                        @can('Delete.NgoaiNgu')
-                                        <a href="{{route('quanlyngoaingu.delete',$value->id)}}"
+                                        @can('Delete.Chinhanh')
+                                        <a href="{{route('quanlychinhanh.delete',$value->id)}}"
                                             class="button delete-confirm"><i style="font-size:22px"
                                                 class="material-icons bg-brown">delete_forever</i></a>
                                         @endcan
-
-
                                     </td>
 
                                 </tr>
@@ -154,24 +153,45 @@ Quản lý ngoại ngữ
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP NGOẠI NGỮ</h4>
+                    <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP Chi Nhánh</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('quanlyngoaingu.edit',$value->id) }}" method="post">
+                    <form action="{{ route('quanlychinhanh.edit',$value->id) }}" method="post">
                         @csrf
 
                         <div class="form-group">
-                            <label for="Tenngoaingu">Tên ngoại ngữ</label>
+                            <label for="TenChinhanh">Tên Chi Nhánh</label>
                             <div class="form-line">
-                                <input type="text" value="{{$value->Ten_ngoaingu}}" class="form-control" id="Tenngoaingu"
-                                    name="name" placeholder="Tên ngoại ngữ" maxlength="255" required />
+                                <input type="text" value="{{$value->Tenchinhanh}}" class="form-control" id="Tenchinhanh"
+                                    name="name" placeholder="Tên Chi Nhánh" maxlength="255" required />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="Ghichu">Ghi chú</label>
+                            <label for="Tennguoidungdau">Người đứng đầu</label>
                             <div class="form-line">
-                                <input type="text" value="{{$value->Ghichu}}" class="form-control" id="Ghichu" name="ghichu"
-                                    placeholder="Ghi chú" maxlength="255"  />
+                                <input type="text" value="{{$value->Tennguoidungdau}}" class="form-control" id="Tennguoidungdau"
+                                    name="Tennguoidungdau" placeholder="Người đứng đầu" maxlength="255"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Chucvu">Chức vụ</label>
+                            <div class="form-line">
+                                <input type="text" value="{{$value->Chucvu}}" class="form-control" id="Chucvu"
+                                    name="Chucvu" placeholder="Chức vụ" maxlength="255"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Diachi">Địa chỉ</label>
+                            <div class="form-line">
+                                <input type="text" value="{{$value->Diachi}}" class="form-control" id="Diachi"
+                                    name="Diachi" placeholder="Địa chỉ" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Sodienthoai">Số Điện thoại</label>
+                            <div class="form-line">
+                                <input type="text" value="{{$value->Sodienthoai}}" class="form-control" id="Sodienthoai"
+                                    name="Sodienthoai" placeholder="Số điện thoại" maxlength="255"  />
                             </div>
                         </div>
                         <div class="form-group">
@@ -184,6 +204,14 @@ Quản lý ngoại ngữ
                                 <option value="Ngừng hoạt động">Ngừng hoạt động</option>
 
                             </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Ghichu">Ghi chú</label>
+                            <div class="form-line">
+                                <input type="text" value="{{$value->Ghichu}}" class="form-control" id="Ghichu" name="Ghichu"
+                                    placeholder="Ghi chú" maxlength="255"  />
+                            </div>
                         </div>
 
 
@@ -203,36 +231,65 @@ Quản lý ngoại ngữ
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI NGOẠI NGỮ</h4>
+                    <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI Chi Nhánh</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('quanlyngoaingu.store') }}" method="post">
+                    <form action="{{ route('quanlychinhanh.store') }}" method="post">
                         @csrf
 
                         <div class="form-group">
-                            <label for="Tenngoaingu">Tên ngoại ngữ</label>
+                            <label for="TenChinhanh">Tên Chi Nhánh</label>
                             <div class="form-line">
-                                <input type="text" class="form-control" id="Tenngoaingu" name="name"
-                                    placeholder="Tên ngoại ngữ" maxlength="255" required />
+                                <input type="text" value="{{$value->Tenchinhanh}}" class="form-control" id="Tenchinhanh"
+                                    name="name" placeholder="Tên Chi Nhánh" maxlength="255" required />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="Ghichu">Ghi chú</label>
+                            <label for="Tennguoidungdau">Người đứng đầu</label>
                             <div class="form-line">
-                                <input type="text" class="form-control" id="Ghichu" name="ghichu" placeholder="Ghi chú"
-                                    maxlength="255"  />
+                                <input type="text" value="{{$value->Tennguoidungdau}}" class="form-control" id="Tennguoidungdau"
+                                    name="Tennguoidungdau" placeholder="Người đứng đầu" maxlength="255"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Chucvu">Chức vụ</label>
+                            <div class="form-line">
+                                <input type="text" value="{{$value->Chucvu}}" class="form-control" id="Chucvu"
+                                    name="Chucvu" placeholder="Chức vụ" maxlength="255"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Diachi">Địa chỉ</label>
+                            <div class="form-line">
+                                <input type="text" value="{{$value->Diachi}}" class="form-control" id="Diachi"
+                                    name="Diachi" placeholder="Địa chỉ" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Sodienthoai">Số Điện thoại</label>
+                            <div class="form-line">
+                                <input type="text" value="{{$value->Sodienthoai}}" class="form-control" id="Sodienthoai"
+                                    name="Sodienthoai" placeholder="Số điện thoại" maxlength="255"  />
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="Trangthai">Trạng thái</label>
-                            <select name="status" class="form-control show-tick" required>
-                                <option value="">-- Vui lòng chọn trạng thái --</option>
+                            <select name="status" class="form-control show-tick">
+                                <option value="{{$value->Trangthai}}">-- {{$value->Trangthai}} --</option>
 
                                 <option value="Hoạt động">Hoạt động</option>
                                 <option value="Tạm ngừng">Tạm ngừng</option>
                                 <option value="Ngừng hoạt động">Ngừng hoạt động</option>
 
                             </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Ghichu">Ghi chú</label>
+                            <div class="form-line">
+                                <input type="text" value="{{$value->Ghichu}}" class="form-control" id="Ghichu" name="Ghichu"
+                                    placeholder="Ghi chú" maxlength="255"  />
+                            </div>
                         </div>
 
 
@@ -251,13 +308,13 @@ Quản lý ngoại ngữ
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI NGOẠI NGỮ</h4>
+                    <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI Chi Nhánh</h4>
                 </div>
                 <div class="card bg-light mt-3">
                     <div class="card-body">
                         <div class="body">
-                            <p>- Tải file mẫu <a style="color: blue" href="{{ asset('project_asset/template/templateImportDanhMucNgoaiNgu.xlsx')}}">Link</a></p>
-                            <form action="{{ route('quanlyngoaingu.import') }}" method="POST" enctype="multipart/form-data">
+                            <p>- Tải file mẫu <a style="color: blue" href="{{ asset('project_asset/template/templateImportDanhMucChiNhanh.xlsx')}}">Link</a></p>
+                            <form action="{{ route('quanlychinhanh.import') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="file" name="file" class="form-control">
                                 <br>

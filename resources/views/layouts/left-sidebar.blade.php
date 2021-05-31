@@ -51,6 +51,7 @@
                     <span>TRANG MẪU</span>
                 </a>
             </li>
+<<<<<<< HEAD
             <li>
                 <a href="{{url('phongban')}}">
                     <i class="material-icons">perm_contact_calendar</i>
@@ -124,8 +125,10 @@
                     </li>
                 </ul>
             </li>
+=======
+>>>>>>> origin/QuanLyQuocTich_Viet
 
-            <li>
+            <li class="{{ Request::is('settings') ? 'active' : '' }}">
                 <a href="{{url('settings')}}" title="Hệ thống" class="toggled waves-effect waves-block">
                     <i class="material-icons">settings</i>
                     <span>Hệ thống</span>
@@ -138,8 +141,12 @@
     <div class="legal">
         <i title="@lang('core::core.minify_sidebar')" id="minify-sidebar" class="material-icons">keyboard_arrow_left</i>
         <div class="version">
+<<<<<<< HEAD
             <b>@lang('bap.version'): {{ config('bap.version') }}</b>
 >>>>>>> origin/QuanLyNgoaiNgu_Viet
+=======
+            <b>version: HRMS 3.0</b>
+>>>>>>> origin/QuanLyQuocTich_Viet
         </div>
     </div>
     <!-- #Footer -->
