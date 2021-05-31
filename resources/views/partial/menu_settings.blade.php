@@ -38,10 +38,10 @@
                 </a>
             </li>
             @endcan
-            @can('View.QuocTich')
-            <li class="{{Route::is('quanlyquoctich.index') ? 'active' : '' }}">
-                <a href="{{route('quanlyquoctich.index')}}" class="list-group-item">
-                    <span>Quản lý quốc tịch</span>
+            @can('View.DanToc')
+            <li class="{{Route::is('quanlydantoc.index') ? 'active' : '' }}">
+                <a href="{{route('quanlydantoc.index')}}" class="list-group-item">
+                    <span>Quản lý dân tộc</span>
                 </a>
             </li>
             @endcan

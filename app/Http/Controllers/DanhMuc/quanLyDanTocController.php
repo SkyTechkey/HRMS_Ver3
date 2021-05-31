@@ -4,27 +4,27 @@ namespace App\Http\Controllers\DanhMuc;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\QuanLyQuocTich;
+use App\Models\QuanLyDanToc;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\QuocTichExport;
-use App\Imports\QuoctichImport;
+use App\Exports\DantocExport;
+use App\Imports\DantocImport;
 
-class quanlyQuocTichController extends Controller
+class quanLyDanTocController extends Controller
 {
 
     public function index()
     {
-        $danhsach = QuanLyQuocTich::all();
-        return view('Settings.Danhmuc.quanlyquoctich',compact('danhsach'));
+        $danhsach = QuanLyDanToc::all();
+        return view('Settings.Danhmuc.quanlydantoc',compact('danhsach'));
     }
 
     public function store(Request $request)
     {
-        $createquoctich = new QuanLyQuocTich;
-        $createquoctich->Ten_quoctich = $request->name;
-        $createquoctich->Trangthai = $request->status;
-        $createquoctich->Ghichu = $request->Ghichu;
-        if($createquoctich->save())
+        $createDanToc = new QuanLyDanToc;
+        $createDanToc->Ten_dantoc = $request->name;
+        $createDanToc->Ghichu = $request->ghichu;
+        $createDanToc->Trangthai = $request->status;
+        if($createDanToc->save())
         {
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
@@ -36,11 +36,11 @@ class quanlyQuocTichController extends Controller
 
     public function destroy($id)
     {
-        $deletequoctich= QuanLyQuocTich::find($id);
+        $deleteDanToc = QuanLyDanToc::find($id);
 
-        if(!empty($deletequoctich))
+        if(!empty($deleteDanToc))
         {
-            if($deletequoctich->delete())
+            if($deleteDanToc->delete())
             {
                return back()->with('success',__('Đã xóa dữ liệu thành công!'));
             }
@@ -70,7 +70,11 @@ class quanlyQuocTichController extends Controller
 
             // if($test->getClientOriginalExtension == xlsx)
             if($extension_file->getClientOriginalExtension() == 'xlsx'){
+<<<<<<< HEAD:app/Http/Controllers/DanhMuc/quanlyQuocTichController.php
                 Excel::import(new QuoctichImport,request()->file('file'));
+=======
+                Excel::import(new DantocImport,request()->file('file'));
+>>>>>>> QuanLyDanToc_Viet:app/Http/Controllers/DanhMuc/quanLyDanTocController.php
                 return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
             }
             else{
@@ -86,16 +90,20 @@ class quanlyQuocTichController extends Controller
     }
     public function export()
     {
+<<<<<<< HEAD:app/Http/Controllers/DanhMuc/quanlyQuocTichController.php
         return Excel::download(new QuocTichExport, 'DS_QuocTich.xlsx');
+=======
+        return Excel::download(new DantocExport, 'DS_Dantoc.xlsx');
+>>>>>>> QuanLyDanToc_Viet:app/Http/Controllers/DanhMuc/quanLyDanTocController.php
     }
       public function update(Request $request, $id)
     {
-        $update_quoctich = QuanLyQuocTich::find($id);
-        if(!empty($update_quoctich)){
-            $update_quoctich->Ten_quoctich = $request->name;
-            $update_quoctich->Ghichu = $request->ghichu;
-            $update_quoctich->Trangthai = $request->status;
-            if($update_quoctich->save())
+        $update_Dantoc = QuanLyDanToc::find($id);
+        if(!empty($update_Dantoc)){
+            $update_Dantoc->Ten_dantoc = $request->name;
+            $update_Dantoc->Ghichu = $request->ghichu;
+            $update_Dantoc->Trangthai = $request->status;
+            if($update_Dantoc->save())
             {
                 return back()->with('success',__('Đã cập nhập dữ liệu thành công!'));
             }

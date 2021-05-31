@@ -2,11 +2,11 @@
 
 namespace App\Imports;
 
-use App\Models\QuanLyQuocTich;
+use App\Models\QuanLyDanToc;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class QuoctichImport implements ToModel, WithHeadingRow
+class DantocImport implements ToModel, WithHeadingRow
 {
     /**
     * @param array $row
@@ -19,12 +19,12 @@ public function headingRow() : int
         }
     public function model(array $row)
     {
-        $quoctich = new QuanLyQuocTich();
+        $dantoc = new QuanLyDanToc();
 
-        $quoctich->Ten_quoctich = @$row['ten_quoc_tich'];
-        $quoctich->Ghichu = @$row['ghi_chu'];
-        $quoctich->Trangthai = @$row['trang_thai'];
-        return $quoctich;
+        $dantoc->Ten_dantoc = @$row['ten_dan_toc'];
+        $dantoc->Ghichu = @$row['ghi_chu'];
+        $dantoc->Trangthai = @$row['trang_thai'];
+        return $dantoc;
 ;
     }
 }
