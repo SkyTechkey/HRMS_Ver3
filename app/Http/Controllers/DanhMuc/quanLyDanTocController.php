@@ -70,18 +70,17 @@ class quanLyDanTocController extends Controller
 
             // if($test->getClientOriginalExtension == xlsx)
             if($extension_file->getClientOriginalExtension() == 'xlsx'){
-<<<<<<< HEAD:app/Http/Controllers/DanhMuc/quanLyDanTocController.php
+
                 Excel::import(new DantocImport,request()->file('file'));
-=======
-                Excel::import(new QuoctichImport,request()->file('file'));
->>>>>>> origin/QuanLyQuocTich_Viet:app/Http/Controllers/DanhMuc/quanlyQuocTichController.php
+
+
                 return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
             }
             else{
                 return back()->with('error',__('Vui lòng chọn file excel!'));
             }
-            
-            
+
+
         }
         else
         {
@@ -90,12 +89,8 @@ class quanLyDanTocController extends Controller
     }
     public function export()
     {
-<<<<<<< HEAD:app/Http/Controllers/DanhMuc/quanLyDanTocController.php
         return Excel::download(new DantocExport, 'DS_Dantoc.xlsx');
-=======
-        return Excel::download(new QuocTichExport, 'DS_QuocTich.xlsx');
->>>>>>> origin/QuanLyQuocTich_Viet:app/Http/Controllers/DanhMuc/quanlyQuocTichController.php
-    }
+   }
       public function update(Request $request, $id)
     {
         $update_Dantoc = QuanLyDanToc::find($id);
