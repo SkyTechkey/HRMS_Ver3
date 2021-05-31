@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class QuanLyQuocTich extends Model
+class QuanLyDanToc extends Model
 {
-    protected $table = 'tbl_quoctich';
+    protected $table = 'tbl_dantoc';
 }
