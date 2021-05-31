@@ -259,7 +259,11 @@ Quản lý dân tộc
                 <div class="card-body">
                     <div class="body">
                         <p>- Tải file mẫu <a style="color: blue"
+<<<<<<< HEAD:resources/views/Settings/Danhmuc/quanlydantoc.blade.php
                                 href="{{ asset('project_asset/template/templateImportDanhMucDanToc.xlsx')}}">Link</a>
+=======
+                                href="{{ asset('project_asset/template/templateImportDanhMucQuocTich.xlsx')}}">Link</a>
+>>>>>>> origin/QuanLyQuocTich_Viet:resources/views/Settings/Danhmuc/quanlyquoctich.blade.php
                         </p>
                         <form action="{{ route('quanlydantoc.import') }}" method="POST" enctype="multipart/form-data">
                             @csrf
