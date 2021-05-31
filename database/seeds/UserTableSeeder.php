@@ -1,22 +1,29 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\User;
+use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 class UserTableSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Seed the application's database.
      *
      * @return void
      */
     public function run()
     {
-        //
-        $employee = new User();
-       $employee->name = 'Employee Name';
-       $employee->email = 'vinh@gmail.com';
-       $employee->password = bcrypt('12345678');
-       $employee->id_role = bcrypt('1');
-       $employee->save();
+        DB::table('users')->insert([
+            'Hovaten' => 'Ho Van Vinh',
+            'Hinhanh' => 'vinh.jpg',
+            'Ghichu' => 'Dep choai',
+            'Trangthai' => 'Đang làm việc',
+
+            'username' => 'admin',
+            'password' => bcrypt('123456')
+
+            ]);
+
     }
 }
