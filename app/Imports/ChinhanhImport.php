@@ -15,16 +15,17 @@ public function headingRow() : int
         }
     public function model(array $row)
     {
+        
         $chinhanh = new QuanlyChinhanh();
 
-        $chinhanh->Tenchinhanh = @$row['Tenchinhanh'];
-        $chinhanh->Tennguoidungdau = @$row['Tennguoidungdau'];
-        $chinhanh->Chucvu = @$row['Chucvu'];
-        $chinhanh->Diachi = @$row['Diachi'];
-        $chinhanh->Sodienthoai = @$row['Sodienthoai'];
-        $chinhanh->Email = @$row['Email'];
-        $chinhanh->Trangthai = @$row['Trangthai'];
-        $chinhanh->Ghichu = @$row['Ghichu'];
+        $chinhanh->Ten_chinhanh = @$row['tenchinhanh'];
+        $chinhanh->Ten_nguoidungdau = @$row['tennguoidungdau'];
+        $chinhanh->Chucvu = @$row['chucvu'];
+        $chinhanh->Diachi = @$row['diachi'];
+        $chinhanh->Sodienthoai = @$row['sodienthoai'];
+        $chinhanh->Email = @$row['email'];
+        $chinhanh->Trangthai = @$row['trangthai'];
+        $chinhanh->Ghichu = @$row['ghichu'];
 
         return $chinhanh;
     }

@@ -42,47 +42,48 @@ Route::middleware(['auth'])->group(function () {
         Route::get('settings/role/delete/{id}','PhanQuyen\PhanQuyenController@deleteRole');
         Route::post('settings/role/edit/{id}','PhanQuyen\PhanQuyenController@editRole');
 
-        // Quản lý ngoại ngữ
-        Route::group(['middleware' => ['can:View.NgoaiNgu']], function () {
-            Route::get('settings/danhmuc/quanlyngoaingu','DanhMuc\quanLyNgoaiNguController@index')->name('quanlyngoaingu.index');
-        });
-        Route::group(['middleware' => ['can:Edit.NgoaiNgu']], function () {
-            Route::post('settings/danhmuc/quanlyngoaingu/update/{id}','DanhMuc\quanLyNgoaiNguController@update')->name('quanlyngoaingu.edit');
-        });
-        Route::group(['middleware' => ['can:Create.NgoaiNgu']], function () {
-            Route::post('settings/danhmuc/quanlyngoaingu/store','DanhMuc\quanLyNgoaiNguController@store')->name('quanlyngoaingu.store');
-        });
-        Route::group(['middleware' => ['can:Delete.NgoaiNgu']], function () {
-            Route::get('settings/danhmuc/quanlyngoaingu/destroy/{id}','DanhMuc\quanLyNgoaiNguController@destroy')->name('quanlyngoaingu.delete');
-
-        });
-        Route::group(['middleware' => ['can:Import.NgoaiNgu']], function () {
-            Route::post('settings/danhmuc/quanlyngoaingu/import', 'DanhMuc\quanLyNgoaiNguController@import')->name('quanlyngoaingu.import');
-        });
-        Route::group(['middleware' => ['can:Export.NgoaiNgu']], function () {
-            Route::get('settings/danhmuc/quanlyngoaingu/export', 'DanhMuc\quanLyNgoaiNguController@export')->name('quanlyngoaingu.export');
-
-        });
+        
 
         // Quản lý Chi nhánh
-        Route::group(['middleware' => ['can:View.Chinhanh']], function () {
+        Route::group(['middleware' => ['can:View.ChiNhanh']], function () {
             Route::get('settings/danhmuc/quanlychinhanh','DanhMuc\quanlyChiNhanhController@index')->name('quanlychinhanh.index');
         });
-        Route::group(['middleware' => ['can:Edit.Chinhanh']], function () {
+        Route::group(['middleware' => ['can:Edit.ChiNhanh']], function () {
             Route::post('settings/danhmuc/quanlychinhanh/update/{id}','DanhMuc\quanlyChiNhanhController@update')->name('quanlychinhanh.edit');
         });
-        Route::group(['middleware' => ['can:Create.Chinhanh']], function () {
+        Route::group(['middleware' => ['can:Create.ChiNhanh']], function () {
             Route::post('settings/danhmuc/quanlychinhanh/store','DanhMuc\quanlyChiNhanhController@store')->name('quanlychinhanh.store');
         });
-        Route::group(['middleware' => ['can:Delete.Chinhanh']], function () {
+        Route::group(['middleware' => ['can:Delete.ChiNhanh']], function () {
             Route::get('settings/danhmuc/quanlychinhanh/destroy/{id}','DanhMuc\quanlyChiNhanhController@destroy')->name('quanlychinhanh.delete');
 
         });
-        Route::group(['middleware' => ['can:Import.Chinhanh']], function () {
+        Route::group(['middleware' => ['can:Import.ChiNhanh']], function () {
             Route::post('settings/danhmuc/quanlychinhanh/import', 'DanhMuc\quanlyChiNhanhController@import')->name('quanlychinhanh.import');
         });
-        Route::group(['middleware' => ['can:Export.Chinhanh']], function () {
+        Route::group(['middleware' => ['can:Export.ChiNhanh']], function () {
             Route::get('settings/danhmuc/quanlychinhanh/export', 'DanhMuc\quanlyChiNhanhController@export')->name('quanlychinhanh.export');
+
+        });
+        // Quản lý phòng ban
+        Route::group(['middleware' => ['can:View.PhongBan']], function () {
+            Route::get('settings/danhmuc/quanlyphongban','DanhMuc\quanLyPhongBanController@index')->name('quanlyphongban.index');
+        });
+        Route::group(['middleware' => ['can:Edit.PhongBan']], function () {
+            Route::post('settings/danhmuc/quanlyphongban/update/{id}','DanhMuc\quanLyPhongBanController@update')->name('quanlyphongban.edit');
+        });
+        Route::group(['middleware' => ['can:Create.PhongBan']], function () {
+            Route::post('settings/danhmuc/quanlyphongban/store','DanhMuc\quanLyPhongBanController@store')->name('quanlyphongban.store');
+        });
+        Route::group(['middleware' => ['can:Delete.PhongBan']], function () {
+            Route::get('settings/danhmuc/quanlyphongban/destroy/{id}','DanhMuc\quanLyPhongBanController@destroy')->name('quanlyphongban.delete');
+
+        });
+        Route::group(['middleware' => ['can:Import.PhongBan']], function () {
+            Route::post('settings/danhmuc/quanlyphongban/import', 'DanhMuc\quanLyPhongBanController@import')->name('quanlyphongban.import');
+        });
+        Route::group(['middleware' => ['can:Export.PhongBan']], function () {
+            Route::get('settings/danhmuc/quanlyphongban/export', 'DanhMuc\quanLyPhongBanController@export')->name('quanlyphongban.export');
 
         });
 

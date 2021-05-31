@@ -4,27 +4,30 @@ namespace App\Http\Controllers\DanhMuc;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\QuanLyNgoaiNgu;
+use App\Models\QuanLyPhongBan;
+use App\Models\QuanlyChinhanh;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\NgoainguExport;
-use App\Imports\NgoainguImport;
+use App\Exports\PhongbanExport;
+use App\Imports\PhongbanImport;
 
-class quanLyNgoaiNguController extends Controller
+class quanLyPhongBanController extends Controller
 {
 
     public function index()
     {
-        $danhsach = QuanLyNgoaiNgu::all();
-        return view('Settings.Danhmuc.quanlyngoaingu',compact('danhsach'));
+        $danhsach = QuanLyPhongBan::all();
+        $danhsach_chinhanh = QuanLyChiNhanh::all();
+        return view('Settings.Danhmuc.quanlyphongban',compact('danhsach','danhsach_chinhanh'));
     }
 
     public function store(Request $request)
     {
-        $createNgoaiNgu = new QuanLyNgoaiNgu;
-        $createNgoaiNgu->Ten_ngoaingu = $request->name;
-        $createNgoaiNgu->Ghichu = $request->ghichu;
-        $createNgoaiNgu->Trangthai = $request->status;
-        if($createNgoaiNgu->save())
+        $createPhongBan = new QuanLyPhongBan;
+        $createPhongBan->Ten_phongban = $request->name;
+        $createPhongBan->Chinhanh = $request->chinhanh;
+        $createPhongBan->Ghichu = $request->Ghichu;
+        $createPhongBan->Trangthai = $request->status;
+        if($createPhongBan->save())
         {
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
@@ -36,11 +39,11 @@ class quanLyNgoaiNguController extends Controller
 
     public function destroy($id)
     {
-        $deleteNgoaiNgu = QuanLyNgoaiNgu::find($id);
+        $deletePhongban = QuanLyPhongBan::find($id);
 
-        if(!empty($deleteNgoaiNgu))
+        if(!empty($deletePhongban))
         {
-            if($deleteNgoaiNgu->delete())
+            if($deletePhongban->delete())
             {
                return back()->with('success',__('Đã xóa dữ liệu thành công!'));
             }
@@ -66,8 +69,16 @@ class quanLyNgoaiNguController extends Controller
     {
         if (!empty(request()->file('file')))
         {
-            Excel::import(new NgoainguImport,request()->file('file'));
-            return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
+
+            $extension_file = request()->file('file');
+            if($extension_file->getClientOriginalExtension() == 'xlsx'){
+                Excel::import(new PhongbanImport,request()->file('file'));
+                return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
+            }
+            else{
+                return back()->with('error',__('Vui lòng chọn tệp excel'));
+            }
+            
         }
         else
         {
@@ -76,16 +87,17 @@ class quanLyNgoaiNguController extends Controller
     }
     public function export()
     {
-        return Excel::download(new NgoainguExport, 'DS_NgoaiNgu.xlsx');
+        return Excel::download(new PhongbanExport, 'DS_Phongban.xlsx');
     }
       public function update(Request $request, $id)
     {
-        $update_Ngoaingu = QuanLyNgoaiNgu::find($id);
-        if(!empty($update_Ngoaingu)){
-            $update_Ngoaingu->Ten_ngoaingu = $request->name;
-            $update_Ngoaingu->Ghichu = $request->ghichu;
-            $update_Ngoaingu->Trangthai = $request->status;
-            if($update_Ngoaingu->save())
+        $update_Phongban = QuanLyPhongBan::find($id);
+        if(!empty($update_Phongban)){
+            $update_Phongban->Ten_phongban = $request->name;
+            $update_Phongban->Chinhanh = $request->chinhanh;
+            $update_Phongban->Ghichu = $request->Ghichu;
+            $update_Phongban->Trangthai = $request->status;
+            if($update_Phongban->save())
             {
                 return back()->with('success',__('Đã cập nhập dữ liệu thành công!'));
             }

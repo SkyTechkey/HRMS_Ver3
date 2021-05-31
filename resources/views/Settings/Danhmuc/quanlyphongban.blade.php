@@ -1,7 +1,7 @@
 @extends('Settings.settings')
 <!-- # Nội dung tiêu đề -->
 @section('title')
-Quản lý chi nhánh
+Quản lý phòng ban
 @endsection
 <!-- #END tiêu đề -->
 <!-- # Nội dung CSS, js bổ sung -->
@@ -58,18 +58,18 @@ Quản lý chi nhánh
 
             <div class="header">
                 <h2>
-                    Danh Sách Chi Nhánh
+                    Danh Sách Phòng Ban
                     <div style="float:right">
-                        @can('Import.ChiNhanh')
+                        @can('Import.PhongBan')
                         <button type="button" class="btn bg-brown waves-effect" data-toggle="modal"
                             data-target="#importModal"><i class="material-icons">publish</i>Nhập từ file</button>
                         @endcan
-                        @can('Export.ChiNhanh')
-                        <a href="{{route('quanlychinhanh.export')}}" class="btn btn-success waves-effect">
+                        @can('Export.PhongBan')
+                        <a href="{{route('quanlyphongban.export')}}" class="btn btn-success waves-effect">
                             <i class="material-icons">download</i>
                             Xuất file</a>
                         @endcan
-                        @can('Create.ChiNhanh')
+                        @can('Create.PhongBan')
                         <button type="button" class="btn btn-primary waves-effect" data-toggle="modal"
                             data-target="#myModal">
                             <i class="material-icons">add</i>
@@ -85,12 +85,8 @@ Quản lý chi nhánh
                             <tr>
                                 <th>STT</th>
                                 <th>Mã CN</th>
-                                <th>Tên Chi nhánh</th>
-                                <th>Người Đứng Đầu</th>
-                                <th>Chức Vụ</th>
-                                <th>Địa Chỉ</th>
-                                <th>Số Điện Thoại</th>
-                                <th>Email</th>
+                                <th>Tên Phòng Ban</th>
+                                <th>Tên Chi Nhánh</th>
                                 <th>Trạng thái</th>
                                 <th>Ghi chú</th>
                                 <th width="10%">Chức Năng</th>
@@ -102,12 +98,8 @@ Quản lý chi nhánh
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{$value->id}}</td>
-                                <td>{{$value->Ten_chinhanh}}</td>
-                                <td>{{$value->Ten_nguoidungdau}}</td>
-                                <td>{{$value->Chucvu}}</td>
-                                <td>{{$value->Diachi}}</td>
-                                <td>{{$value->Sodienthoai}}</td>
-                                <td>{{$value->Email}}</td>
+                                <td>{{$value->Ten_phongban}}</td>
+                                <td>{{$value->Chinhanh}}</td>
                                 @if($value->Trangthai=='Hoạt động')
                                 <td><span class="label bg-blue">Hoạt động</span></td>
                                 @elseif($value->Trangthai=='Tạm ngừng')
@@ -117,12 +109,12 @@ Quản lý chi nhánh
                                 @endif
                                 <td>{{$value->Ghichu}}</td>
                                 <td>
-                                    @can('Edit.ChiNhanh')
+                                    @can('Edit.PhongBan')
                                     <a href="" type="button" data-toggle="modal" data-target="#fix{{$value->id}}">
                                         <i style="font-size:22px" class="material-icons  bg-light-green ">create</i></a>
                                     @endcan
-                                    @can('Delete.ChiNhanh')
-                                    <a href="{{route('quanlychinhanh.delete',$value->id)}}"
+                                    @can('Delete.PhongBan')
+                                    <a href="{{route('quanlyphongban.delete',$value->id)}}"
                                         class="button delete-confirm"><i style="font-size:22px"
                                             class="material-icons bg-brown">delete_forever</i></a>
                                     @endcan
@@ -152,54 +144,29 @@ Quản lý chi nhánh
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP CHI NHÁNH</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP PHÒNG BAN</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('quanlychinhanh.edit',$value->id) }}" method="post">
+                <form action="{{ route('quanlyphongban.edit',$value->id) }}" method="post">
                     @csrf
 
                     <div class="form-group">
-                        <label for="TenChinhanh">Tên chi nhánh</label>
+                        <label for="TenChinhanh">Tên phòng ban</label>
                         <div class="form-line">
-                            <input type="text" value="{{$value->Ten_chinhanh}}" class="form-control" id="Tenchinhanh"
-                                name="name" placeholder="Tên Chi Nhánh" maxlength="255" required />
+                            <input type="text" value="{{$value->Ten_phongban}}" class="form-control" id="Tenphongban"
+                                name="name" placeholder="Tên phòng ban" maxlength="255" required />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Tennguoidungdau">Người đứng đầu</label>
-                        <div class="form-line">
-                            <input type="text" value="{{$value->Ten_nguoidungdau}}" class="form-control"
-                                id="Tennguoidungdau" name="Tennguoidungdau" placeholder="Người đứng đầu"
-                                maxlength="255" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Chucvu">Chức vụ</label>
-                        <div class="form-line">
-                            <input type="text" value="{{$value->Chucvu}}" class="form-control" id="Chucvu" name="Chucvu"
-                                placeholder="Chức vụ" maxlength="255" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Diachi">Địa chỉ</label>
-                        <div class="form-line">
-                            <input type="text" value="{{$value->Diachi}}" class="form-control" id="Diachi" name="Diachi"
-                                placeholder="Địa chỉ" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Sodienthoai">Số Điện thoại</label>
-                        <div class="form-line">
-                            <input type="text" value="{{$value->Sodienthoai}}" class="form-control" id="Sodienthoai"
-                                name="Sodienthoai" placeholder="Số điện thoại" maxlength="255" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Email">Email</label>
-                        <div class="form-line">
-                            <input type="text" value="{{$value->Email}}" class="form-control" id="Email" name="Email"
-                                placeholder="Email" maxlength="255" />
-                        </div>
+                        <label for="Chinhanh">Chi nhánh</label>
+                        <select name="chinhanh" class="form-control show-tick">
+
+                            <option value="{{$value->Chinhanh}}">-- {{$value->Chinhanh}} --</option>
+                            @foreach($danhsach_chinhanh as $value)
+                            <option value="{{$value->Ten_chinhanh}}">{{$value->Ten_chinhanh}}</option>
+
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="Trangthai">Trạng thái</label>
@@ -241,49 +208,26 @@ Quản lý chi nhánh
                 <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI CHI NHÁNH</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('quanlychinhanh.store') }}" method="post">
+                <form action="{{ route('quanlyphongban.store') }}" method="post">
                     @csrf
 
                     <div class="form-group">
-                        <label for="TenChinhanh">Tên chi nhánh</label>
+                        <label for="Tenphongban">Tên phòng ban</label>
                         <div class="form-line">
-                            <input type="text" class="form-control" id="Tenchinhanh" name="name"
-                                placeholder="Tên chi nhánh" maxlength="255" required />
+                            <input type="text" class="form-control" id="Tenphongban" name="name"
+                                placeholder="Tên phòng ban" maxlength="255" required />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Tennguoidungdau">Người đứng đầu</label>
-                        <div class="form-line">
-                            <input type="text" class="form-control" id="Tennguoidungdau" name="Tennguoidungdau"
-                                placeholder="Người đứng đầu" maxlength="255" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Chucvu">Chức vụ</label>
-                        <div class="form-line">
-                            <input type="text" class="form-control" id="Chucvu" name="Chucvu" placeholder="Chức vụ"
-                                maxlength="255" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Diachi">Địa chỉ</label>
-                        <div class="form-line">
-                            <input type="text" class="form-control" id="Diachi" name="Diachi" placeholder="Địa chỉ" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Sodienthoai">Số điện thoại</label>
-                        <div class="form-line">
-                            <input type="text" class="form-control" id="Sodienthoai" name="Sodienthoai"
-                                placeholder="Số điện thoại" maxlength="255" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="Email">Email</label>
-                        <div class="form-line">
-                            <input type="text" class="form-control" id="Email" name="Email" placeholder="Email"
-                                maxlength="255" />
-                        </div>
+                        <label for="Chinhanh">Chi nhánh</label>
+                        <select name="chinhanh" class="form-control show-tick">
+
+                            <option value="">-- Vui lòng chọn --</option>
+                            @foreach($danhsach_chinhanh as $value)
+                            <option value="{{$value->Ten_chinhanh}}">{{$value->Ten_chinhanh}}</option>
+
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="Trangthai">Trạng thái</label>
@@ -319,15 +263,15 @@ Quản lý chi nhánh
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI CHI NHÁNH</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI PHÒNG BAN</h4>
             </div>
             <div class="card bg-light mt-3">
                 <div class="card-body">
                     <div class="body">
                         <p>- Tải file mẫu <a style="color: blue"
-                                href="{{ asset('project_asset/template/templateImportDanhMucChiNhanh.xlsx')}}">Link</a>
+                                href="{{ asset('project_asset/template/templateImportDanhMucPhongBan.xlsx')}}">Link</a>
                         </p>
-                        <form action="{{ route('quanlychinhanh.import') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('quanlyphongban.import') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="file" name="file" class="form-control">
                             <br>

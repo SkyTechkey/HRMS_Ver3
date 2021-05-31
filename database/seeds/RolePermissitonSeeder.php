@@ -15,31 +15,31 @@ class RolePermissitonSeeder extends Seeder
     {
         $role = Role::create(['name' => 'admin']);
         // Thêm phân quyền quản trị chi nhánh
-        $permission = Permission::create(['name' => 'View.Chinhanh']);
+        $permission = Permission::create(['name' => 'View.ChiNhanh']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Edit.Chinhanh']);
+        $permission = Permission::create(['name' => 'Edit.ChiNhanh']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Delete.Chinhanh']);
+        $permission = Permission::create(['name' => 'Delete.ChiNhanh']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Create.Chinhanh']);
+        $permission = Permission::create(['name' => 'Create.ChiNhanh']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Import.Chinhanh']);
+        $permission = Permission::create(['name' => 'Import.ChiNhanh']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Export.Chinhanh']);
+        $permission = Permission::create(['name' => 'Export.ChiNhanh']);
         $permission->assignRole($role);
 
-        // Thêm phân quyền quản trị ngoại ngữ
-        $permission = Permission::create(['name' => 'View.NgoaiNgu']);
+        // Thêm phân quyền quản trị phòng ban
+        $permission = Permission::create(['name' => 'View.PhongBan']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Edit.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'Edit.PhongBan']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Delete.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'Delete.PhongBan']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Create.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'Create.PhongBan']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Import.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'Import.PhongBan']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Export.NgoaiNgu']);
+        $permission = Permission::create(['name' => 'Export.PhongBan']);
         $permission->assignRole($role);
 
 

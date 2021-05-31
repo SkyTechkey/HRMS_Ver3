@@ -4,9 +4,9 @@ namespace App\Http\Controllers\DanhMuc;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\QuanlyChinhanh;
+use App\Models\QuanLyChinhanh;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\ChiNhanhExport;
+use App\Exports\ChinhanhExport;
 use App\Imports\ChinhanhImport;
 
 class quanlyChiNhanhController extends Controller
@@ -14,16 +14,16 @@ class quanlyChiNhanhController extends Controller
 
     public function index()
     {
-        $danhsach = QuanlyChinhanh::all();
+        $danhsach = QuanLyChinhanh::all();
         return view('Settings.Danhmuc.quanlychinhanh',compact('danhsach'));
     }
 
     public function store(Request $request)
     {
-        $createchinhanh = new QuanlyChinhanh;
-        $createchinhanh->Tenchinhanh = $request->name;
+        $createchinhanh = new QuanLyChinhanh;
+        $createchinhanh->Ten_chinhanh = $request->name;
         $createchinhanh->Diachi = $request->Diachi;
-        $createchinhanh->Tennguoidungdau = $request->Tennguoidungdau;
+        $createchinhanh->Ten_nguoidungdau = $request->Tennguoidungdau;
         $createchinhanh->Email = $request->Email;
         $createchinhanh->Sodienthoai = $request->Sodienthoai;
         $createchinhanh->Chucvu = $request->Chucvu;
@@ -71,8 +71,14 @@ class quanlyChiNhanhController extends Controller
     {
         if (!empty(request()->file('file')))
         {
-            Excel::import(new ChinhanhImport,request()->file('file'));
-            return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
+            $extension_file = request()->file('file');
+            if($extension_file->getClientOriginalExtension() == 'xlsx'){
+                Excel::import(new ChinhanhImport,request()->file('file'));
+                return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
+            }
+            else{
+                return back()->with('error',__('Vui lòng chọn tệp excel'));
+            }
         }
         else
         {
@@ -81,19 +87,19 @@ class quanlyChiNhanhController extends Controller
     }
     public function export()
     {
-        return Excel::download(new ChiNhanhExport, 'DS_ChiNhanh.xlsx');
+        return Excel::download(new ChinhanhExport, 'DS_ChiNhanh.xlsx');
     }
       public function update(Request $request, $id)
     {
-        $update_chinhanh = QuanlyChinhanh::find($id);
+        $update_chinhanh = QuanLyChinhanh::find($id);
         if(!empty($update_chinhanh)){
-            $update_chinhanh->Tenchinhanh = $request->name;
+            $update_chinhanh->Ten_chinhanh = $request->name;
             $update_chinhanh->Diachi = $request->Diachi;
-            $update_chinhanh->Tennguoidungdau = $request->Tennguoidungdau;
+            $update_chinhanh->Ten_nguoidungdau = $request->Tennguoidungdau;
             $update_chinhanh->Email = $request->Email;
             $update_chinhanh->Sodienthoai = $request->Sodienthoai;
             $update_chinhanh->Chucvu = $request->Chucvu;
-            $update_chinhanh->Ghichu = $request->ghichu;
+            $update_chinhanh->Ghichu = $request->Ghichu;
             $update_chinhanh->Trangthai = $request->status;
             if($update_chinhanh->save())
             {

@@ -11,9 +11,9 @@ class ChinhanhTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tbl_Chinhanh')->insert([
+        DB::table('tbl_chinhanh')->insert([
 
-            'Tenchinhanh' => 'Tiếng Anh A',
+            'Ten_chinhanh' => 'Tiếng Anh A',
             'Diachi' => 'Đường 2/9 - TP.Đà Nẵng',
             'Trangthai' => 'Hoạt động'
             ]);

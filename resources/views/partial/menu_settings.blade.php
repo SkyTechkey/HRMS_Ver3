@@ -24,17 +24,17 @@
             <li class="header">
                 <h6>DOANH MỤC</h6>
             </li>
-            @can('View.Chinhanh')
+            @can('View.ChiNhanh')
             <li class="{{Route::is('quanlychinhanh.index') ? 'active' : '' }}">
-                <a  href="{{route('quanlychinhanh.index')}}" class="list-group-item">
-                    <span>Quản lý Chi Nhánh</span>
+                <a href="{{route('quanlychinhanh.index')}}" class="list-group-item">
+                    <span>Quản lý chi nhánh</span>
                 </a>
             </li>
             @endcan
-            @can('View.NgoaiNgu')
-            <li class="{{Route::is('quanlyngoaingu.index') ? 'active' : '' }}">
-                <a  href="{{route('quanlyngoaingu.index')}}" class="list-group-item">
-                    <span>Quản lý ngoại ngữ</span>
+            @can('View.PhongBan')
+            <li class="{{Route::is('quanlyphongban.index') ? 'active' : '' }}">
+                <a href="{{route('quanlyphongban.index')}}" class="list-group-item">
+                    <span>Quản lý phòng ban</span>
                 </a>
             </li>
             @endcan

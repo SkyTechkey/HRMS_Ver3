@@ -17,12 +17,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($danhsach as  $key=>$value)
+                @foreach($danhsach as $key=>$value)
                 <tr>
                     <td>{{ $key+1 }}</td>
                     <td>{{$value->id}}</td>
-                    <td>{{$value->Tenchinhanh}}</td>
-                    <td>{{$value->Tennguoidungdau}}</td>
+                    <td>{{$value->Ten_chinhanh}}</td>
+                    <td>{{$value->Ten_nguoidungdau}}</td>
                     <td>{{$value->Chucvu}}</td>
                     <td>{{$value->Diachi}}</td>
                     <td>{{$value->Sodienthoai}}</td>
