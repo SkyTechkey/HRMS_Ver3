@@ -14,32 +14,18 @@ class RolePermissitonSeeder extends Seeder
     public function run()
     {
         $role = Role::create(['name' => 'admin']);
-        // Thêm phân quyền quản trị chi nhánh
-        $permission = Permission::create(['name' => 'View.ChiNhanh']);
-        $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Edit.ChiNhanh']);
-        $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Delete.ChiNhanh']);
-        $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Create.ChiNhanh']);
-        $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Import.ChiNhanh']);
-        $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Export.ChiNhanh']);
-        $permission->assignRole($role);
-
         // Thêm phân quyền quản trị phòng ban
-        $permission = Permission::create(['name' => 'View.PhongBan']);
+        $permission = Permission::create(['name' => 'View.TinhThanh']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Edit.PhongBan']);
+        $permission = Permission::create(['name' => 'Edit.TinhThanh']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Delete.PhongBan']);
+        $permission = Permission::create(['name' => 'Delete.TinhThanh']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Create.PhongBan']);
+        $permission = Permission::create(['name' => 'Create.TinhThanh']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Import.PhongBan']);
+        $permission = Permission::create(['name' => 'Import.TinhThanh']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Export.PhongBan']);
+        $permission = Permission::create(['name' => 'Export.TinhThanh']);
         $permission->assignRole($role);
 
 

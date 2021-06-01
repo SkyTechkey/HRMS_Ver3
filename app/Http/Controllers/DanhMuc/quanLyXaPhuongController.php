@@ -4,30 +4,30 @@ namespace App\Http\Controllers\DanhMuc;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\QuanLyPhongBan;
-use App\Models\QuanlyChinhanh;
+use App\Models\QuanLyXaPhuong;
+use App\Models\QuanLyQuanHuyen;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\PhongbanExport;
-use App\Imports\PhongbanImport;
+use App\Exports\XaphuongExport;
+use App\Imports\XaphuongImport;
 
-class quanLyPhongBanController extends Controller
+class quanLyXaPhuongController extends Controller
 {
 
     public function index()
     {
-        $danhsach = QuanLyPhongBan::all();
-        $danhsach_chinhanh = QuanLyChiNhanh::all();
-        return view('Settings.Danhmuc.quanlyphongban',compact('danhsach','danhsach_chinhanh'));
+        $danhsach = QuanLyXaPhuong::all();
+        $danhsach_quanhuyen = QuanLyQuanHuyen::all();
+        return view('Settings.Danhmuc.quanlyxaphuong',compact('danhsach','danhsach_quanhuyen'));
     }
 
     public function store(Request $request)
     {
-        $createPhongBan = new QuanLyPhongBan;
-        $createPhongBan->Ten_phongban = $request->name;
-        $createPhongBan->Chinhanh = $request->chinhanh;
-        $createPhongBan->Ghichu = $request->Ghichu;
-        $createPhongBan->Trangthai = $request->status;
-        if($createPhongBan->save())
+        $createXaPhuong = new QuanLyXaPhuong;
+        $createXaPhuong->Ten_xaphuong = $request->name;
+        $createXaPhuong->ID_quanhuyen = $request->quanhuyen;
+        $createXaPhuong->Ghichu = $request->Ghichu;
+        $createXaPhuong->Trangthai = $request->status;
+        if($createXaPhuong->save())
         {
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
@@ -39,11 +39,11 @@ class quanLyPhongBanController extends Controller
 
     public function destroy($id)
     {
-        $deletePhongban = QuanLyPhongBan::find($id);
+        $deleteXaPhuong = QuanLyXaPhuong::find($id);
 
-        if(!empty($deletePhongban))
+        if(!empty($deleteXaPhuong))
         {
-            if($deletePhongban->delete())
+            if($deleteXaPhuong->delete())
             {
                return back()->with('success',__('Đã xóa dữ liệu thành công!'));
             }
@@ -72,7 +72,7 @@ class quanLyPhongBanController extends Controller
 
             $extension_file = request()->file('file');
             if($extension_file->getClientOriginalExtension() == 'xlsx'){
-                Excel::import(new PhongbanImport,request()->file('file'));
+                Excel::import(new XaphuongImport,request()->file('file'));
                 return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
             }
             else{
@@ -87,17 +87,17 @@ class quanLyPhongBanController extends Controller
     }
     public function export()
     {
-        return Excel::download(new PhongbanExport, 'DS_Phongban.xlsx');
+        return Excel::download(new XaphuongExport, 'DS_XaPhuong.xlsx');
     }
       public function update(Request $request, $id)
     {
-        $update_Phongban = QuanLyPhongBan::find($id);
-        if(!empty($update_Phongban)){
-            $update_Phongban->Ten_phongban = $request->name;
-            $update_Phongban->Chinhanh = $request->chinhanh;
-            $update_Phongban->Ghichu = $request->Ghichu;
-            $update_Phongban->Trangthai = $request->status;
-            if($update_Phongban->save())
+        $update_Xaphuong = QuanLyXaPhuong::find($id);
+        if(!empty($update_Xaphuong)){
+            $update_Xaphuong->Ten_xaphuong = $request->name;
+            $update_Xaphuong->ID_quanhuyen = $request->quanhuyen;
+            $update_Xaphuong->Ghichu = $request->Ghichu;
+            $update_Xaphuong->Trangthai = $request->status;
+            if($update_Xaphuong->save())
             {
                 return back()->with('success',__('Đã cập nhập dữ liệu thành công!'));
             }

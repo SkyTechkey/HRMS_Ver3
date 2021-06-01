@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChinhanhTable extends Migration
+class CreateXaphuongTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateChinhanhTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_chinhanh', function (Blueprint $table) {
+        Schema::create('tbl_xaphuong', function (Blueprint $table) {
             $table->id();
-            $table->string('Ten_chinhanh')->nullable();
-            $table->string('Ten_nguoidungdau')->nullable();
-            $table->string('Chucvu')->nullable();
-            $table->string('Diachi')->nullable();
-            $table->string('Sodienthoai')->nullable();
-            $table->string('Email')->nullable();
+            $table->string('Ten_xaphuong')->nullable();
+            $table->unsignedBigInteger('ID_quanhuyen')->nullable();
+            
             $table->string('Trangthai')->nullable();
             $table->string('Ghichu')->nullable();
             $table->timestamps();
+            $table->foreign('ID_quanhuyen')->references('id')->on('tbl_quanhuyen')->onDelete('cascade');;
         });
     }
 
@@ -34,6 +32,6 @@ class CreateChinhanhTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_chinhanh');
+        Schema::dropIfExists('tbl_xaphuong');
     }
 }

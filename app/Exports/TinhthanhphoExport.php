@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\QuanLyPhongBan;
+use App\Models\QuanLyTinhThanhPho;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
@@ -19,11 +19,11 @@ use Maatwebsite\Excel\Concerns\FromView;
  //   }
 
 //}
-class PhongbanExport implements FromView
+class TinhthanhphoExport implements FromView
 {
     public function view(): View
     {
-        $danhsach = QuanLyPhongBan::all();
-        return view('Settings.Danhmuc.ExportQLPhongBan',compact('danhsach'));
+        $danhsach = QuanLyTinhThanhPho::all();
+        return view('Settings.Danhmuc.ExportQLTinhThanhPho',compact('danhsach'));
     }
 }

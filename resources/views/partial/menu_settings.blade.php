@@ -24,17 +24,26 @@
             <li class="header">
                 <h6>DOANH MỤC</h6>
             </li>
-            @can('View.ChiNhanh')
-            <li class="{{Route::is('quanlychinhanh.index') ? 'active' : '' }}">
-                <a href="{{route('quanlychinhanh.index')}}" class="list-group-item">
-                    <span>Quản lý chi nhánh</span>
+
+
+            @can('View.TinhThanh')
+            <li class="{{Route::is('quanlytinhthanhpho.index') ? 'active' : '' }}">
+                <a href="{{route('quanlytinhthanhpho.index')}}" class="list-group-item">
+                    <span>Quản lý tỉnh thành phố</span>
                 </a>
             </li>
             @endcan
-            @can('View.PhongBan')
-            <li class="{{Route::is('quanlyphongban.index') ? 'active' : '' }}">
-                <a href="{{route('quanlyphongban.index')}}" class="list-group-item">
-                    <span>Quản lý phòng ban</span>
+            @can('View.TinhThanh')
+            <li class="{{Route::is('quanlyquanhuyen.index') ? 'active' : '' }}">
+                <a href="{{route('quanlyquanhuyen.index')}}" class="list-group-item">
+                    <span>Quản lý quận huyện</span>
+                </a>
+            </li>
+            @endcan
+            @can('View.TinhThanh')
+            <li class="{{Route::is('quanlyxaphuong.index') ? 'active' : '' }}">
+                <a href="{{route('quanlyxaphuong.index')}}" class="list-group-item">
+                    <span>Quản lý xã phường</span>
                 </a>
             </li>
             @endcan

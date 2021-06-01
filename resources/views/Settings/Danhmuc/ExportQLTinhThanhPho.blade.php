@@ -4,13 +4,8 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Mã CN</th>
-                    <th>Tên Chi nhánh</th>
-                    <th>Người đứng đầu</th>
-                    <th>Chức vụ</th>
-                    <th>Địa chỉ</th>
-                    <th>Số điện thoại</th>
-                    <th>Email</th>
+                    <th>Mã TTP</th>
+                    <th>Tên Tỉnh/Thành Phố</th>
                     <th>Trạng thái</th>
                     <th>Ghi chú</th>
 
@@ -21,12 +16,7 @@
                 <tr>
                     <td>{{ $key+1 }}</td>
                     <td>{{$value->id}}</td>
-                    <td>{{$value->Ten_chinhanh}}</td>
-                    <td>{{$value->Ten_nguoidungdau}}</td>
-                    <td>{{$value->Chucvu}}</td>
-                    <td>{{$value->Diachi}}</td>
-                    <td>{{$value->Sodienthoai}}</td>
-                    <td>{{$value->Email}}</td>
+                    <td>{{$value->Ten_tinhthanhpho}}</td>
                     <td>{{$value->Trangthai}}</td>
                     <td>{{$value->Ghichu}}</td>
 

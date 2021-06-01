@@ -4,32 +4,30 @@ namespace App\Http\Controllers\DanhMuc;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\QuanLyChinhanh;
+use App\Models\QuanLyQuanHuyen;
+use App\Models\QuanLyTinhThanhPho;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\ChinhanhExport;
-use App\Imports\ChinhanhImport;
+use App\Exports\QuanhuyenExport;
+use App\Imports\QuanhuyenImport;
 
-class quanlyChiNhanhController extends Controller
+class quanLyQuanHuyenController extends Controller
 {
 
     public function index()
     {
-        $danhsach = QuanLyChinhanh::all();
-        return view('Settings.Danhmuc.quanlychinhanh',compact('danhsach'));
+        $danhsach = QuanLyQuanHuyen::all();
+        $danhsach_tinhthanhpho = QuanLyTinhThanhPho::all();
+        return view('Settings.Danhmuc.quanlyquanhuyen',compact('danhsach','danhsach_tinhthanhpho'));
     }
 
     public function store(Request $request)
     {
-        $createchinhanh = new QuanLyChinhanh;
-        $createchinhanh->Ten_chinhanh = $request->name;
-        $createchinhanh->Diachi = $request->Diachi;
-        $createchinhanh->Ten_nguoidungdau = $request->Tennguoidungdau;
-        $createchinhanh->Email = $request->Email;
-        $createchinhanh->Sodienthoai = $request->Sodienthoai;
-        $createchinhanh->Chucvu = $request->Chucvu;
-        $createchinhanh->Trangthai = $request->status;
-        $createchinhanh->Ghichu = $request->Ghichu;
-        if($createchinhanh->save())
+        $createQuanHuyen = new QuanLyQuanHuyen;
+        $createQuanHuyen->Ten_quanhuyen = $request->name;
+        $createQuanHuyen->ID_tinhthanhpho = $request->tinhthanhpho;
+        $createQuanHuyen->Ghichu = $request->Ghichu;
+        $createQuanHuyen->Trangthai = $request->status;
+        if($createQuanHuyen->save())
         {
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
@@ -41,11 +39,11 @@ class quanlyChiNhanhController extends Controller
 
     public function destroy($id)
     {
-        $deletechinhanh = QuanlyChinhanh::find($id);
+        $deleteQuanHuyen = QuanLyQuanHuyen::find($id);
 
-        if(!empty($deletechinhanh))
+        if(!empty($deleteQuanHuyen))
         {
-            if($deletechinhanh->delete())
+            if($deleteQuanHuyen->delete())
             {
                return back()->with('success',__('Đã xóa dữ liệu thành công!'));
             }
@@ -71,14 +69,16 @@ class quanlyChiNhanhController extends Controller
     {
         if (!empty(request()->file('file')))
         {
+
             $extension_file = request()->file('file');
             if($extension_file->getClientOriginalExtension() == 'xlsx'){
-                Excel::import(new ChinhanhImport,request()->file('file'));
+                Excel::import(new QuanhuyenImport,request()->file('file'));
                 return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
             }
             else{
                 return back()->with('error',__('Vui lòng chọn tệp excel'));
             }
+            
         }
         else
         {
@@ -87,21 +87,17 @@ class quanlyChiNhanhController extends Controller
     }
     public function export()
     {
-        return Excel::download(new ChinhanhExport, 'DS_ChiNhanh.xlsx');
+        return Excel::download(new QuanhuyenExport, 'DS_QuanHuyen.xlsx');
     }
       public function update(Request $request, $id)
     {
-        $update_chinhanh = QuanLyChinhanh::find($id);
-        if(!empty($update_chinhanh)){
-            $update_chinhanh->Ten_chinhanh = $request->name;
-            $update_chinhanh->Diachi = $request->Diachi;
-            $update_chinhanh->Ten_nguoidungdau = $request->Tennguoidungdau;
-            $update_chinhanh->Email = $request->Email;
-            $update_chinhanh->Sodienthoai = $request->Sodienthoai;
-            $update_chinhanh->Chucvu = $request->Chucvu;
-            $update_chinhanh->Ghichu = $request->Ghichu;
-            $update_chinhanh->Trangthai = $request->status;
-            if($update_chinhanh->save())
+        $update_Quanhuyen = QuanLyQuanHuyen::find($id);
+        if(!empty($update_Quanhuyen)){
+            $update_Quanhuyen->Ten_quanhuyen = $request->name;
+            $update_Quanhuyen->ID_tinhthanhpho = $request->tinhthanhpho;
+            $update_Quanhuyen->Ghichu = $request->Ghichu;
+            $update_Quanhuyen->Trangthai = $request->status;
+            if($update_Quanhuyen->save())
             {
                 return back()->with('success',__('Đã cập nhập dữ liệu thành công!'));
             }
