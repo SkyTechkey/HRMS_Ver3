@@ -45,6 +45,12 @@
                     <span>Trang Chủ</span>
                 </a>
             </li>
+            <li class="{{ Request::is('nhansu') ? 'active' : '' }}">
+                <a href="{{url('nhansu')}}">
+                    <i class="material-icons">home</i>
+                    <span>NHÂN SỰ</span>
+                </a>
+            </li>
             <li class="{{ Request::is('blanks') ? 'active' : '' }}">
                 <a href="{{url('blanks')}}">
                     <i class="material-icons">home</i>
