@@ -90,7 +90,9 @@ Route::middleware(['auth'])->group(function () {
         // Route::group(function() {
             Route::get('nhansu', 'Nhansu\NhansuController@index')->name('index.nhansu');
         // });
+        Route::get('nhansu/them', 'Nhansu\NhansuController@create')->name('create.nhansu');
         Route::post('nhansu/them', 'Nhansu\NhansuController@store')->name('store.nhansu');
+        Route::get('nhansu/sua/{id}', 'Nhansu\NhansuController@show')->name('show.nhansu');
         Route::post('nhansu/sua/{id}', 'Nhansu\NhansuController@update')->name('update.nhansu');
         Route::get('nhansu/xoa/{id}', 'Nhansu\NhansuController@destroy')->name('destroy.nhansu');
         Route::get('nhansu/xuat', 'Nhansu\NhansuController@export')->name('export.nhansu');

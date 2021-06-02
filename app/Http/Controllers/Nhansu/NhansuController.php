@@ -30,7 +30,7 @@ class NhansuController extends Controller implements WithHeadings, FromCollectio
      */
     public function create()
     {
-        //
+        return view('Nhansu.themnhansu');
     }
 
     /**
@@ -59,7 +59,7 @@ class NhansuController extends Controller implements WithHeadings, FromCollectio
             if(!empty($fileImage)){
                 $fileImage->move('project_asset/images/image_users',$fileImage->getClientOriginalName());
             }
-            return back()->with('success', 'Tạo mới dữ liệu thành công!');
+            return redirect('/nhansu')->with('success', 'Tạo mới dữ liệu thành công!');
         }
     }
 
@@ -71,7 +71,8 @@ class NhansuController extends Controller implements WithHeadings, FromCollectio
      */
     public function show($id)
     {
-        //
+        $nhansu = User::find($id);
+        return view('Nhansu.suanhansu', compact('nhansu'));
     }
 
     /**
@@ -95,25 +96,29 @@ class NhansuController extends Controller implements WithHeadings, FromCollectio
     public function update(Request $request, $id)
     {
         $nhansu = User::find($id);
-
-        $nhansu->Hovaten = $request->hovaten;
-        $nhansu->Username = $request->username;
-        // $nhansu->password = bcrypt($request->matkhau);
-        $nhansu->Email = $request->email;
-        $nhansu->Ngayvaolam = $request->ngayvaolam;
-        $nhansu->Sodienthoai = $request->sodienthoai;
-        $nhansu->Ghichu = $request->ghichu;
-        $nhansu->Trangthai = $request->status;
-        $fileImage = $request->hinhanh;
-        if(!empty($fileImage)){
-            $nhansu->Hinhanh = $fileImage->getClientOriginalName();
-        }
-        if($nhansu->save()){
+        if(!empty($nhansu)) {
+            $nhansu->Hovaten = $request->hovaten;
+            $nhansu->Username = $request->username;
+            // $nhansu->password = bcrypt($request->matkhau);
+            $nhansu->Email = $request->email;
+            $nhansu->Ngayvaolam = $request->ngayvaolam;
+            $nhansu->Sodienthoai = $request->sodienthoai;
+            $nhansu->Ghichu = $request->ghichu;
+            $nhansu->Trangthai = $request->status;
+            $fileImage = $request->hinhanh;
             if(!empty($fileImage)){
-                $fileImage->move('project_asset/images/image_users',$fileImage->getClientOriginalName());
+                $nhansu->Hinhanh = $fileImage->getClientOriginalName();
             }
-            return back()->with('success', 'Tạo mới dữ liệu thành công!');
+            if($nhansu->save()){
+                if(!empty($fileImage)){
+                    $fileImage->move('project_asset/images/image_users',$fileImage->getClientOriginalName());
+                }
+                return redirect('/nhansu')->with('success', 'Tạo mới dữ liệu thành công!');
+            }
+        }else {
+            return view('Nhansu.index');
         }
+        
     }
 
     /**

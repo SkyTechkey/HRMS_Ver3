@@ -70,9 +70,12 @@ Quản lý nhân sự
                                 Xuất file</a>
                             {{-- @endcan
                             @can('Create.NgoaiNgu') --}}
-                            <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#myModal">
+                            <a href="{{route('create.nhansu')}}" class="btn btn-success waves-effect">
                                 <i class="material-icons">add</i>
-                                Thêm mới</button>
+                                Thêm mới</a>
+                            {{-- <button type="button" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#myModal">
+                                <i class="material-icons">add</i>
+                                Thêm mới</button> --}}
                             {{-- @endcan --}}
                         </div>
                     </h2>
@@ -125,7 +128,7 @@ Quản lý nhân sự
                                     <td>
                                         {{-- @can('Edit.NgoaiNgu') --}}
 
-                                            <a href=""  type="button" data-toggle="modal" data-target="#fix{{$item->id}}">
+                                            <a href="{{route('show.nhansu',$item->id)}}"  type="button">
                                                 <i style="font-size:22px" class="material-icons  bg-light-green ">create</i></a>
 
 
@@ -158,187 +161,9 @@ Quản lý nhân sự
 
     </div>
     <!-- Sửa modal -->
-    @foreach($nhansu as $item)
-    <div class="modal fade" id="fix{{$item->id}}" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP NGOẠI NGỮ</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('update.nhansu',$item->id) }}" method="post" enctype="multipart/form-data">
-                        @csrf
-
-                        <div class="form-group">
-                            <label for="Tenngoaingu">Chọn hình ảnh</label>
-                            <div class="form-line">
-                                <input type="file" class="form-control" id="hinhanh" name="hinhanh"
-                                    placeholder="Chọn hình ảnh" maxlength="255" required multiple />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Ghichu">Họ và tên</label>
-                            <div class="form-line">
-                                <input type="text" class="form-control" id="hovaten" name="hovaten" placeholder="Họ và tên"
-                                    maxlength="255" value="{{$item->Hovaten}}" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Ghichu">Username</label>
-                            <div class="form-line">
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Username"
-                                    maxlength="255" value="{{$item->username}}" />
-                            </div>
-                        </div>
-                        {{-- <div class="form-group">
-                            <label for="Ghichu">Nhập mật khẩu</label>
-                            <div class="form-line">
-                                <input type="text" class="form-control" id="matkhau" name="matkhau" placeholder="Mật khẩu"
-                                    maxlength="255"  />
-                            </div>
-                        </div> --}}
-                        <div class="form-group">
-                            <label for="Ghichu">Ngày vào làm</label>
-                            <div class="form-line">
-                                <input type="date" class="form-control" id="ngayvaolam" name="ngayvaolam" placeholder="Ngày vào làm"
-                                    maxlength="255" value="{{$item->Ngayvaolam}}" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Ghichu">Số điện thoại</label>
-                            <div class="form-line">
-                                <input type="number" class="form-control" id="sodienthoai" name="sodienthoai" placeholder="Số điện thoại"
-                                    maxlength="255" value="{{$item->Sodienthoai}}" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Email">Email</label>
-                            <div class="form-line">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email"
-                                    maxlength="255" value="{{$item->Email}}" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Ghichu">Ghi chú</label>
-                            <div class="form-line">
-                                <input type="text" class="form-control" id="ghichu" name="ghichu" placeholder="Ghi chú"
-                                    maxlength="255" value="{{$item->Ghichu}}" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Trangthai">Trạng thái</label>
-                            <select name="status" class="form-control show-tick" required>
-                                <option value="">-- Vui lòng chọn trạng thái --</option>
-
-                                <option value="danglamviec">Hoạt động</option>
-                                <option value="tamdungviec">Tạm ngừng</option>
-                                <option value="hetlamviec">Ngừng hoạt động</option>
-
-                            </select>
-                        </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary waves-effect">Lưu</button>
-                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Đóng</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @endforeach
+    
     <!-- #Thêm mới Modal-->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI NHÂN SỰ</h4>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('store.nhansu') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-
-                        <div class="form-group">
-                            <label for="Tenngoaingu">Chọn hình ảnh</label>
-                            <div class="form-line">
-                                <input type="file" class="form-control" id="hinhanh" name="hinhanh"
-                                    placeholder="Chọn hình ảnh" maxlength="255" required multiple />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Ghichu">Họ và tên</label>
-                            <div class="form-line">
-                                <input type="text" class="form-control" id="hovaten" name="hovaten" placeholder="Họ và tên"
-                                    maxlength="255"  />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Ghichu">Username</label>
-                            <div class="form-line">
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Username"
-                                    maxlength="255"  />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Ghichu">Nhập mật khẩu</label>
-                            <div class="form-line">
-                                <input type="text" class="form-control" id="matkhau" name="matkhau" placeholder="Mật khẩu"
-                                    maxlength="255"  />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Ghichu">Ngày vào làm</label>
-                            <div class="form-line">
-                                <input type="date" class="form-control" id="ngayvaolam" name="ngayvaolam" placeholder="Ngày vào làm"
-                                    maxlength="255"  />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Ghichu">Số điện thoại</label>
-                            <div class="form-line">
-                                <input type="number" class="form-control" id="sodienthoai" name="sodienthoai" placeholder="Số điện thoại"
-                                    maxlength="255"  />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Email">Email</label>
-                            <div class="form-line">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email"
-                                    maxlength="255"  />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Ghichu">Ghi chú</label>
-                            <div class="form-line">
-                                <input type="text" class="form-control" id="ghichu" name="ghichu" placeholder="Ghi chú"
-                                    maxlength="255"  />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="Trangthai">Trạng thái</label>
-                            <select name="status" class="form-control show-tick" required>
-                                <option value="">-- Vui lòng chọn trạng thái --</option>
-
-                                <option value="danglamviec">Hoạt động</option>
-                                <option value="tamdungviec">Tạm ngừng</option>
-                                <option value="hetlamviec">Ngừng hoạt động</option>
-
-                            </select>
-                        </div>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary waves-effect">Lưu</button>
-                    <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">Đóng</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    
     <!-- Import -->
     <div class="modal fade" id="importModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
