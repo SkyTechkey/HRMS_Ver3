@@ -21,5 +21,10 @@ class DatabaseSeeder extends Seeder
         $this->call(QuoctichTableSeeder::class);
 		$this->call(ChinhanhTableSeeder::class);
         $this->call(RolePermissitonSeeder::class);
+        $this->call([
+            LoaiBangCap::class,
+            TrinhDoChuyenMon::class,
+            HoSoBangCap::class
+        ]);
     }
 }

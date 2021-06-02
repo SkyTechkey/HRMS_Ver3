@@ -95,6 +95,13 @@
                 </a>
             </li>
             @endcan
+            {{-- @can('View.TinhThanh') --}}
+            <li class="{{Route::is('bangcap.index') ? 'active' : '' }}">
+                <a href="{{route('bangcap.index')}}" class="list-group-item">
+                    <span>Quản lý Bằng Cấp</span>
+                </a>
+            </li>
+            {{-- @endcan --}}
         </ul>
 
     </div>

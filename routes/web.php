@@ -265,4 +265,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('nhansu/xoa/{id}', 'Nhansu\NhansuController@destroy')->name('destroy.nhansu');
         Route::get('nhansu/xuat', 'Nhansu\NhansuController@export')->name('export.nhansu');
         Route::post('nhansu/nhap', 'Nhansu\NhansuController@import')->name('import.nhansu');
-});
+
+        //Bằng cấp
+        
+        Route::get('settings/danhmuc/quanlybangcap', 'DanhMuc\quanlyBangCapController@index')->name('bangcap.index');
+        Route::post('settings/danhmuc/quanlybangcap/them', 'DanhMuc\quanlyBangCapController@store')->name('bangcap.store');
+        Route::post('settings/danhmuc/quanlybangcap/sua/{id}', 'DanhMuc\quanlyBangCapController@edit')->name('bangcap.edit');
+        Route::get('settings/danhmuc/quanlybangcap/destroy/{id}','DanhMuc\quanlyBangCapController@destroy')->name('bangcap.destroy');
+        Route::get('settings/danhmuc/quanlybangcap/export', 'DanhMuc\quanlyBangCapController@export')->name('bangcap.export');
+        Route::post('settings/danhmuc/quanlybangcap/import', 'DanhMuc\quanlyBangCapController@import')->name('bangcap.import');
+        
+    });
