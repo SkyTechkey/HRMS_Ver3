@@ -22,28 +22,21 @@
             </li>
 
             <li class="header">
-                <h6>DOANH MỤC</h6>
+                <h6>HỒ SƠ</h6>
             </li>
 
 
-            @can('View.TinhThanh')
-            <li class="{{Route::is('quanlytinhthanhpho.index') ? 'active' : '' }}">
-                <a href="{{route('quanlytinhthanhpho.index')}}" class="list-group-item">
-                    <span>Quản lý tỉnh thành phố</span>
+            @can('View.HoSo')
+            <li class="{{Route::is('quanlyhoso.index') ? 'active' : '' }}">
+                <a href="{{route('quanlyhoso.index')}}" class="list-group-item">
+                    <span>Quản lý hồ sơ</span>
                 </a>
             </li>
             @endcan
-            @can('View.TinhThanh')
-            <li class="{{Route::is('quanlyquanhuyen.index') ? 'active' : '' }}">
-                <a href="{{route('quanlyquanhuyen.index')}}" class="list-group-item">
-                    <span>Quản lý quận huyện</span>
-                </a>
-            </li>
-            @endcan
-            @can('View.TinhThanh')
-            <li class="{{Route::is('quanlyxaphuong.index') ? 'active' : '' }}">
-                <a href="{{route('quanlyxaphuong.index')}}" class="list-group-item">
-                    <span>Quản lý xã phường</span>
+            @can('View.LoaiHoSo')
+            <li class="{{Route::is('quanlyloaihoso.index') ? 'active' : '' }}">
+                <a href="{{route('quanlyloaihoso.index')}}" class="list-group-item">
+                    <span>Quản lý loại hồ sơ</span>
                 </a>
             </li>
             @endcan

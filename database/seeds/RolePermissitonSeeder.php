@@ -15,17 +15,30 @@ class RolePermissitonSeeder extends Seeder
     {
         $role = Role::create(['name' => 'admin']);
         // Thêm phân quyền quản trị phòng ban
-        $permission = Permission::create(['name' => 'View.TinhThanh']);
+        $permission = Permission::create(['name' => 'View.HoSo']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Edit.TinhThanh']);
+        $permission = Permission::create(['name' => 'Edit.HoSo']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Delete.TinhThanh']);
+        $permission = Permission::create(['name' => 'Delete.HoSo']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Create.TinhThanh']);
+        $permission = Permission::create(['name' => 'Create.HoSo']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Import.TinhThanh']);
+        $permission = Permission::create(['name' => 'Import.HoSo']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Export.TinhThanh']);
+        $permission = Permission::create(['name' => 'Export.HoSo']);
+        $permission->assignRole($role);
+
+        $permission = Permission::create(['name' => 'View.LoaiHoSo']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Edit.LoaiHoSo']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Delete.LoaiHoSo']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Create.LoaiHoSo']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Import.LoaiHoSo']);
+        $permission->assignRole($role);
+        $permission = Permission::create(['name' => 'Export.LoaiHoSo']);
         $permission->assignRole($role);
 
 

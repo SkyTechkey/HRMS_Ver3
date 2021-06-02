@@ -1,7 +1,7 @@
 @extends('Settings.settings')
 <!-- # Nội dung tiêu đề -->
 @section('title')
-Quản lý tỉnh/thành phố
+Quản lý loại hồ sơ
 @endsection
 <!-- #END tiêu đề -->
 <!-- # Nội dung CSS, js bổ sung -->
@@ -58,18 +58,18 @@ Quản lý tỉnh/thành phố
 
             <div class="header">
                 <h2>
-                    Danh Sách Tỉnh/Thành Phố
+                    Danh Sách Loại Hồ Sơ
                     <div style="float:right">
-                        @can('Import.TinhThanh')
+                        @can('Import.LoaiHoSo')
                         <button type="button" class="btn bg-brown waves-effect" data-toggle="modal"
                             data-target="#importModal"><i class="material-icons">publish</i>Nhập từ file</button>
                         @endcan
-                        @can('Export.TinhThanh')
-                        <a href="{{route('quanlytinhthanhpho.export')}}" class="btn btn-success waves-effect">
+                        @can('Export.LoaiHoSo')
+                        <a href="{{route('quanlyloaihoso.export')}}" class="btn btn-success waves-effect">
                             <i class="material-icons">download</i>
                             Xuất file</a>
                         @endcan
-                        @can('Create.TinhThanh')
+                        @can('Create.LoaiHoSo')
                         <button type="button" class="btn btn-primary waves-effect" data-toggle="modal"
                             data-target="#myModal">
                             <i class="material-icons">add</i>
@@ -84,8 +84,8 @@ Quản lý tỉnh/thành phố
                         <thead>
                             <tr>
                                 <th>STT</th>
-                                <th>Mã TTP</th>
-                                <th>Tên Tỉnh/Thành Phố</th>
+                                <th>Mã LHS</th>
+                                <th>Tên Loại Hồ Sơ</th>
                                 <th>Trạng thái</th>
                                 <th>Ghi chú</th>
                                 <th width="10%">Chức Năng</th>
@@ -97,7 +97,7 @@ Quản lý tỉnh/thành phố
                             <tr>
                                 <td>{{ $key+1 }}</td>
                                 <td>{{$value->id}}</td>
-                                <td>{{$value->Ten_tinhthanhpho}}</td>
+                                <td>{{$value->Ten_loaihoso}}</td>
                                 @if($value->Trangthai=='Hoạt động')
                                 <td><span class="label bg-blue">Hoạt động</span></td>
                                 @elseif($value->Trangthai=='Tạm ngừng')
@@ -107,12 +107,12 @@ Quản lý tỉnh/thành phố
                                 @endif
                                 <td>{{$value->Ghichu}}</td>
                                 <td>
-                                    @can('Edit.TinhThanh')
+                                    @can('Edit.LoaiHoSo')
                                     <a href="" type="button" data-toggle="modal" data-target="#fix{{$value->id}}">
                                         <i style="font-size:22px" class="material-icons  bg-light-green ">create</i></a>
                                     @endcan
-                                    @can('Delete.TinhThanh')
-                                    <a href="{{route('quanlytinhthanhpho.delete',$value->id)}}"
+                                    @can('Delete.LoaiHoSo')
+                                    <a href="{{route('quanlyloaihoso.delete',$value->id)}}"
                                         class="button delete-confirm"><i style="font-size:22px"
                                             class="material-icons bg-brown">delete_forever</i></a>
                                     @endcan
@@ -142,18 +142,17 @@ Quản lý tỉnh/thành phố
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP TỈNH/THÀNH PHỐ</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">CẬP NHẬP LOẠI HỒ SƠ</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('quanlytinhthanhpho.edit',$value->id) }}" method="post">
+                <form action="{{ route('quanlyloaihoso.edit',$value->id) }}" method="post">
                     @csrf
 
                     <div class="form-group">
-                        <label for="Tentinhthanhpho">Tên tỉnh/thành phố</label>
+                        <label for="Tenloaihoso">Tên loại hồ sơ</label>
                         <div class="form-line">
-                            <input type="text" value="{{$value->Ten_tinhthanhpho}}" class="form-control"
-                                id="Tentinhthanhpho" name="name" placeholder="Tên tỉnh/thành phố" maxlength="255"
-                                required />
+                            <input type="text" value="{{$value->Ten_loaihoso}}" class="form-control" id="Tenloaihoso"
+                                name="name" placeholder="Tên loại hồ sơ" maxlength="255" required />
                         </div>
                     </div>
 
@@ -194,23 +193,24 @@ Quản lý tỉnh/thành phố
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI TỈNH/THÀNH PHỐ</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI LOẠI HỒ SƠ</h4>
             </div>
             <div class="modal-body">
-                <form action="{{ route('quanlytinhthanhpho.store') }}" method="post">
+                <form action="{{ route('quanlyloaihoso.store') }}" method="post">
                     @csrf
 
                     <div class="form-group">
-                        <label for="Tentinhthanhpho">Tên tỉnh/thành phố</label>
+                        <label for="Tenloaihoso">Tên loại hồ sơ</label>
                         <div class="form-line">
-                            <input type="text" class="form-control" id="Tentinhthanhpho" name="name"
-                                placeholder="Tên tỉnh/thành phố" maxlength="255" required />
+                            <input type="text" class="form-control" id="Tenloaihoso" name="name"
+                                placeholder="Tên loại hồ sơ" maxlength="255" required />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="Trangthai">Trạng thái</label>
-                        <select name="status" class="form-control show-tick">
+                        <select name="status" class="form-control show-tick" required>
+                            <option value="">---Vui lòng chọn trạng thái---</option>
                             <option value="Hoạt động">Hoạt động</option>
                             <option value="Tạm ngừng">Tạm ngừng</option>
                             <option value="Ngừng hoạt động">Ngừng hoạt động</option>
@@ -242,16 +242,15 @@ Quản lý tỉnh/thành phố
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI TỈNH/THÀNH PHỐ</h4>
+                <h4 style='color:#00b0e4' class="modal-title" id="defaultModalLabel">THÊM MỚI LOẠI HỒ SƠ</h4>
             </div>
             <div class="card bg-light mt-3">
                 <div class="card-body">
                     <div class="body">
                         <p>- Tải file mẫu <a style="color: blue"
-                                href="{{ asset('project_asset/template/templateImportDanhMucTinhThanhPho.xlsx')}}">Link</a>
+                                href="{{ asset('project_asset/template/templateImportLoaiHoSo.xlsx')}}">Link</a>
                         </p>
-                        <form action="{{ route('quanlytinhthanhpho.import') }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('quanlyloaihoso.import') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="file" name="file" class="form-control">
                             <br>

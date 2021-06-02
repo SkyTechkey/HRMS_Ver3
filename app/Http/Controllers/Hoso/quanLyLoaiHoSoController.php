@@ -1,33 +1,29 @@
 <?php
 
-namespace App\Http\Controllers\DanhMuc;
+namespace App\Http\Controllers\Hoso;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\QuanLyQuanHuyen;
-use App\Models\QuanLyTinhThanhPho;
+use App\Models\LoaiHoSo;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\QuanhuyenExport;
-use App\Imports\QuanhuyenImport;
+use App\Exports\LoaihosoExport;
+use App\Imports\LoaihosoImport;
 
-class quanLyQuanHuyenController extends Controller
+class quanLyLoaiHoSoController extends Controller
 {
-
     public function index()
     {
-        $danhsach = QuanLyQuanHuyen::all();
-        $danhsach_tinhthanhpho = QuanLyTinhThanhPho::all();
-        return view('Settings.Danhmuc.quanlyquanhuyen',compact('danhsach','danhsach_tinhthanhpho'));
+        $danhsach = LoaiHoSo::all(); 
+        return view('Settings.Hoso.quanlyloaihoso',compact('danhsach'));
     }
 
     public function store(Request $request)
     {
-        $createQuanHuyen = new QuanLyQuanHuyen;
-        $createQuanHuyen->Ten_quanhuyen = $request->name;
-        $createQuanHuyen->ID_tinhthanhpho = $request->tinhthanhpho;
-        $createQuanHuyen->Ghichu = $request->Ghichu;
-        $createQuanHuyen->Trangthai = $request->status;
-        if($createQuanHuyen->save())
+        $createLoaiHoSo = new LoaiHoSo;
+        $createLoaiHoSo->Ten_loaihoso = $request->name;
+        $createLoaiHoSo->Ghichu = $request->Ghichu;
+        $createLoaiHoSo->Trangthai = $request->status;
+        if($createLoaiHoSo->save())
         {
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
@@ -35,21 +31,29 @@ class quanLyQuanHuyenController extends Controller
         {
             return back()->with('error',__('Lỗi không thể thêm dữ liệu!'));
         }
+        
     }
 
     public function destroy($id)
     {
-        $deleteQuanHuyen = QuanLyQuanHuyen::find($id);
-
-        if(!empty($deleteQuanHuyen))
+        $deleteLoaiHoSo = LoaiHoSo::find($id);
+        if(!empty($deleteLoaiHoSo))
         {
-            if($deleteQuanHuyen->delete())
+            $checkHoSo = $deleteLoaiHoSo->hoso()->find($id);
+            if(!empty($checkHoSo))
             {
-               return back()->with('success',__('Đã xóa dữ liệu thành công!'));
+                return back()->with('error',__('Không thể xóa. Dữ liệu này đã tồn tại ở hồ sơ!'));
             }
             else
             {
-                return back()->with('error',__('Lỗi không thể xóa dữ liệu!'));
+                if($deleteLoaiHoSo->delete())
+                {
+                return back()->with('success',__('Đã xóa dữ liệu thành công!'));
+                }
+                else
+                {
+                    return back()->with('error',__('Lỗi không thể xóa dữ liệu!'));
+                }
             }
         }
         else
@@ -72,7 +76,7 @@ class quanLyQuanHuyenController extends Controller
 
             $extension_file = request()->file('file');
             if($extension_file->getClientOriginalExtension() == 'xlsx'){
-                Excel::import(new QuanhuyenImport,request()->file('file'));
+                Excel::import(new LoaihosoImport,request()->file('file'));
                 return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
             }
             else{
@@ -87,17 +91,16 @@ class quanLyQuanHuyenController extends Controller
     }
     public function export()
     {
-        return Excel::download(new QuanhuyenExport, 'DS_QuanHuyen.xlsx');
+        return Excel::download(new LoaihosoExport, 'DS_Loaihoso.xlsx');
     }
       public function update(Request $request, $id)
     {
-        $update_Quanhuyen = QuanLyQuanHuyen::find($id);
-        if(!empty($update_Quanhuyen)){
-            $update_Quanhuyen->Ten_quanhuyen = $request->name;
-            $update_Quanhuyen->ID_tinhthanhpho = $request->tinhthanhpho;
-            $update_Quanhuyen->Ghichu = $request->Ghichu;
-            $update_Quanhuyen->Trangthai = $request->status;
-            if($update_Quanhuyen->save())
+        $update_Loaihoso = LoaiHoSo::find($id);
+        if(!empty($update_Loaihoso)){
+            $update_Loaihoso->Ten_loaihoso = $request->name; 
+            $update_Loaihoso->Ghichu = $request->Ghichu;
+            $update_Loaihoso->Trangthai = $request->status;
+            if($update_Loaihoso->save())
             {
                 return back()->with('success',__('Đã cập nhập dữ liệu thành công!'));
             }

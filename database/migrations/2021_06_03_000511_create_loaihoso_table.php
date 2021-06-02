@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateXaphuongTable extends Migration
+class CreateLoaihosoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateXaphuongTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_xaphuong', function (Blueprint $table) {
+        Schema::create('tbl_loaihoso', function (Blueprint $table) {
             $table->id();
-            $table->string('Ten_xaphuong')->nullable();
-            $table->unsignedBigInteger('ID_quanhuyen')->nullable();
-            
+            $table->string('Ten_loaihoso')->nullable();
             $table->string('Trangthai')->nullable();
             $table->string('Ghichu')->nullable();
             $table->timestamps();
-            $table->foreign('ID_quanhuyen')->references('id')->on('tbl_quanhuyen')->onDelete('cascade');;
         });
     }
 
@@ -32,6 +29,6 @@ class CreateXaphuongTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_xaphuong');
+        Schema::dropIfExists('tbl_loaihoso');
     }
 }

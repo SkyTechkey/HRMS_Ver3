@@ -4,9 +4,8 @@
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Mã QH</th>
-                    <th>Tên Quận/Huyện</th>
-                    <th>Tên Tỉnh/Thành Phố</th>
+                    <th>Mã LHS</th>
+                    <th>Tên Loại Hồ Sơ</th>
                     <th>Trạng thái</th>
                     <th>Ghi chú</th>
 
@@ -17,8 +16,7 @@
                 <tr>
                     <td>{{ $key+1 }}</td>
                     <td>{{$value->id}}</td>
-                    <td>{{$value->Ten_quanhuyen}}</td>
-                    <td>{{$value->thanhpho->Ten_tinhthanhpho}}</td>
+                    <td>{{$value->Ten_loaihoso}}</td>
                     <td>{{$value->Trangthai}}</td>
                     <td>{{$value->Ghichu}}</td>
 
