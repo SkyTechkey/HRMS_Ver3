@@ -22,7 +22,7 @@
             </li>
 
             <li class="header">
-                <h6>DOANH MỤC</h6>
+                <h6>DANH MỤC</h6>
             </li>
 
             @can('View.NgoaiNgu')
@@ -35,12 +35,66 @@
             @can('View.DanToc')
             <li class="{{Route::is('quanlydantoc.index') ? 'active' : '' }}">
                 <a href="{{route('quanlydantoc.index')}}" class="list-group-item">
-                    <span>Quản lý dân tộc</span>
+                    <span>Quản lý Dân tộc</span>
                 </a>
             </li>
             @endcan
-
-
+            @can('View.QuocTich')
+            <li class="{{Route::is('quanlyquoctich.index') ? 'active' : '' }}">
+                <a href="{{route('quanlyquoctich.index')}}" class="list-group-item">
+                    <span>Quản lý Quốc tịch</span>
+                </a>
+            </li>
+            @endcan
+            @can('View.TuyenDung')
+            <li class="{{Route::is('tuyendung.index') ? 'active' : '' }}">
+                <a href="{{route('tuyendung.index')}}" class="list-group-item">
+                    <span>Quản lý Tuyển dụng</span>
+                </a>
+            </li>
+            @endcan
+            @can('View.ChucVu')
+            <li class="{{Route::is('chucvu.index') ? 'active' : '' }}">
+                <a href="{{route('chucvu.index')}}" class="list-group-item">
+                    <span>Quản lý Chức vụ</span>
+                </a>
+            </li>
+            @endcan
+			@can('View.ChiNhanh')
+            <li class="{{Route::is('quanlychinhanh.index') ? 'active' : '' }}">
+                <a href="{{route('quanlychinhanh.index')}}" class="list-group-item">
+                    <span>Quản lý chi nhánh</span>
+                </a>
+            </li>
+            @endcan
+            @can('View.PhongBan')
+            <li class="{{Route::is('quanlyphongban.index') ? 'active' : '' }}">
+                <a href="{{route('quanlyphongban.index')}}" class="list-group-item">
+                    <span>Quản lý phòng ban</span>
+                </a>
+            </li>
+            @endcan
+            @can('View.TinhThanh')
+            <li class="{{Route::is('quanlytinhthanhpho.index') ? 'active' : '' }}">
+                <a href="{{route('quanlytinhthanhpho.index')}}" class="list-group-item">
+                    <span>Quản lý Tỉnh/Thành Phố</span>
+                </a>
+            </li>
+            @endcan
+            @can('View.TinhThanh')
+            <li class="{{Route::is('quanlyquanhuyen.index') ? 'active' : '' }}">
+                <a href="{{route('quanlyquanhuyen.index')}}" class="list-group-item">
+                    <span>Quản lý Quận/Huyện</span>
+                </a>
+            </li>
+            @endcan
+            @can('View.TinhThanh')
+            <li class="{{Route::is('quanlyxaphuong.index') ? 'active' : '' }}">
+                <a href="{{route('quanlyxaphuong.index')}}" class="list-group-item">
+                    <span>Quản lý Xã/Phường</span>
+                </a>
+            </li>
+            @endcan
         </ul>
 
     </div>

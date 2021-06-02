@@ -51,7 +51,23 @@
                     <span>TRANG MẪU</span>
                 </a>
             </li>
+            @can('View.NhanvienCN')
+            <li >
+                <a href="javascript:void(0);" title="QL Nhân Sự" class="menu-toggle waves-effect waves-block">
+                    <i class="material-icons">people</i>
+                    <span>QL Nhân Sự</span>
+                </a>
+                <ul class="ml-menu" style="display: none;">
+                    <li class="{{ Request::is('nhansu') ? 'active' : '' }}">
+                        <a href="{{url('nhansu')}}">
+                            <span>Danh sách nhân sự</span>
+                        </a>
+                    </li>
+                    </li>
+                </ul>
+            </li>
 
+            @endcan
             <li class="{{ Request::is('settings') ? 'active' : '' }}">
                 <a href="{{url('settings')}}" title="Hệ thống" class="toggled waves-effect waves-block">
                     <i class="material-icons">settings</i>
@@ -64,7 +80,7 @@
     <!-- Footer -->
     <div class="legal">
         <i title="@lang('core::core.minify_sidebar')" id="minify-sidebar" class="material-icons">keyboard_arrow_left</i>
-        <div class="version">
+        <div class="Version">
             <b>version: HRMS 3.0</b>
         </div>
     </div>

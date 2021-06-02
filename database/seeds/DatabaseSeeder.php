@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
    	    $this->call(UserTableSeeder::class);
         $this->call(DantocTableSeeder::class);
         $this->call(NgoainguTableSeeder::class);
-
-
+        $this->call(QuoctichTableSeeder::class);
+		$this->call(ChinhanhTableSeeder::class);
         $this->call(RolePermissitonSeeder::class);
     }
 }
