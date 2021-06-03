@@ -60,13 +60,13 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
     white-space: nowrap;
 }
 
-table.dataTable thead>tr>th,
-table.dataTable thead>tr>td {
+table.dataTable thead > tr > th,
+table.dataTable thead > tr > td {
     padding-right: 30px;
 }
 
-table.dataTable thead>tr>th:active,
-table.dataTable thead>tr>td:active {
+table.dataTable thead > tr > th:active,
+table.dataTable thead > tr > td:active {
     outline: none;
 }
 
@@ -88,7 +88,7 @@ table.dataTable thead .sorting_desc_disabled:after {
     bottom: 8px;
     right: 8px;
     display: block;
-    font-family: 'Glyphicons Halflings';
+    font-family: "Glyphicons Halflings";
     opacity: 0.5;
 }
 
@@ -148,7 +148,7 @@ div.dataTables_scrollFoot table {
     }
 }
 
-table.dataTable.table-condensed>thead>tr>th {
+table.dataTable.table-condensed > thead > tr > th {
     padding-right: 20px;
 }
 

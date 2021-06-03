@@ -41,18 +41,22 @@ class quanLyTinhThanhPhoController extends Controller
 
         if(!empty($deleteTinhThanhPho))
         {
-            if($deleteTinhThanhPho->delete())
+            $checkQuanHuyen = $deleteTinhThanhPho->quanhuyen()->find($id);
+            if(!empty($checkQuanHuyen))
             {
-               return back()->with('success',__('Đã xóa dữ liệu thành công!'));
+                return back()->with('error',__('Không thể xóa. Dữ liệu này đã tồn tại ở quận huyện!'));
             }
             else
             {
-                return back()->with('error',__('Lỗi không thể xóa dữ liệu!'));
+                if($deleteTinhThanhPho->delete())
+                {
+                return back()->with('success',__('Đã xóa dữ liệu thành công!'));
+                }
+                else
+                {
+                    return back()->with('error',__('Lỗi không thể xóa dữ liệu!'));
+                }
             }
-        }
-        else
-        {
-            return back()->with('error',__('Bạn không được quyền xóa dữ liệu này!'));
         }
     }
     public function show($id)

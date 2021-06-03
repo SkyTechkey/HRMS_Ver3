@@ -52,6 +52,26 @@
     @stack('head-script')
     <!-- <script type="text/javascript" src="{{ asset('bap/js/admin.js')}}"></script> -->
     <script type="text/javascript" src="{{ asset('bap/plugins/jquery/jquery.min.js')}}"></script>
+
+    <style class="">
+        ::-webkit-scrollbar {
+            -webkit-appearance: none;
+            width: 8px;
+            height: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--color-tab);
+            -webkit-box-shadow: 0 0 1px rgb(255 255 255 / 50%);
+            border-radius: 8px;
+        }
+
+        :root {
+            --color-tab: rgba(201, 0, 0, 0.747);
+        }
+
+    </style>
+
 </head>
 
 <body class="theme-red">
