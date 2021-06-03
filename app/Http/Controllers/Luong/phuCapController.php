@@ -1,29 +1,30 @@
 <?php
 
-namespace App\Http\Controllers\Hoso;
+namespace App\Http\Controllers\Luong;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\LoaiHoSo;
+use App\Models\PhuCap;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\LoaihosoExport;
-use App\Imports\LoaihosoImport;
+use App\Exports\PhucapExport;
+use App\Imports\PhucapImport;
 
-class quanLyLoaiHoSoController extends Controller
+class phuCapController extends Controller
 {
     public function index()
     {
-        $danhsach = LoaiHoSo::all(); 
-        return view('Settings.Hoso.quanlyloaihoso',compact('danhsach'));
+        $danhsach = PhuCap::all(); 
+        return view('Settings.Luong.quanlyloaiphucap',compact('danhsach'));
     }
 
     public function store(Request $request)
     {
-        $createLoaiHoSo = new LoaiHoSo;
-        $createLoaiHoSo->Ten_loaihoso = $request->name;
-        $createLoaiHoSo->Ghichu = $request->Ghichu;
-        $createLoaiHoSo->Trangthai = $request->status;
-        if($createLoaiHoSo->save())
+        $createPhuCap = new PhuCap;
+        $createPhuCap->Ten_phucap = $request->name;
+        $createPhuCap->Sotien = $request->sotien;
+        $createPhuCap->Ghichu = $request->Ghichu;
+        $createPhuCap->Trangthai = $request->status;
+        if($createPhuCap->save())
         {
             return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
         }
@@ -36,17 +37,17 @@ class quanLyLoaiHoSoController extends Controller
 
     public function destroy($id)
     {
-        $deleteLoaiHoSo = LoaiHoSo::find($id);
-        if(!empty($deleteLoaiHoSo))
+        $deletePhuCap = PhuCap::find($id);
+        if(!empty($deletePhuCap))
         {
-            $checkHoSo = $deleteLoaiHoSo->hoso()->find($id);
-            if(!empty($checkHoSo))
+            $checkLuongPhuCap = $deletePhuCap->luongphucap()->find($id);
+            if(!empty($checkLuongPhuCap))
             {
                 return back()->with('error',__('Không thể xóa. Dữ liệu này đã tồn tại ở hồ sơ!'));
             }
             else
             {
-                if($deleteLoaiHoSo->delete())
+                if($deletePhuCap->delete())
                 {
                 return back()->with('success',__('Đã xóa dữ liệu thành công!'));
                 }
@@ -76,7 +77,7 @@ class quanLyLoaiHoSoController extends Controller
 
             $extension_file = request()->file('file');
             if($extension_file->getClientOriginalExtension() == 'xlsx'){
-                Excel::import(new LoaihosoImport,request()->file('file'));
+                Excel::import(new PhucapImport,request()->file('file'));
                 return back()->with('success',__('Đã thêm mới dữ liệu thành công!'));
             }
             else{
@@ -91,16 +92,17 @@ class quanLyLoaiHoSoController extends Controller
     }
     public function export()
     {
-        return Excel::download(new LoaihosoExport, 'DS_Loaihoso.xlsx');
+        return Excel::download(new PhucapExport, 'DS_Phucap.xlsx');
     }
       public function update(Request $request, $id)
     {
-        $update_Loaihoso = LoaiHoSo::find($id);
-        if(!empty($update_Loaihoso)){
-            $update_Loaihoso->Ten_loaihoso = $request->name; 
-            $update_Loaihoso->Ghichu = $request->Ghichu;
-            $update_Loaihoso->Trangthai = $request->status;
-            if($update_Loaihoso->save())
+        $update_Phucap = PhuCap::find($id);
+        if(!empty($update_Phucap)){
+            $update_Phucap->Ten_phucap = $request->name;
+            $update_Phucap->Sotien = $request->sotien;
+            $update_Phucap->Ghichu = $request->Ghichu;
+            $update_Phucap->Trangthai = $request->status;
+            if($update_Phucap->save())
             {
                 return back()->with('success',__('Đã cập nhập dữ liệu thành công!'));
             }

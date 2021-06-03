@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLoaihosoTable extends Migration
+class CreatePhucapTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateLoaihosoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_loaihoso', function (Blueprint $table) {
+        Schema::create('tbl_phucap', function (Blueprint $table) {
             $table->id();
-            $table->string('Ten_loaihoso')->nullable();
-            $table->string('Trangthai')->nullable();
+            $table->string('Ten_phucap')->nullable();
+            $table->string('Sotien')->nullable();
             $table->string('Ghichu')->nullable();
+            $table->string('Trangthai')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateLoaihosoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_loaihoso');
+        Schema::dropIfExists('tbl_phucap');
     }
 }

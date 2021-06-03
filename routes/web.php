@@ -44,43 +44,29 @@ Route::middleware(['auth'])->group(function () {
 
         
 
-      // Quản lý loại hồ sơ
-        Route::group(['middleware' => ['can:View.LoaiHoSo']], function () {
-            Route::get('settings/hoso/quanlyloaihoso','Hoso\quanLyLoaiHoSoController@index')->name('quanlyloaihoso.index');
+      // Quản lý loại phụ cấp
+        Route::group(['middleware' => ['can:View.PhuCap']], function () {
+            Route::get('settings/luong/quanlyloaiphucap','Luong\phuCapController@index')->name('quanlyloaiphucap.index');
         });
-        Route::group(['middleware' => ['can:Edit.LoaiHoSo']], function () {
-            Route::post('settings/hoso/quanlyloaihoso/update/{id}','HoSo\quanLyLoaiHoSoController@update')->name('quanlyloaihoso.edit');
+        Route::group(['middleware' => ['can:Edit.PhuCap']], function () {
+            Route::post('settings/luong/quanlyloaiphucap/update/{id}','Luong\phuCapController@update')->name('quanlyloaiphucap.edit');
         });
-        Route::group(['middleware' => ['can:Create.LoaiHoSo']], function () {
-            Route::post('settings/hoso/quanlyloaihoso/store','HoSo\quanLyLoaiHoSoController@store')->name('quanlyloaihoso.store');
+        Route::group(['middleware' => ['can:Create.PhuCap']], function () {
+            Route::post('settings/luong/quanlyloaiphucap/store','Luong\phuCapController@store')->name('quanlyloaiphucap.store');
         });
-        Route::group(['middleware' => ['can:Delete.LoaiHoSo']], function () {
-            Route::get('settings/hoso/quanlyloaihoso/destroy/{id}','HoSo\quanLyLoaiHoSoController@destroy')->name('quanlyloaihoso.delete');
+        Route::group(['middleware' => ['can:Delete.PhuCap']], function () {
+            Route::get('settings/luong/quanlyloaiphucap/destroy/{id}','Luong\phuCapController@destroy')->name('quanlyloaiphucap.delete');
 
         });
-        Route::group(['middleware' => ['can:Import.LoaiHoSo']], function () {
-            Route::post('settings/hoso/quanlyloaihoso/import', 'HoSo\quanLyLoaiHoSoController@import')->name('quanlyloaihoso.import');
+        Route::group(['middleware' => ['can:Import.PhuCap']], function () {
+            Route::post('settings/luong/quanlyloaiphucap/import', 'Luong\phuCapController@import')->name('quanlyloaiphucap.import');
         });
-        Route::group(['middleware' => ['can:Export.LoaiHoSo']], function () {
-            Route::get('settings/hoso/quanlyloaihoso/export', 'HoSo\quanLyLoaiHoSoController@export')->name('quanlyloaihoso.export');
+        Route::group(['middleware' => ['can:Export.PhuCap']], function () {
+            Route::get('settings/luong/quanlyloaiphucap/export', 'Luong\phuCapController@export')->name('quanlyloaiphucap.export');
 
         });
 
-        // Quản lý hồ sơ
-        Route::group(['middleware' => ['can:View.HoSo']], function () {
-            Route::get('settings/hoso/quanlyhoso','HoSo\quanLyHoSoController@index')->name('quanlyhoso.index');
-        });
-        Route::group(['middleware' => ['can:Edit.HoSo']], function () {
-            Route::post('settings/hoso/quanlyhoso/update/{id}','HoSo\quanLyHoSoController@update')->name('quanlyhoso.edit');
-        });
-        Route::group(['middleware' => ['can:Delete.HoSo']], function () {
-            Route::get('settings/hoso/quanlyhoso/destroy/{id}','HoSo\quanLyHoSoController@destroy')->name('quanlyhoso.delete');
-
-        });
-        Route::group(['middleware' => ['can:Export.HoSo']], function () {
-            Route::get('settings/hoso/quanlyhoso/export', 'HoSo\quanLyHoSoController@export')->name('quanlyhoso.export');
-
-        });
+        
         
 
 

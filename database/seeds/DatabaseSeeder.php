@@ -18,8 +18,7 @@ class DatabaseSeeder extends Seeder
    	    $this->call(UserTableSeeder::class);
         
         $this->call(RolePermissitonSeeder::class);
-        $this->call(LoaihosoTableSeeder::class);
-        $this->call(HosoTableSeeder::class);
+        
        
     }
 }
