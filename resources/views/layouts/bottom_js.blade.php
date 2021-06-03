@@ -26,6 +26,7 @@
 <script src="{{ asset('project_asset/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
 <script src="{{ asset('project_asset/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
 <script src="{{ asset('project_asset/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+<script src="{{ asset('project_asset/js/pages/ui/tooltips-popovers.js')}}"></script>
 
 <!-- Custom Js -->
 <script src="{{ asset('project_asset/js/admin.js')}}"></script>

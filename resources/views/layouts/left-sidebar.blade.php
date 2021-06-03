@@ -63,6 +63,10 @@
                             <span>Danh sách nhân sự</span>
                         </a>
                     </li>
+                    <li class="{{route('index.Chitietnhansu') ? 'active' : '' }}">
+                        <a href="{{route('index.Chitietnhansu')}}">
+                            <span>Thêm mới nhân sự</span>
+                        </a>
                     </li>
                 </ul>
             </li>

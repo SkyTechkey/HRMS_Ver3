@@ -265,4 +265,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('nhansu/xoa/{id}', 'Nhansu\NhansuController@destroy')->name('destroy.nhansu');
         Route::get('nhansu/xuat', 'Nhansu\NhansuController@export')->name('export.nhansu');
         Route::post('nhansu/nhap', 'Nhansu\NhansuController@import')->name('import.nhansu');
+
+        //quản lý chi tiết Nhân sự
+        Route::get('nhansu/Chitietnhansu', 'Nhansu\ChitietnhansuController@index')->name('index.Chitietnhansu');
 });
