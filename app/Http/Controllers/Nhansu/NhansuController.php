@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Nhansu;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\{GiamTruGiaCanh, LoaiQuanHe};
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Excel;
@@ -20,7 +21,9 @@ class NhansuController extends Controller implements WithHeadings, FromCollectio
     public function index()
     {
         $nhansu = User::all();
-        return view('Nhansu.index', compact('nhansu'));
+        $giacanh = GiamTruGiaCanh::all();
+        $quanhe = LoaiQuanHe::all();
+        return view('Nhansu.index', compact('nhansu', 'giacanh', 'quanhe'));
     }
 
     /**

@@ -24,7 +24,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LoaiBangCap::class,
             TrinhDoChuyenMon::class,
-            HoSoBangCap::class
+            HoSoBangCap::class,
+            LoaiQuanHe::class,
+            GiamTruGiaCanh::class
         ]);
     }
 }

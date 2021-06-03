@@ -277,4 +277,10 @@ Route::middleware(['auth'])->group(function () {
         
         Route::get('settings/danhmuc/quanlybangcap/export-word', 'DanhMuc\quanlyBangCapController@create')->name('bangcap.create');
 
+        // Gia cảnh
+        Route::post('settings/danhmuc/giamtrugiacanh/them', 'Nhansu\GiamTruGiaCanhController@store')->name('giamtrugiacanh.store');
+        Route::post('settings/danhmuc/giamtrugiacanh/sua/{id}', 'Nhansu\GiamTruGiaCanhController@edit')->name('giamtrugiacanh.edit');
+        Route::get('settings/danhmuc/giamtrugiacanh/xoa/{id}', 'Nhansu\GiamTruGiaCanhController@destroy')->name('giamtrugiacanh.destroy');
+
+
     });
