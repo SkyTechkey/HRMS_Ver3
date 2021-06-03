@@ -15,17 +15,17 @@ class RolePermissitonSeeder extends Seeder
     {
         $role = Role::create(['name' => 'admin']);
         // Thêm phân quyền quản trị phòng ban
-        $permission = Permission::create(['name' => 'View.TinhThanh']);
+        $permission = Permission::create(['name' => 'View.KhoaDaoTao']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Edit.TinhThanh']);
+        $permission = Permission::create(['name' => 'Edit.KhoaDaoTao']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Delete.TinhThanh']);
+        $permission = Permission::create(['name' => 'Delete.KhoaDaoTao']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Create.TinhThanh']);
+        $permission = Permission::create(['name' => 'Create.KhoaDaoTao']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Import.TinhThanh']);
+        $permission = Permission::create(['name' => 'Import.KhoaDaoTao']);
         $permission->assignRole($role);
-        $permission = Permission::create(['name' => 'Export.TinhThanh']);
+        $permission = Permission::create(['name' => 'Export.KhoaDaoTao']);
         $permission->assignRole($role);
 
 

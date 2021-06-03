@@ -44,67 +44,26 @@ Route::middleware(['auth'])->group(function () {
 
         
 
-       // Quản lý tỉnh thành phố
-        Route::group(['middleware' => ['can:View.TinhThanh']], function () {
-            Route::get('settings/danhmuc/quanlytinhthanhpho','DanhMuc\quanLyTinhThanhPhoController@index')->name('quanlytinhthanhpho.index');
+       
+        // Quản lý khóa đào tạo
+        Route::group(['middleware' => ['can:View.KhoaDaoTao']], function () {
+            Route::get('settings/daotao/quanlykhoadaotao','DaoTao\khoaDaoTaoController@index')->name('quanlykhoadaotao.index');
         });
-        Route::group(['middleware' => ['can:Edit.TinhThanh']], function () {
-            Route::post('settings/danhmuc/quanlytinhthanhpho/update/{id}','DanhMuc\quanLyTinhThanhPhoController@update')->name('quanlytinhthanhpho.edit');
+        Route::group(['middleware' => ['can:Edit.KhoaDaoTao']], function () {
+            Route::post('settings/daotao/quanlykhoadaotao/update/{id}','DaoTao\khoaDaoTaoController@update')->name('quanlykhoadaotao.edit');
         });
-        Route::group(['middleware' => ['can:Create.TinhThanh']], function () {
-            Route::post('settings/danhmuc/quanlytinhthanhpho/store','DanhMuc\quanLyTinhThanhPhoController@store')->name('quanlytinhthanhpho.store');
+        Route::group(['middleware' => ['can:Create.KhoaDaoTao']], function () {
+            Route::post('settings/daotao/quanlykhoadaotao/store','DaoTao\khoaDaoTaoController@store')->name('quanlykhoadaotao.store');
         });
-        Route::group(['middleware' => ['can:Delete.TinhThanh']], function () {
-            Route::get('settings/danhmuc/quanlytinhthanhpho/destroy/{id}','DanhMuc\quanLyTinhThanhPhoController@destroy')->name('quanlytinhthanhpho.delete');
+        Route::group(['middleware' => ['can:Delete.KhoaDaoTao']], function () {
+            Route::get('settings/daotao/quanlykhoadaotao/destroy/{id}','DaoTao\khoaDaoTaoController@destroy')->name('quanlykhoadaotao.delete');
 
         });
-        Route::group(['middleware' => ['can:Import.TinhThanh']], function () {
-            Route::post('settings/danhmuc/quanlytinhthanhpho/import', 'DanhMuc\quanLyTinhThanhPhoController@import')->name('quanlytinhthanhpho.import');
+        Route::group(['middleware' => ['can:Import.KhoaDaoTao']], function () {
+            Route::post('settings/daotao/quanlykhoadaotao/import', 'DaoTao\khoaDaoTaoController@import')->name('quanlykhoadaotao.import');
         });
-        Route::group(['middleware' => ['can:Export.TinhThanh']], function () {
-            Route::get('settings/danhmuc/quanlytinhthanhpho/export', 'DanhMuc\quanLyTinhThanhPhoController@export')->name('quanlytinhthanhpho.export');
-
-        });
-        // Quản lý quận huyện
-        Route::group(['middleware' => ['can:View.TinhThanh']], function () {
-            Route::get('settings/danhmuc/quanlyquanhuyen','DanhMuc\quanLyQuanHuyenController@index')->name('quanlyquanhuyen.index');
-        });
-        Route::group(['middleware' => ['can:Edit.TinhThanh']], function () {
-            Route::post('settings/danhmuc/quanlyquanhuyen/update/{id}','DanhMuc\quanLyQuanHuyenController@update')->name('quanlyquanhuyen.edit');
-        });
-        Route::group(['middleware' => ['can:Create.TinhThanh']], function () {
-            Route::post('settings/danhmuc/quanlyquanhuyen/store','DanhMuc\quanLyQuanHuyenController@store')->name('quanlyquanhuyen.store');
-        });
-        Route::group(['middleware' => ['can:Delete.TinhThanh']], function () {
-            Route::get('settings/danhmuc/quanlyquanhuyen/destroy/{id}','DanhMuc\quanLyQuanHuyenController@destroy')->name('quanlyquanhuyen.delete');
-
-        });
-        Route::group(['middleware' => ['can:Import.TinhThanh']], function () {
-            Route::post('settings/danhmuc/quanlyquanhuyen/import', 'DanhMuc\quanLyQuanHuyenController@import')->name('quanlyquanhuyen.import');
-        });
-        Route::group(['middleware' => ['can:Export.TinhThanh']], function () {
-            Route::get('settings/danhmuc/quanlyquanhuyen/export', 'DanhMuc\quanLyQuanHuyenController@export')->name('quanlyquanhuyen.export');
-
-        });
-        // Quản lý xã phường
-        Route::group(['middleware' => ['can:View.TinhThanh']], function () {
-            Route::get('settings/danhmuc/quanlyxaphuong','DanhMuc\quanLyXaPhuongController@index')->name('quanlyxaphuong.index');
-        });
-        Route::group(['middleware' => ['can:Edit.TinhThanh']], function () {
-            Route::post('settings/danhmuc/quanlyxaphuong/update/{id}','DanhMuc\quanLyXaPhuongController@update')->name('quanlyxaphuong.edit');
-        });
-        Route::group(['middleware' => ['can:Create.TinhThanh']], function () {
-            Route::post('settings/danhmuc/quanlyxaphuong/store','DanhMuc\quanLyXaPhuongController@store')->name('quanlyxaphuong.store');
-        });
-        Route::group(['middleware' => ['can:Delete.TinhThanh']], function () {
-            Route::get('settings/danhmuc/quanlyxaphuong/destroy/{id}','DanhMuc\quanLyXaPhuongController@destroy')->name('quanlyxaphuong.delete');
-
-        });
-        Route::group(['middleware' => ['can:Import.TinhThanh']], function () {
-            Route::post('settings/danhmuc/quanlyxaphuong/import', 'DanhMuc\quanLyXaPhuongController@import')->name('quanlyxaphuong.import');
-        });
-        Route::group(['middleware' => ['can:Export.TinhThanh']], function () {
-            Route::get('settings/danhmuc/quanlyxaphuong/export', 'DanhMuc\quanLyXaPhuongController@export')->name('quanlyxaphuong.export');
+        Route::group(['middleware' => ['can:Export.KhoaDaoTao']], function () {
+            Route::get('settings/daotao/quanlykhoadaotao/export', 'DaoTao\khoaDaoTaoController@export')->name('quanlykhoadaotao.export');
 
         });
         
