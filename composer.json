@@ -12,13 +12,13 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
+        "jacobbennett/pjax": "^1.0",
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "laravel/ui": "2.4",
         "maatwebsite/excel": "^3.1",
-        "spatie/laravel-permission": "^4.0",
-        "jacobbennett/pjax": "^1.0"
-
+        "phpoffice/phpword": "^0.18.1",
+        "spatie/laravel-permission": "^4.0"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

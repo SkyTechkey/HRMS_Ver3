@@ -275,4 +275,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('settings/danhmuc/quanlybangcap/export', 'DanhMuc\quanlyBangCapController@export')->name('bangcap.export');
         Route::post('settings/danhmuc/quanlybangcap/import', 'DanhMuc\quanlyBangCapController@import')->name('bangcap.import');
         
+        Route::get('settings/danhmuc/quanlybangcap/export-word', 'DanhMuc\quanlyBangCapController@create')->name('bangcap.create');
+
     });

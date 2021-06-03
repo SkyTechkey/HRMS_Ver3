@@ -69,6 +69,11 @@ Quản lý Bằng cấp
                             <i class="material-icons">download</i>
                             Xuất file</a>
                         @endcan
+                        {{-- @can('Export.TinhThanh') --}}
+                        <a href="{{route('bangcap.create')}}" class="btn btn-success waves-effect">
+                            <i class="material-icons">download</i>
+                            Xuất file word</a>
+                        {{-- @endcan --}}
                         @can('Create.TinhThanh')
                         <button type="button" class="btn btn-primary waves-effect" data-toggle="modal"
                             data-target="#myModal">

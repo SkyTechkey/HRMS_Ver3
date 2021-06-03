@@ -10,6 +10,9 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Excel;
 use App\Imports\BangCapImport;
+use PhpOffice\PhpWord\PhpWord;
+use PhpOffice\PhpWord\IOFactory;
+use PhpOffice\PhpWord\TemplateProcessor;
 
 class quanlyBangCapController extends Controller implements WithHeadings, FromCollection
 {
@@ -34,7 +37,28 @@ class quanlyBangCapController extends Controller implements WithHeadings, FromCo
      */
     public function create()
     {
-        //
+        // $phpWord = new PhpWord();
+        $templateProcessor = new TemplateProcessor('HĐLĐ.docx');
+
+
+        $section = $phpWord->addSection();
+
+        
+        $templateProcessor->setValues(
+            [
+                'Đà Nẵng' => 'John',
+            ]
+        );
+
+
+        $objWriter = IOFactory::createWriter($phpWord, 'Word2007');
+        try {
+            $objWriter->save(storage_path('HĐLĐ.docx'));
+        } catch (Exception $e) {
+        }
+
+
+        return response()->download(storage_path('HĐLĐ.docx'));
     }
 
     /**
