@@ -103,11 +103,11 @@
             </li>
             {{-- @endcan --}}
             {{-- @can('View.TinhThanh') --}}
-            {{-- <li class="{{Route::is('hopdong.index') ? 'active' : '' }}">
-                <a href="{{route('hopdong.index')}}" class="list-group-item">
-                    <span>Quản lý Bằng Cấp</span>
+            <li class="{{Route::is('nghile.index') ? 'active' : '' }}">
+                <a href="{{route('nghile.index')}}" class="list-group-item">
+                    <span>Nghỉ lễ</span>
                 </a>
-            </li> --}}
+            </li>
             {{-- @endcan --}}
         </ul>
 

@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
             TrinhDoChuyenMon::class,
             HoSoBangCap::class,
             LoaiQuanHe::class,
-            GiamTruGiaCanh::class
+            GiamTruGiaCanh::class,
+            NghiLeTableSeeder::class
         ]);
     }
 }

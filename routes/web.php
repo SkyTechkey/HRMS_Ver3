@@ -282,5 +282,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('settings/danhmuc/giamtrugiacanh/sua/{id}', 'Nhansu\GiamTruGiaCanhController@edit')->name('giamtrugiacanh.edit');
         Route::get('settings/danhmuc/giamtrugiacanh/xoa/{id}', 'Nhansu\GiamTruGiaCanhController@destroy')->name('giamtrugiacanh.destroy');
 
+        // Nghỉ lễ
+        Route::get('settings/danhmuc/nghile', 'DanhMuc\NghiLeController@index')->name('nghile.index');
+        Route::post('settings/danhmuc/nghile/them', 'DanhMuc\NghiLeController@store')->name('nghile.store');
+        Route::post('settings/danhmuc/nghile/them/{id}', 'DanhMuc\NghiLeController@edit')->name('nghile.edit');
+        Route::get('settings/danhmuc/nghile/xoa/{id}', 'DanhMuc\NghiLeController@destroy')->name('nghile.destroy');
 
     });

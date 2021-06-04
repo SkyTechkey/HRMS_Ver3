@@ -123,8 +123,12 @@ class quanlyBangCapController extends Controller implements WithHeadings, FromCo
         if($hosobangcap->save()){
             if(!empty($file)){
                 $file->move('project_asset/file',$file->getClientOriginalName());
+                return back()->with('success',__('Đã sửa dữ liệu thành công!'));
             }
-            return back()->with('success', 'Sửa dữ liệu thành công!');
+            else
+            {
+                return back()->with('error',__('Lỗi không thể sửa dữ liệu!'));
+            }
         }
 
     }
