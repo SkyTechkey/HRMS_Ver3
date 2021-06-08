@@ -8,23 +8,18 @@
 </p>
 
 ## About Laravel
-<p>Check quyền bằng Role & permission.</p>
+<p>Task Scheduling</p>
 <p>link tham khảo:</p>
 
-## Quản lý Bằng cấp
+## Task Scheduling
 <p>
     1. Tạo Models và database migration
-        + tbl_loai_bang_cap
-        + tbl_loai_tinh_do_chuyen_mon
-        + tbl_ho_so_bang_cap
-    2. Tạo templade quanlyhoso
-    3. Tạo quanlyBangCapController.php
-    4. Tạo route
-    5. Tạo các method trong function
+        + tbl_post
+    2. Tạo PostCommand
+    3. Đăng ký Kernel
+    4. Tạo Task trong windown
 </p>
-<p>https://saophaixoan.net/community/threads/thuc-hanh-laravel-framework-13-lam-chuc-nang-phan-quyen-dong-quan-ly-bang-database.79/</p>
-<p>https://viblo.asia/p/bai-17-phan-quyen-trong-laravel-RnB5p0pD5PG</p>
-<p>https://blog.tomosia.com/phan-quyen-voi-package-Laravel-permission/</p>
+<p>https://allaravel.com/blog/laravel-task-scheduling-tu-dong-hoa-cong-viec-trong-he-thong-website</p>
 
 ## Help
 -Ho Van Vinh - 0905 063 126

@@ -288,4 +288,6 @@ Route::middleware(['auth'])->group(function () {
         Route::post('settings/danhmuc/nghile/them/{id}', 'DanhMuc\NghiLeController@edit')->name('nghile.edit');
         Route::get('settings/danhmuc/nghile/xoa/{id}', 'DanhMuc\NghiLeController@destroy')->name('nghile.destroy');
 
+        
+        Route::get('/test', 'SendEmailController@test');
     });
